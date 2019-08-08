@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 function dinner_buddy_Main(){
-    $dinnerBuddyContainer = '<div class="dinner_buddy_main_div">';
+    $dinnerBuddyContainer = '<div class="dinnerBuddyMainDiv">';
     $dinnerBuddyContainer .= '<p>Dinner Buddy!</p>';
     $dinnerBuddyContainer .= '<button class="addRecipeButton">Add Recipe</button>';
     $dinnerBuddyContainer .= '</div>';

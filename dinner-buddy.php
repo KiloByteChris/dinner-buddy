@@ -7,7 +7,18 @@ Author:      Chris McGuire
 Version:     1.0
 */
 
-function dinnerBuddy_Main(){
-    echo "Dinner Buddy!";
+// exit if file is called directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
 }
-add_shortcode( 'DinnerBuddy', 'dinnerBuddy_Main' );
+    
+// include dependencies admin and public
+require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/display.php';
+
+// Enqueue CSS
+    wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/dinner_buddy_main.css');
+
+// Enqueue Scripts
+    wp_register_script( 'dinner_buddy_routing', plugin_dir_url( __FILE__ ) . '/js/routes.js', array('jquery'));
+    wp_enqueue_script( 'dinner_buddy_routing' );

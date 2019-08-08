@@ -4,9 +4,14 @@ jQuery(document).ready( function() {
     jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngedient", function(){
         // Build the form input
 
-        let newIngredientInput = '<label for=""<input type="text">';
-        // jQuery('.newIngredientsArea').append();
+        let newIngredientInput = '<label for='+'newIngredientInput'+newIngredientInputNumber+' >'+newIngredientInputNumber+'. Name</label>';
+        newIngredientInput += '<input type="text" name='+'newIngredientInput'+newIngredientInputNumber+' >';
+
+        newIngredientInput += '<label for='+'newIngredientAmount'+newIngredientInputNumber+' >Amount</label>';
+        newIngredientInput += '<input type="text" name='+'newIngredientAmount'+newIngredientInputNumber+' >';
+
+        jQuery('.newIngredientsArea').append(newIngredientInput);
+
         newIngredientInputNumber++;
-        console.log(newIngredientInputNumber);
     });
 });

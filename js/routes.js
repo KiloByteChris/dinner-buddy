@@ -27,11 +27,17 @@ jQuery(document).ready(function(){
         newRecipeView += '<button type="button" class="addNewIngedient">+</button>';
         newRecipeView += '<div class="newIngredientsArea"></div>';
         newRecipeView += '</fieldset>';
+        // Description
+        newRecipeView += '<label for="newRecipeInstructions">Instructions</label>';
+        newRecipeView += '<textarea name="newRecipeInstructions" class="newRecipeInstructions">Mutha... Fucka... 2</textarea>';
+
+        newRecipeView += '<button>Save Recipe</button>';
 
         newRecipeView += '</form>';
         newRecipeView += '</div>';
 
         // Display the form
         jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
+
     });
 })

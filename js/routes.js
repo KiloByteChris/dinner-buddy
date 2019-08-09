@@ -13,25 +13,25 @@ jQuery(document).ready(function(){
         newRecipeView += '<input type="text" name="newRecipeTitle" id="newRecipeTitleInput">';
         // Textarea for the recipe description
         newRecipeView += '<label for="newRecipeDescription">Description</label>';
-        newRecipeView += '<textarea name="newRecipeDescription" class="newRecipeDescription">Mutha... Fucka... </textarea>';
+        newRecipeView += '<textarea name="newRecipeDescription" class="newRecipeDescription" id="newRecipeDescription">Mutha... Fucka... </textarea>';
         // Select input for servings
         newRecipeView += '<label for="newRecipeServings">Servings</label>';
         newRecipeView += '<select name="newRecipeServings" id="newRecipeServingsInput">';
             for(var i=1 ;i<13 ;i++) {
-                newRecipeView += '<option value="'+i+' class="newRecipeServingValue">'+i+'</option>';
+                newRecipeView += '<option value="'+i+'" class="newRecipeServingValue">'+i+'</option>';
             }
         newRecipeView += '</select>';
         // Ingredients
-        newRecipeView += '<fieldset>';
+        newRecipeView += '<fieldset id="ingredientsField">';
         newRecipeView += '<legend>Ingredients</legend>';
         newRecipeView += '<button type="button" class="addNewIngedient">+</button>';
         newRecipeView += '<div class="newIngredientsArea"></div>';
         newRecipeView += '</fieldset>';
         // Description
         newRecipeView += '<label for="newRecipeInstructions">Instructions</label>';
-        newRecipeView += '<textarea name="newRecipeInstructions" class="newRecipeInstructions">Mutha... Fucka... 2</textarea>';
+        newRecipeView += '<textarea name="newRecipeInstructions" id="newRecipeInstructions" class="newRecipeInstructions">Mutha... Fucka... 2</textarea>';
         // Submit button
-        newRecipeView += '<button>Save Recipe</button>';
+        newRecipeView += '<button type="button" class="saveRecipeButton">Save Recipe</button>';
         // end
         newRecipeView += '</form>';
         newRecipeView += '</div>';

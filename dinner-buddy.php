@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 // include dependencies admin and public
 require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/display.php';
+echo plugin_dir_path( __FILE__ );
+
 
 // Enqueue CSS
     wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/dinner_buddy_main.css');

@@ -16,6 +16,7 @@ jQuery(document).ready( function() {
     });
 
     jQuery(".dinnerBuddyMainDiv").on("click", ".saveRecipeButton", function(){
+        event.preventDefault()
         //create an array from the ingredients list
         var ingredientsData = jQuery('.newIngredientInput');
         var ingredientsAmountData = jQuery('.newIngredientAmount');
@@ -37,5 +38,21 @@ jQuery(document).ready( function() {
         };
         console.log(newRecipeData);
 
+        var url = window.location.origin;
+        // url += '/app/public/wp-content/plugins/dinner-buddy/includes/';
+        url += '/app/public/wp-content/plugins/dinner-buddy/dinner-buddy.php';
+        // url += 'nrpost.php';
+        console.log(url);
+
+        jQuery.ajax({
+			//method:   'POST',
+			//dataType: 'json',
+			url:       url,
+			//data:      newRecipeData,
+			//async:     true,
+        }).done(function(data){
+            console.log('ajax is done');
+        });
+        console.log('After ajax for no reason');
     });
 });

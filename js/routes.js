@@ -30,14 +30,12 @@ jQuery(document).ready(function(){
         // Description
         newRecipeView += '<label for="newRecipeInstructions">Instructions</label>';
         newRecipeView += '<textarea name="newRecipeInstructions" class="newRecipeInstructions">Mutha... Fucka... 2</textarea>';
-
+        // Submit button
         newRecipeView += '<button>Save Recipe</button>';
-
+        // end
         newRecipeView += '</form>';
         newRecipeView += '</div>';
-
         // Display the form
         jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
-
     });
 })

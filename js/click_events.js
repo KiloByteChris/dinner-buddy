@@ -38,20 +38,26 @@ jQuery(document).ready( function() {
         };
         console.log(newRecipeData);
 
-        var url = window.location.origin;
-        // url += '/app/public/wp-content/plugins/dinner-buddy/includes/';
-        url += '/app/public/wp-content/plugins/dinner-buddy/dinner-buddy.php';
-        // url += 'nrpost.php';
+        // var url = window.location.origin;
+        // url += '/wp-json/acf';
+        var url ='http://dinner-buddy.local/wp-json/wp/v2/recipes/56';
         console.log(url);
+        var acfPost = {
+            "id": 56,
+            "acf": {
+                "recipe_name": "soup"
+            }
+        };
 
         jQuery.ajax({
-			//method:   'POST',
-			//dataType: 'json',
+			method:   'GET',
+			dataType: 'json',
 			url:       url,
-			//data:      newRecipeData,
+			//data:      acfPost,
 			//async:     true,
         }).done(function(data){
             console.log('ajax is done');
+            console.log(data);
         });
         console.log('After ajax for no reason');
     });

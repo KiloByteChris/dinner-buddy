@@ -16,9 +16,27 @@ function dinner_buddy_Main(){
 add_shortcode( 'DinnerBuddy', 'dinner_buddy_Main' );
 
 // Register custome post type for use with recipes
-function add_recipe_post_type() {
+function register_new_recipe() {
+	$labels = array(
+		'name'               => _x( 'Recipes', 'post type general name', 'dinner-buddy' ),
+		'singular_name'      => _x( 'Recipe', 'post type singular name', 'dinner-buddy' ),
+		'menu_name'          => _x( 'Recipes', 'admin menu', 'dinner-buddy' ),
+		'name_admin_bar'     => _x( 'Recipe', 'add new on admin bar', 'dinner-buddy' ),
+		'add_new'            => _x( 'Add New', 'Recipe', 'dinner-buddy' ),
+		'add_new_item'       => __( 'Add New Recipe', 'dinner-buddy' ),
+		'new_item'           => __( 'New Recipe', 'dinner-buddy' ),
+		'edit_item'          => __( 'Edit Recipe', 'dinner-buddy' ),
+		'view_item'          => __( 'View Recipe', 'dinner-buddy' ),
+		'all_items'          => __( 'All Recipes', 'dinner-buddy' ),
+		'search_items'       => __( 'Search Recipes', 'dinner-buddy' ),
+		'parent_item_colon'  => __( 'Parent Recipes:', 'dinner-buddy' ),
+		'not_found'          => __( 'No Recipes found.', 'dinner-buddy' ),
+		'not_found_in_trash' => __( 'No Recipes found in Trash.', 'dinner-buddy' )
+	);
+
 	$args = array(
-		'labels'             => array( 'name' => 'Recipes' ),
+		'labels'             => $labels,
+        'description'        => __( 'Post type for recipes', 'dinner-buddy' ),
 		'public'             => true,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
@@ -26,13 +44,54 @@ function add_recipe_post_type() {
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'recipe' ),
 		'capability_type'    => 'post',
+        'show_in_rest'       => true,
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
-		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
-    );
-	register_post_type( 'recipe', $args );
-}
-add_action( 'init', 'add_recipe_post_type' );
+		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
+        'taxonomies'         => array('category', 'post_tag' )
+	);
 
-// Post to the new post type
+	register_post_type( 'Recipes', $args );
+}
+add_action( 'init', 'register_new_recipe' );
+
+add_filter('json_api_encode', 'json_api_encode_acf');
+
+
+function json_api_encode_acf($response)
+{
+    if (isset($response['posts'])) {
+        foreach ($response['posts'] as $post) {
+            json_api_add_acf($post); // Add specs to each post
+        }
+    }
+    else if (isset($response['post'])) {
+        json_api_add_acf($response['post']); // Add a specs property
+    }
+
+    return $response;
+}
+
+function json_api_add_acf(&$post)
+{
+    $post->acf = get_fields($post->id);
+}
+
+//add custom fields meta data to a recipe post
+add_action( 'rest_api_init', 'get_recipe_data' );
+function get_recipe_data() {
+    register_rest_field(
+        'recipes' ,
+        'servings',
+        array(
+            'get_callback'    => 'slug_get_recipe',
+            'update_callback' => null,
+            'schema' => null,
+        )
+    );
+}
+
+function slug_get_recipe() {
+    return get_post_meta(56);
+}

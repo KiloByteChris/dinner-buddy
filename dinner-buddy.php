@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // include dependencies admin and public
 require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/display.php';
-echo plugin_dir_path( __FILE__ );
+
 
 
 // Enqueue CSS

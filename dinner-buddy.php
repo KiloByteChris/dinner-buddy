@@ -24,5 +24,17 @@ wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/dinner_buddy_main.
 // Enqueue Scripts
 wp_register_script( 'dinner_buddy_routing', plugin_dir_url( __FILE__ ) . '/js/routes.js', array('jquery'));
 wp_enqueue_script( 'dinner_buddy_routing' );
+
 wp_register_script( 'dinner_buddy_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
 wp_enqueue_script( 'dinner_buddy_click_events' );
+
+// Get infromation used for authentication
+function rest_edit_scripts() {
+    wp_localize_script( 'dinner_buddy_click_events', 'WPsettings', array(
+			'root' => esc_url_raw( rest_url() ),
+			'nonce' => wp_create_nonce( 'wp_rest' ),
+			'current_ID' => get_the_ID()
+		));
+}
+
+add_action( 'wp_enqueue_scripts', 'rest_edit_scripts' );

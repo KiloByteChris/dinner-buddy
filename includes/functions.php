@@ -77,3 +77,9 @@ function get_recipe_data() {
 function slug_get_recipe() {
     return get_post_meta(56);
 }
+
+//Authorization
+// wp_localize_script( 'wp-api', 'wpApiSettings', array(
+//     'root' => esc_url_raw( rest_url() ),
+//     'nonce' => wp_create_nonce( 'wp_rest' )
+// ) );

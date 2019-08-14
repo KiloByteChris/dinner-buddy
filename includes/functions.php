@@ -5,17 +5,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-
-function dinner_buddy_Main(){
+//Build a div that displays the plugin
+function dinner_buddy_main(){
     $dinnerBuddyContainer = '<div class="dinnerBuddyMainDiv">';
     $dinnerBuddyContainer .= '<p>Dinner Buddy!</p>';
     $dinnerBuddyContainer .= '<button class="addRecipeButton">Add Recipe</button>';
     $dinnerBuddyContainer .= '</div>';
     return $dinnerBuddyContainer;
 }
-add_shortcode( 'DinnerBuddy', 'dinner_buddy_Main' );
+// Register the short code
+add_shortcode( 'DinnerBuddy', 'dinner_buddy_main' );
 
-// Register custome post type for use with recipes
+// Register custom post type for use with recipes
 function register_new_recipe() {
 	$labels = array(
 		'name'               => _x( 'Recipes', 'post type general name', 'dinner-buddy' ),
@@ -56,33 +57,14 @@ function register_new_recipe() {
 }
 add_action( 'init', 'register_new_recipe' );
 
-add_filter('json_api_encode', 'json_api_encode_acf');
-
-
-function json_api_encode_acf($response)
-{
-    if (isset($response['posts'])) {
-        foreach ($response['posts'] as $post) {
-            json_api_add_acf($post); // Add specs to each post
-        }
-    }
-    else if (isset($response['post'])) {
-        json_api_add_acf($response['post']); // Add a specs property
-    }
-
-    return $response;
-}
-
-function json_api_add_acf(&$post)
-{
-    $post->acf = get_fields($post->id);
-}
 
 //add custom fields meta data to a recipe post
 add_action( 'rest_api_init', 'get_recipe_data' );
 function get_recipe_data() {
     register_rest_field(
+        //post type
         'recipes' ,
+        // field name
         'servings',
         array(
             'get_callback'    => 'slug_get_recipe',

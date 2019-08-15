@@ -30,6 +30,9 @@ jQuery(document).ready(function(){
         // Description
         newRecipeView += '<label for="newRecipeInstructions">Instructions</label>';
         newRecipeView += '<textarea name="newRecipeInstructions" id="newRecipeInstructions" class="newRecipeInstructions">Mutha... Fucka... 2</textarea>';
+        // Image input
+        newRecipeView += '<label for="newRecipeImage">Image</label>';
+        newRecipeView += '<input type="file" id="newRecipeImage" class="newRecipeImage" name="newRecipeImage" accept="image/*">';
         // Submit button
         newRecipeView += '<button type="button" class="saveRecipeButton">Save Recipe</button>';
         // end

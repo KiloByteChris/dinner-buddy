@@ -63,6 +63,20 @@ function get_recipe_data() {
             'schema' => null,
         )
     );
+    // add custom fields for image input
+    register_rest_field(
+        'recipes' ,
+        'image',
+        array(
+            'get_callback'    => 'slug_get_recipe',
+            'update_callback' => function($callbackData, $postData) {
+                $values = json_encode($callbackData);
+                update_post_meta($postData->ID, 'image', $callbackData);
+                return;
+                },
+            'schema' => null,
+        )
+    );
 }
 add_action( 'rest_api_init', 'get_recipe_data' );
 

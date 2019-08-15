@@ -36,29 +36,24 @@ jQuery(document).ready( function() {
             ingredients: ingredientsArray,
             instructions: jQuery('#newRecipeInstructions').val()
         };
-        console.log(newRecipeData);
+        var data = {
+            servings : {
+                servings : ['102']
+            }
+        };
+        console.log(data);
 
         // var url = window.location.origin;
-        // url += '/wp-json/acf';
-        var url ='http://dinner-buddy.local/wp-json/wp/v2/recipes/?id=56';
-        console.log(url);
-        // var Put = {
-        //     "title": "chilichili"
-        // };
-        //console.log(Post);
-
-        jQuery.ajax({
-			method:   'GET',
-            Authorization: Basic {base64_encode(admin:password)}
-			//dataType: 'json',
-			url:       url,
-			//data:      Put,
-			//async:     true,
-        }).done(function(data){
-            console.log('ajax is done');
-            console.log(data);
-            //console.log(data.servings.servings[0]);
-        });
-        console.log('After ajax for no reason');
+        var url ='http://dinner-buddy.local/wp-json/wp/v2/recipes/56';
+        jQuery.ajax( {
+           url: url,
+           method: 'POST',
+           beforeSend: function(xhr) {
+				xhr.setRequestHeader( 'X-WP-Nonce', WPsettings.nonce);
+			},
+        data : data
+        } ).done( function ( response ) {
+           console.log( response );
+        } );
     });
 });

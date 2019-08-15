@@ -52,40 +52,38 @@ function register_new_recipe() {
 		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
         'taxonomies'         => array('category', 'post_tag' )
 	);
-
 	register_post_type( 'Recipes', $args );
 }
 add_action( 'init', 'register_new_recipe' );
 
-
 //add custom fields meta data to a recipe post
-add_action( 'rest_api_init', 'get_recipe_data' );
 function get_recipe_data() {
     register_rest_field(
-        //post type
+        //Custom post type
         'recipes' ,
-        // field name
+        //Custom field name
         'servings',
         array(
             'get_callback'    => 'slug_get_recipe',
-            'update_callback' => function($recipes, $callback) {
-                    //echo $recpies;
-                    //print_r($callback);
-                    print_r($recipes);
-                    update_post_meta(56, 'servings', $callback->servings);
-                    return $callback;
+            'update_callback' => function($callbackData, $postData) {
+                $fieldName = array_keys($callbackData);
+                // print_r($callbackData);
+                // print_r($callbackData['servings'][0]);
+                 print_r($postData);
+                print_r($postData->ID);
+                // print_r($fieldName[0]);
+                // print_r($callbackData[0]);
+
+                // update_post_meta($postData->id, $fieldName[0], $callbackData[0]);
+                update_post_meta($postData->ID, $fieldName[0], $callbackData['servings'][0]);
+                return;
                 },
             'schema' => null,
         )
     );
 }
+add_action( 'rest_api_init', 'get_recipe_data' );
 
-function slug_get_recipe() {
-    return get_post_meta(56);
+function slug_get_recipe($callbackData, $postData) {
+    return get_post_meta($postData->id);
 }
-
-// function update_recipe($data) {
-//     print_r($data);
-//     echo "hello!!!";
-//     //update_post_meta(56, 'servings', )
-// }

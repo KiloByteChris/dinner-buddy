@@ -38,7 +38,7 @@ jQuery(document).ready( function() {
         };
         var data = {
             servings : {
-                servings : ['122']
+                servings : ['102']
             }
         };
         console.log(data);

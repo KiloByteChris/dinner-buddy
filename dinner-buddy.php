@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/display.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/register_fields.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/register_post_type.php';
 
 // Enqueue CSS
 wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/dinner_buddy_main.css');

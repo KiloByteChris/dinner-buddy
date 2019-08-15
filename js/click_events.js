@@ -37,9 +37,9 @@ jQuery(document).ready( function() {
             instructions: jQuery('#newRecipeInstructions').val()
         };
         var data = {
-            servings : {
-                servings : ['102']
-            }
+            servings : '30',
+            description : "This is the description, bitches!",
+            instructions : "These are the instructions, asdas"
         };
         console.log(data);
 

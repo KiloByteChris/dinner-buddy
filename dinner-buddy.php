@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/display.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/register_fields.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/register_post_type.php';
 
 // Enqueue CSS
 wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/dinner_buddy_main.css');
@@ -27,9 +28,9 @@ wp_enqueue_script( 'dinner_buddy_routing' );
 wp_register_script( 'dinner_buddy_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
 wp_enqueue_script( 'dinner_buddy_click_events' );
 
-// Get infromation used for authentication
+// Get information used for authentication
 function rest_edit_scripts() {
-    //Make this infromation available in the click events script
+    //Make this information available in the click events script
     wp_localize_script( 'dinner_buddy_click_events', 'WPsettings', array(
 			'root' => esc_url_raw( rest_url() ),
 			'nonce' => wp_create_nonce( 'wp_rest' ),

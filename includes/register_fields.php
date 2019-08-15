@@ -9,19 +9,69 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //add custom fields meta data to a recipe post
-
 function get_recipe_data() {
     //add custom field for recipe servings
     register_rest_field(
-        //Custom post type
         'recipes' ,
-        //Custom field name
         'servings',
         array(
             'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
-                $fieldName = array_keys($callbackData);
-                update_post_meta($postData->ID, $fieldName[0], $callbackData['servings'][0]);
+                update_post_meta($postData->ID, 'servings', $callbackData);
+                return;
+                },
+            'schema' => null,
+        )
+    );
+    //add custom field for recipe description
+    register_rest_field(
+        'recipes' ,
+        'description',
+        array(
+            'get_callback'    => 'slug_get_recipe',
+            'update_callback' => function($callbackData, $postData) {
+                update_post_meta($postData->ID, 'description', $callbackData);
+                return;
+                },
+            'schema' => null,
+        )
+    );
+    // add custom field for instructions
+    register_rest_field(
+        'recipes' ,
+        'instructions',
+        array(
+            'get_callback'    => 'slug_get_recipe',
+            'update_callback' => function($callbackData, $postData) {
+                update_post_meta($postData->ID, 'instructions', $callbackData);
+                return;
+                },
+            'schema' => null,
+        )
+    );
+    // add custom fields for ingredients
+    register_rest_field(
+        'recipes' ,
+        'ingredients',
+        array(
+            'get_callback'    => 'slug_get_recipe',
+            'update_callback' => function($callbackData, $postData) {
+                $values = json_encode($callbackData);
+                update_post_meta($postData->ID, 'ingredients', $values);
+                return;
+                },
+            'schema' => null,
+        )
+    );
+    // add custom fields for image input
+    register_rest_field(
+        'recipes' ,
+        'image',
+        array(
+            'get_callback'    => 'slug_get_recipe',
+            'update_callback' => function($callbackData, $postData) {
+                $values = json_encode($callbackData);
+                update_post_meta($postData->ID, 'image', $callbackData);
                 return;
                 },
             'schema' => null,

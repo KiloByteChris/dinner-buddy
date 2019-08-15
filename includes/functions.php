@@ -68,7 +68,13 @@ function get_recipe_data() {
         'servings',
         array(
             'get_callback'    => 'slug_get_recipe',
-            'update_callback' => null,
+            'update_callback' => function($recipes, $callback) {
+                    //echo $recpies;
+                    //print_r($callback);
+                    print_r($recipes);
+                    update_post_meta(56, 'servings', $callback->servings);
+                    return $callback;
+                },
             'schema' => null,
         )
     );
@@ -78,8 +84,8 @@ function slug_get_recipe() {
     return get_post_meta(56);
 }
 
-//Authorization
-// wp_localize_script( 'wp-api', 'wpApiSettings', array(
-//     'root' => esc_url_raw( rest_url() ),
-//     'nonce' => wp_create_nonce( 'wp_rest' )
-// ) );
+// function update_recipe($data) {
+//     print_r($data);
+//     echo "hello!!!";
+//     //update_post_meta(56, 'servings', )
+// }

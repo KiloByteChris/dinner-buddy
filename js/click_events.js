@@ -36,28 +36,26 @@ jQuery(document).ready( function() {
             ingredients: ingredientsArray,
             instructions: jQuery('#newRecipeInstructions').val()
         };
-        console.log(newRecipeData);
-        console.log(WPsettings);
-
+        var data = {
+            servings : {
+                servings : ['7']
+            }
+        };
+        console.log(data);
 
         // var url = window.location.origin;
-
-        // var url ='http://dinner-buddy.local/wp-json/wp/v2/recipes/?id=56';
         var url ='http://dinner-buddy.local/wp-json/wp/v2/recipes/56';
-        // console.log(url);
         jQuery.ajax( {
            url: url,
            method: 'POST',
            beforeSend: function(xhr) {
 				xhr.setRequestHeader( 'X-WP-Nonce', WPsettings.nonce);
 			},
-        data:{
-            'title' : 'Hello ChiliChili'
-        }
+        data : data
         } ).done( function ( response ) {
            console.log( response );
-        } );
+           console.log( response.servings.servings[0] );
 
-        console.log('After ajax for no reason');
+        } );
     });
 });

@@ -56,34 +56,26 @@ function register_new_recipe() {
 }
 add_action( 'init', 'register_new_recipe' );
 
-//add custom fields meta data to a recipe post
-function get_recipe_data() {
-    register_rest_field(
-        //Custom post type
-        'recipes' ,
-        //Custom field name
-        'servings',
-        array(
-            'get_callback'    => 'slug_get_recipe',
-            'update_callback' => function($callbackData, $postData) {
-                $fieldName = array_keys($callbackData);
-                // print_r($callbackData);
-                // print_r($callbackData['servings'][0]);
-                 print_r($postData);
-                print_r($postData->ID);
-                // print_r($fieldName[0]);
-                // print_r($callbackData[0]);
-
-                // update_post_meta($postData->id, $fieldName[0], $callbackData[0]);
-                update_post_meta($postData->ID, $fieldName[0], $callbackData['servings'][0]);
-                return;
-                },
-            'schema' => null,
-        )
-    );
-}
-add_action( 'rest_api_init', 'get_recipe_data' );
-
-function slug_get_recipe($callbackData, $postData) {
-    return get_post_meta($postData->id);
-}
+// //add custom fields meta data to a recipe post
+// function get_recipe_data() {
+//     register_rest_field(
+//         //Custom post type
+//         'recipes' ,
+//         //Custom field name
+//         'servings',
+//         array(
+//             'get_callback'    => 'slug_get_recipe',
+//             'update_callback' => function($callbackData, $postData) {
+//                 $fieldName = array_keys($callbackData);
+//                 update_post_meta($postData->ID, $fieldName[0], $callbackData['servings'][0]);
+//                 return;
+//                 },
+//             'schema' => null,
+//         )
+//     );
+// }
+// add_action( 'rest_api_init', 'get_recipe_data' );
+//
+// function slug_get_recipe($callbackData, $postData) {
+//     return get_post_meta($postData->ID);
+// }

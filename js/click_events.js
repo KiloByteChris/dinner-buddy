@@ -27,33 +27,29 @@ jQuery(document).ready( function() {
             var amount = ingredientsAmountData[i].value;
             ingredientsArray.push({ingredient_name : IngredientName,ingredient_amount : amount});
         }
-
         // Create an object from the new recipe form data
         var newRecipeData = {
             title: jQuery('#newRecipeTitleInput').val(),
-            description: jQuery('#newRecipeDescription').val(),
+            content: jQuery('#newRecipeDescription').val(),
             servings: jQuery('#newRecipeServingsInput').val(),
             ingredients: ingredientsArray,
-            instructions: jQuery('#newRecipeInstructions').val()
+            instructions: jQuery('#newRecipeInstructions').val(),
+            status: 'publish',
         };
-        var data = {
-            servings : '30',
-            description : "This is the description, bitches!",
-            instructions : "These are the instructions, asdas"
-        };
-        console.log(data);
+        //console.log(data);
 
-        // var url = window.location.origin;
-        var url ='http://dinner-buddy.local/wp-json/wp/v2/recipes/56';
+        var url = window.location.origin + '/wp-json/wp/v2/recipes';
+        console.log(url);
+        // var url ='http://dinner-buddy.local/wp-json/wp/v2/recipes/56';
         jQuery.ajax( {
            url: url,
            method: 'POST',
            beforeSend: function(xhr) {
-				xhr.setRequestHeader( 'X-WP-Nonce', WPsettings.nonce);
+				xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
 			},
-        data : data
+        data : newRecipeData
         } ).done( function ( response ) {
-           console.log( response );
+           //console.log( response );
         } );
     });
 });

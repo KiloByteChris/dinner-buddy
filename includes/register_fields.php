@@ -9,7 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //add custom fields meta data to a recipe post
-
 function get_recipe_data() {
     //add custom field for recipe servings
     register_rest_field(
@@ -31,8 +30,6 @@ function get_recipe_data() {
         array(
             'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
-                // $fieldName = array_keys($callbackData);
-                print_r($callbackData);
                 update_post_meta($postData->ID, 'description', $callbackData);
                 return;
                 },
@@ -46,9 +43,21 @@ function get_recipe_data() {
         array(
             'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
-                // $fieldName = array_keys($callbackData);
-                print_r($callbackData);
                 update_post_meta($postData->ID, 'instructions', $callbackData);
+                return;
+                },
+            'schema' => null,
+        )
+    );
+    // add custom fields for ingredients
+    register_rest_field(
+        'recipes' ,
+        'ingredients',
+        array(
+            'get_callback'    => 'slug_get_recipe',
+            'update_callback' => function($callbackData, $postData) {
+                $values = json_encode($callbackData);
+                update_post_meta($postData->ID, 'ingredients', $values);
                 return;
                 },
             'schema' => null,

@@ -3,13 +3,10 @@ jQuery(document).ready( function() {
     // Add ingredient button in the add new recipe form
     jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngedient", function(){
         // Build the form input
-
         let newIngredientInput = '<label for='+'newIngredientInput'+newIngredientInputNumber+' >'+newIngredientInputNumber+'. Name</label>';
         newIngredientInput += '<input type="text" class="newIngredientInput" name='+'newIngredientInput'+newIngredientInputNumber+' >';
-
         newIngredientInput += '<label for='+'newIngredientAmount'+newIngredientInputNumber+' >Amount</label>';
         newIngredientInput += '<input type="text" class="newIngredientAmount" name='+'newIngredientAmount'+newIngredientInputNumber+' >';
-
         jQuery('.newIngredientsArea').append(newIngredientInput);
 
         newIngredientInputNumber++;
@@ -22,21 +19,29 @@ jQuery(document).ready( function() {
         var ingredientsAmountData = jQuery('.newIngredientAmount');
         var count = ingredientsData.length;
         let ingredientsArray = [];
+        let ingredientsObject = {};
         for( var i = 0; i < count; i++){
-            var IngredientName = ingredientsData[i].value;
+            var ingredientName = ingredientsData[i].value;
             var amount = ingredientsAmountData[i].value;
-            ingredientsArray.push({ingredient_name : IngredientName,ingredient_amount : amount});
+            var currentIngredient = 'ing' + i;
+            var singleIngredientObject = {};
+            singleIngredientObject[ingredientName] = amount
+            // ingredientsObject[ingredientName] = amount;
+            ingredientsObject[currentIngredient] = singleIngredientObject;
+            // ingredientsArray.push({ingredient_name  : ingredientName, ingredient_amount : amount});
+            ingredientsArray.push({ingredientName : amount});
         }
+        console.log(ingredientsObject);
         // Create an object from the new recipe form data
         var newRecipeData = {
             title: jQuery('#newRecipeTitleInput').val(),
             content: jQuery('#newRecipeDescription').val(),
             servings: jQuery('#newRecipeServingsInput').val(),
-            ingredients: ingredientsArray,
+            // ingredients: ingredientsArray,
+            ingredients: ingredientsObject,
             instructions: jQuery('#newRecipeInstructions').val(),
             status: 'publish',
         };
-        //console.log(data);
 
         var url = window.location.origin + '/wp-json/wp/v2/recipes';
         console.log(url);

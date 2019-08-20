@@ -42,6 +42,12 @@ jQuery(document).ready( function() {
 
         //select the featured image from the new recipes form
         let imageData = jQuery('#newRecipeImage')[0].files[0];
+        console.log(imageData);
+        let fd = new FormData();
+        //fd.append( 'file', imageData);
+        fd.append( 'post', newRecipeMediaId);
+        fd.append( 'caption', 'caption' );
+        console.log(fd);
 
         var url = window.location.origin + '/wp-json/wp/v2/recipes';
         jQuery.ajax( {
@@ -63,18 +69,21 @@ jQuery(document).ready( function() {
             //console.log(status);
             //console.log(newRecipeMediaId);
             //console.log(imageData);
-            var formData = new FormData();
-            formData.append( 'file', imageData);
-            formData.append( 'post', newRecipeMediaId);
-            formData.append( 'caption', 'caption' );
+
+            // var formData = new FormData();
+            // formData.append( 'file', imageData);
+            // formData.append( 'post', newRecipeMediaId);
+            // formData.append( 'caption', 'caption' );
             var imageRequestData = {
                 post: newRecipeMediaId,
                 file: imageData,
             };
             // console.log(imageRequestData);
-            console.log(formData);
             var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
             jQuery.ajax({
+                beforeSend: function(xhr) {
+     				xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+     			},
                 method: 'POST',
                 data: formData,
                 url: mediaUrl

@@ -60,53 +60,53 @@ jQuery(document).ready( function() {
             console.log(pair[0]+ ', ' + pair[1]);
         }
 
-        var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
-        console.log(mediaUrl);
-        jQuery.ajax({
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-            },
-            processData: false,
-			contentType: false,
-            method: 'POST',
-            data: fd,
-            url: mediaUrl
-        }).done( function(data){
-            console.log('all the way done')
-            console.log(data);
-        });
-        // var url = window.location.origin + '/wp-json/wp/v2/recipes';
-        // jQuery.ajax( {
-        //     url: url,
-        //     method: 'POST',
+        // var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
+        // console.log(mediaUrl);
+        // jQuery.ajax({
         //     beforeSend: function(xhr) {
-		// 		xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-		// 	},
-        //     data : newRecipeData
-        // }).done(function(responseData) {
-        //     //console.log(responseData);
-        //     newRecipeMediaId = responseData.id;
-        //     //console.log(newRecipeMediaId);
-        //
-        // }).complete(function (completeData, status){
-        //     //fd.append( 'post', newRecipeMediaId);
-        //     // var imageRequestData = {
-        //     //     //post: newRecipeMediaId,
-        //     //     file: imageData,
-        //     // };
-        //     console.log('HERE!');
-        //     var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
-        //     jQuery.ajax({
-        //         beforeSend: function(xhr) {
-     	// 			xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-     	// 		},
-        //         method: 'POST',
-        //         data: fd,
-        //         url: mediaUrl
-        //     }).done( function(data){
-        //         console.log('all the way done')
-        //         console.log(data);
-        //     });// end featured image ajax request
-        // });// end ajax.complete for post request
+        //         xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+        //     },
+        //     processData: false,
+		// 	contentType: false,
+        //     method: 'POST',
+        //     data: fd,
+        //     url: mediaUrl
+        // }).done( function(data){
+        //     console.log('all the way done')
+        //     console.log(data);
+        // });
+        var url = window.location.origin + '/wp-json/wp/v2/recipes';
+        jQuery.ajax( {
+            url: url,
+            method: 'POST',
+            beforeSend: function(xhr) {
+				xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+			},
+            data : newRecipeData
+        }).done(function(responseData) {
+            //console.log(responseData);
+            newRecipeMediaId = responseData.id;
+            console.log(newRecipeMediaId);
+
+        }).complete(function (completeData, status){
+            fd.append( 'post', newRecipeMediaId);
+            for (var pair of fd.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]);
+            }
+            var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
+            jQuery.ajax({
+                beforeSend: function(xhr) {
+     				xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+     			},
+                processData: false,
+    			contentType: false,
+                method: 'POST',
+                data: fd,
+                url: mediaUrl
+            }).done( function(data){
+                console.log('all the way done')
+                console.log(data);
+            });// end featured image ajax request
+        });// end ajax.complete for post request
     });// end click event
 });// end document.ready

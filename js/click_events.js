@@ -22,6 +22,7 @@ jQuery(document).ready( function() {
     */
     // variable used to hold post id information
     let newRecipeMediaId = '';
+    let newMediaId = '';
     jQuery(".dinnerBuddyMainDiv").on("click", ".saveRecipeButton", function(){
         event.preventDefault()
         //creates an object to hold ingredient data
@@ -60,21 +61,6 @@ jQuery(document).ready( function() {
             console.log(pair[0]+ ', ' + pair[1]);
         }
 
-        // var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
-        // console.log(mediaUrl);
-        // jQuery.ajax({
-        //     beforeSend: function(xhr) {
-        //         xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-        //     },
-        //     processData: false,
-		// 	contentType: false,
-        //     method: 'POST',
-        //     data: fd,
-        //     url: mediaUrl
-        // }).done( function(data){
-        //     console.log('all the way done')
-        //     console.log(data);
-        // });
         var url = window.location.origin + '/wp-json/wp/v2/recipes';
         jQuery.ajax( {
             url: url,
@@ -106,6 +92,24 @@ jQuery(document).ready( function() {
             }).done( function(data){
                 console.log('all the way done')
                 console.log(data);
+
+                newMediaId = data.id;
+                console.log(newMediaId);
+            }).complete(function (completeData, status){
+                var featureData = {
+                    'featured_media' : newMediaId
+                };
+                var featureUrl = window.location.origin + '/wp-json/wp/v2/recipes/' + newRecipeMediaId;
+                jQuery.ajax({
+                    beforeSend: function(xhr) {
+         				xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+         			},
+                    method: 'PUT',
+                    data: featureData,
+                    url: featureUrl,
+                }).done( function() {
+                    console.log('AAAAYYYYY');
+                });
             });// end featured image ajax request
         });// end ajax.complete for post request
     });// end click event

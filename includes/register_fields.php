@@ -70,7 +70,6 @@ function get_recipe_data() {
         array(
             'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
-                $values = json_encode($callbackData);
                 update_post_meta($postData->ID, 'image', $callbackData);
                 return;
                 },

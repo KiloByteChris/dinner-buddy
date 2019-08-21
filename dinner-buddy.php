@@ -28,6 +28,9 @@ wp_enqueue_script( 'dinner_buddy_routing' );
 wp_register_script( 'dinner_buddy_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
 wp_enqueue_script( 'dinner_buddy_click_events' );
 
+wp_register_script( 'new_recipe_form', plugin_dir_url( __FILE__ ) . '/js/display/new_recipe_form.js', array('jquery'));
+wp_enqueue_script( 'new_recipe_form' );
+
 // Get information used for authentication
 function rest_edit_scripts() {
     //Make this information available in the click events script

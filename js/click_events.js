@@ -54,7 +54,6 @@ jQuery(document).ready( function() {
         console.log(imageData);
         let fd = new FormData();
         fd.append( 'file', imageData);
-        //fd.append( 'post', newRecipeMediaId);
         fd.append( 'caption', 'test media GO!' );
         //console.log wont work for FormData()
         for (var pair of fd.entries()) {
@@ -69,10 +68,7 @@ jQuery(document).ready( function() {
 			},
             data : newRecipeData
         }).done(function(responseData) {
-            //console.log(responseData);
             newRecipeMediaId = responseData.id;
-            console.log(newRecipeMediaId);
-
         }).complete(function (completeData, status){
             fd.append( 'post', newRecipeMediaId);
             for (var pair of fd.entries()) {
@@ -89,10 +85,7 @@ jQuery(document).ready( function() {
                 data: fd,
                 url: mediaUrl
             }).done( function(data){
-                console.log('all the way done')
-                console.log(data);
                 newMediaId = data.id;
-                console.log(newMediaId);
             }).complete(function (completeData, status){
                 var featureData = {
                     'featured_media' : newMediaId
@@ -106,7 +99,6 @@ jQuery(document).ready( function() {
                     data: featureData,
                     url: featureUrl,
                 }).done( function() {
-                    console.log('AAAAYYYYY');
                 });
             });// end featured image ajax request
         });// end ajax.complete for post request

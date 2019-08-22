@@ -15,7 +15,10 @@ function get_recipe_data() {
         'recipes' ,
         'servings',
         array(
-            'get_callback'    => 'slug_get_recipe',
+            // 'get_callback'    => 'slug_get_recipe',
+            'get_callback'    => function($callbackData, $postData) {
+				return get_post_meta($callbackData['id'], 'servings', false);
+				},
             'update_callback' => function($callbackData, $postData) {
                 update_post_meta($postData->ID, 'servings', $callbackData);
                 return;
@@ -28,7 +31,7 @@ function get_recipe_data() {
         'recipes' ,
         'description',
         array(
-            'get_callback'    => 'slug_get_recipe',
+            //'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
                 update_post_meta($postData->ID, 'description', $callbackData);
                 return;
@@ -41,7 +44,7 @@ function get_recipe_data() {
         'recipes' ,
         'instructions',
         array(
-            'get_callback'    => 'slug_get_recipe',
+            // 'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
                 update_post_meta($postData->ID, 'instructions', $callbackData);
                 return;
@@ -54,7 +57,7 @@ function get_recipe_data() {
         'recipes' ,
         'ingredients',
         array(
-            'get_callback'    => 'slug_get_recipe',
+        //    'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
                 $values = json_encode($callbackData);
                 update_post_meta($postData->ID, 'ingredients', $values);
@@ -68,7 +71,7 @@ function get_recipe_data() {
         'recipes' ,
         'image',
         array(
-            'get_callback'    => 'slug_get_recipe',
+        //    'get_callback'    => 'slug_get_recipe',
             'update_callback' => function($callbackData, $postData) {
                 update_post_meta($postData->ID, 'image', $callbackData);
                 return;
@@ -80,6 +83,7 @@ function get_recipe_data() {
 add_action( 'rest_api_init', 'get_recipe_data' );
 
 function slug_get_recipe($callbackData, $postData) {
+	//print_r($postData);
     return get_post_meta($postData->ID);
 }
 

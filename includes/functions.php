@@ -15,14 +15,15 @@ function dinner_buddy_main(){
     if($userInfo){
         // Show the plugin
         //wp_logout();
-        $dinnerBuddyContainer .= '<button class="addRecipeButton">Add Recipe</button>';
-
+        $dinnerBuddyContainer .= '<button class="addRecipeButton">Add New</button>';
+        $dinnerBuddyContainer .= '<button class="browseRecipeButton">Browse</button>';
+        $dinnerBuddyContainer .= '<button class="searchRecipeButton">Search</button>';
+        $dinnerBuddyContainer .= '<button class="shoppingListButton">Shopping List</button>';
     }else{
         // Show login form
         wp_login_form();
         wp_register();
     };
-
     $dinnerBuddyContainer .= '</div>';
     return $dinnerBuddyContainer;
 }

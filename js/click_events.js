@@ -3,6 +3,7 @@ jQuery(document).ready( function() {
         Click event for the "New Recipe" button
     */
     jQuery(".addRecipeButton").on("click", function(){
+        console.log(WPsettings.current_ID);
         var newRecipeView = new_recipe_form();
         jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
     });
@@ -99,8 +100,26 @@ jQuery(document).ready( function() {
                     data: featureData,
                     url: featureUrl,
                 }).done( function() {
-                });
+                });// end 3rd ajax call that assigns the featured image to the post
             });// end featured image ajax request
         });// end ajax.complete for post request
-    });// end click event
+    });// end save new recipe click event
+
+    /*
+        Click event for Browse Recipes
+    */
+    jQuery(".dinnerBuddyMainDiv").on("click", ".browseRecipeButton", function(){
+        event.preventDefault();
+        // Get recent recipe data
+        var browseRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?_embed';
+        jQuery.ajax({
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+            method: 'GET',
+            url: browseRecipesUrl
+        }).done( function(data){
+            console.log(data);
+        });
+    });// end browse recipes click event
 });// end document.ready

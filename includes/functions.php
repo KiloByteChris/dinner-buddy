@@ -16,6 +16,7 @@ function dinner_buddy_main(){
         // Show the plugin
         //wp_logout();
         $dinnerBuddyContainer .= '<button class="addRecipeButton">Add Recipe</button>';
+
     }else{
         // Show login form
         wp_login_form();

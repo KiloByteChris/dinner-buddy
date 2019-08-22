@@ -11,7 +11,7 @@ jQuery(document).ready( function() {
         Click event for add ingredients button in the new recipe form
     */
     let newIngredientInputNumber = 1;
-    jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngedient", function(){
+    jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngredient", function(){
         var newIngredientInput = new_recipe_ing(newIngredientInputNumber);
         jQuery('.newIngredientsArea').append(newIngredientInput);
         newIngredientInputNumber++;

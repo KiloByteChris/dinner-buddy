@@ -22,7 +22,7 @@ function new_recipe_form(){
     // Ingredients
     newRecipeView += '<fieldset id="ingredientsField">';
     newRecipeView += '<legend>Ingredients</legend>';
-    newRecipeView += '<button type="button" class="addNewIngedient">+</button>';
+    newRecipeView += '<button type="button" class="addNewIngredient">+</button>';
     newRecipeView += '<div class="newIngredientsArea"></div>';
     newRecipeView += '</fieldset>';
     // Description
@@ -40,7 +40,7 @@ function new_recipe_form(){
 }
 
 /*
-    Build text inputs for new ingredients 
+    Build text inputs for new ingredients
 */
 function new_recipe_ing(newIngredientInputNumber) {
     // Build the form input

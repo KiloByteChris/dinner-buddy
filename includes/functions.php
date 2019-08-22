@@ -14,14 +14,12 @@ function dinner_buddy_main(){
     $userInfo = check_user_login();
     if($userInfo){
         // Show the plugin
+        //wp_logout();
         $dinnerBuddyContainer .= '<button class="addRecipeButton">Add Recipe</button>';
     }else{
         // Show login form
-        $dinnerBuddyContainer .= '<label for="loginUserName">Username</label>';
-        $dinnerBuddyContainer .= '<input type="text" name="loginUserName" id="loginUserName"/>';
-        $dinnerBuddyContainer .= '<label for="loginPassword">Password</label>';
-        $dinnerBuddyContainer .= '<input type="text" name="loginPassword" id="loginPassword"/>';
-        $dinnerBuddyContainer .= '<button class="userLoginButton">Login</button>';
+        wp_login_form();
+        wp_register();
     };
 
     $dinnerBuddyContainer .= '</div>';

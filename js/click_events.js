@@ -5,7 +5,8 @@ jQuery(document).ready( function() {
     jQuery(".addRecipeButton").on("click", function(){
         console.log(WPsettings.current_ID);
         var newRecipeView = new_recipe_form();
-        jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
+        //jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
+        jQuery('.displayDiv').html(newRecipeView);
     });
 
     /*
@@ -108,7 +109,7 @@ jQuery(document).ready( function() {
     /*
         Click event for Browse Recipes
     */
-    jQuery(".dinnerBuddyMainDiv").on("click", ".browseRecipeButton", function(){
+    jQuery(".dashboard").on("click", ".browseRecipeButton", function(){
         event.preventDefault();
         // Get recent recipe data for the 'browse recipes' view
         var browseRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?_embed';
@@ -120,7 +121,8 @@ jQuery(document).ready( function() {
             url: browseRecipesUrl
         }).done( function(data){
             //console.log(data);
-            browse_recipes_view(data);
+            var browseRecipesView = browse_recipes_view(data);
+            jQuery('.displayDiv').html(browseRecipesView);
         });
     });// end browse recipes click event
 });// end document.ready

@@ -120,7 +120,6 @@ jQuery(document).ready( function() {
             method: 'GET',
             url: browseRecipesUrl
         }).done( function(data){
-            //console.log(data);
             var browseRecipesView = browse_recipes_view(data);
             jQuery('.displayDiv').html(browseRecipesView);
         });

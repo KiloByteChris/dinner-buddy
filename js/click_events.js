@@ -3,6 +3,7 @@ jQuery(document).ready( function() {
         Click event for the "New Recipe" button
     */
     jQuery(".addRecipeButton").on("click", function(){
+        console.log(WPsettings.current_ID);
         var newRecipeView = new_recipe_form();
         jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
     });
@@ -11,7 +12,7 @@ jQuery(document).ready( function() {
         Click event for add ingredients button in the new recipe form
     */
     let newIngredientInputNumber = 1;
-    jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngedient", function(){
+    jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngredient", function(){
         var newIngredientInput = new_recipe_ing(newIngredientInputNumber);
         jQuery('.newIngredientsArea').append(newIngredientInput);
         newIngredientInputNumber++;
@@ -54,7 +55,6 @@ jQuery(document).ready( function() {
         console.log(imageData);
         let fd = new FormData();
         fd.append( 'file', imageData);
-        //fd.append( 'post', newRecipeMediaId);
         fd.append( 'caption', 'test media GO!' );
         //console.log wont work for FormData()
         for (var pair of fd.entries()) {
@@ -69,10 +69,7 @@ jQuery(document).ready( function() {
 			},
             data : newRecipeData
         }).done(function(responseData) {
-            //console.log(responseData);
             newRecipeMediaId = responseData.id;
-            console.log(newRecipeMediaId);
-
         }).complete(function (completeData, status){
             fd.append( 'post', newRecipeMediaId);
             for (var pair of fd.entries()) {
@@ -89,10 +86,7 @@ jQuery(document).ready( function() {
                 data: fd,
                 url: mediaUrl
             }).done( function(data){
-                console.log('all the way done')
-                console.log(data);
                 newMediaId = data.id;
-                console.log(newMediaId);
             }).complete(function (completeData, status){
                 var featureData = {
                     'featured_media' : newMediaId
@@ -106,9 +100,26 @@ jQuery(document).ready( function() {
                     data: featureData,
                     url: featureUrl,
                 }).done( function() {
-                    console.log('AAAAYYYYY');
-                });
+                });// end 3rd ajax call that assigns the featured image to the post
             });// end featured image ajax request
         });// end ajax.complete for post request
-    });// end click event
+    });// end save new recipe click event
+
+    /*
+        Click event for Browse Recipes
+    */
+    jQuery(".dinnerBuddyMainDiv").on("click", ".browseRecipeButton", function(){
+        event.preventDefault();
+        // Get recent recipe data
+        var browseRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?_embed';
+        jQuery.ajax({
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+            method: 'GET',
+            url: browseRecipesUrl
+        }).done( function(data){
+            console.log(data);
+        });
+    });// end browse recipes click event
 });// end document.ready

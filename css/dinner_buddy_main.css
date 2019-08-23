@@ -1,3 +1,7 @@
 p {
     color: #aaa;
 }
+
+.browseRecipeImg {
+    width: 150px;
+}

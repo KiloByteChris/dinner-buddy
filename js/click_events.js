@@ -110,7 +110,7 @@ jQuery(document).ready( function() {
     */
     jQuery(".dinnerBuddyMainDiv").on("click", ".browseRecipeButton", function(){
         event.preventDefault();
-        // Get recent recipe data
+        // Get recent recipe data for the 'browse recipes' view
         var browseRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?_embed';
         jQuery.ajax({
             beforeSend: function(xhr) {
@@ -119,7 +119,8 @@ jQuery(document).ready( function() {
             method: 'GET',
             url: browseRecipesUrl
         }).done( function(data){
-            console.log(data);
+            //console.log(data);
+            browse_recipes_view(data);
         });
     });// end browse recipes click event
 });// end document.ready

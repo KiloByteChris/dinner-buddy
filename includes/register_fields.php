@@ -56,29 +56,8 @@ function get_recipe_data() {
             'schema' => null,
         )
     );
-    // add custom fields for image input
-    // register_rest_field(
-    //     'recipes' ,
-    //     'image',
-    //     array(
-	// 		'get_callback'    => function($callbackData, $postData) {
-	// 			return get_post_meta($callbackData['id'], 'ingredients', false);
-	// 			},
-    //         'update_callback' => function($callbackData, $postData) {
-    //             update_post_meta($postData->ID, 'image', $callbackData);
-    //             return;
-    //             },
-    //         'schema' => null,
-    //     )
-    // );
 }
 add_action( 'rest_api_init', 'get_recipe_data' );
-
-function slug_get_recipe($callbackData, $postData) {
-	//print_r($postData);
-    //return get_post_meta($callbackData['id']);
-    // return get_post_meta($postData->ID);
-}
 
 
 ?>

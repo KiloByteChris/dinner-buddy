@@ -35,6 +35,9 @@ wp_enqueue_script( 'new_recipe_form' );
 wp_register_script( 'browse_recipes', plugin_dir_url( __FILE__ ) . '/js/display/browse_recipes.js', array('jquery'));
 wp_enqueue_script( 'browse_recipes' );
 
+wp_register_script( 'calendar', plugin_dir_url( __FILE__ ) . '/js/display/calendar.js', array('jquery'));
+wp_enqueue_script( 'calendar' );
+
 // Get information used for authentication
 function rest_edit_scripts() {
     //Make this information available in the click events script

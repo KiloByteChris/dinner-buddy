@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 function display_dashboard(){
     $dashboardString = '<div class="dashboard" id="dashboard">';
+    $dashboardString .= '<button class="calendarButton">Calendar</button>';
     $dashboardString .= '<button class="addRecipeButton">Add New</button>';
     $dashboardString .= '<button class="browseRecipeButton">Browse</button>';
     $dashboardString .= '<button class="searchRecipeButton">Search</button>';

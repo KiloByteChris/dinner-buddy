@@ -1,6 +1,6 @@
 function browse_recipes_view(data) {
     var browseRecipeView = '';
-    console.log(data);
+    // console.log(data);
     browseRecipeView += '<div class="browseRecipeView" id="browseRecipeView">';
     for(var key in data) {
         browseRecipeView += '<div class="recipePreview">';

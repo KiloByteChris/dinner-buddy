@@ -15,6 +15,8 @@ function display_dashboard(){
     $dashboardString .= '<button class="searchRecipeButton">Search</button>';
     $dashboardString .= '<button class="shoppingListButton">Shopping List</button>';
     $dashboardString .= '</div>';
+    $dashboardString .= '<div id="recipeDock">';
+    $dashboardString .= '</div>';
     echo $dashboardString;
 }
 ?>

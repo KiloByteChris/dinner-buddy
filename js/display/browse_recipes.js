@@ -12,6 +12,8 @@ function browse_recipes_view(data) {
         browseRecipeView += '<img class="browseRecipeImg" src='+data[key]._embedded['wp:featuredmedia'][0].source_url+'>';
         // excerpt
         browseRecipeView += '<p class="browseRecipeDescription">' + data[key].excerpt.rendered + '</p>';
+        // add button
+        browseRecipeView += '<button name="add" class="add" value="add">Add</button>';
 
 
         browseRecipeView += '</div>';

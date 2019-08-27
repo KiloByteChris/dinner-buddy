@@ -16,3 +16,9 @@ p {
     width: 150px;
     border: 1px solid #000;
 }
+
+#recipeDock {
+    height: 100px;
+    width: 100%;
+    background-color: #eee;
+}

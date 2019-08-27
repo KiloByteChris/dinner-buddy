@@ -5,3 +5,8 @@ p {
 .browseRecipeImg {
     width: 150px;
 }
+
+.calendarDiv {
+    /* height: 300px; */
+    background-color: #ddd;
+}

@@ -130,7 +130,7 @@ jQuery(document).ready( function() {
     */
     jQuery(".dashboard").on("click", ".calendarButton", function(){
         event.preventDefault();
-        //var calendarView = calendar_view();
-        //jQuery('displayDiv').html(calendarView);
+        var calendarView = calendar_view();
+        jQuery('.displayDiv').html(calendarView);
     });// end browse recipes click event
 });// end document.ready

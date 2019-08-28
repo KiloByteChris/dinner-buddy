@@ -3,7 +3,7 @@
 */
 function create_recipe_card(data){
     // console.log(data);
-    var recipeCard = '<div id='+'card'+data.id+' class="recipeCard draggable ui-widget-content">';
+    var recipeCard = '<div id='+'card'+data.id+' value='+data.id+' class="recipeCard draggable ui-widget-content">';
     //var recipeCard = '<div id='+'card'+data.id+' class="recipeCard">';
         recipeCard += '<p class="recipeCardTitle">'+data.title.rendered+'</p>';
         recipeCard += '<p class="recipeCardServings">'+data.servings[0]+'</p>';

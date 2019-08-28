@@ -139,8 +139,19 @@ jQuery(document).ready( function() {
     */
     jQuery(".dinnerBuddyMainDiv").on("click", ".selectRecipe", function(){
         event.preventDefault();
-        console.log(this);
-        //var newCard = create_recipe_card();
-        //jQuery('#recipeDock').append(recipeCard);
+        // Get the post id from the button
+        var postId = this.id;
+        var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
+        jQuery.ajax({
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+            method: 'GET',
+            url: recipeCardUrl
+        }).done( function(data){
+            //console.log(data);
+            var recipeCard = create_recipe_card(data);
+            jQuery('#recipeDock').append(recipeCard);
+        });
     });// end calendar click event
 });// end document.ready

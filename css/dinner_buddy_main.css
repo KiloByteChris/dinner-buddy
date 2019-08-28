@@ -22,3 +22,8 @@ p {
     width: 100%;
     background-color: #eee;
 }
+
+.recipeCard {
+    width: 100px;
+    border: 1px solid #000;
+}

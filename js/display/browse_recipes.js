@@ -1,5 +1,5 @@
 /*
-    Build a view that displays the 10 most recent recipies added to the database
+    Build a view that displays the 10 most recent recipes added to the database
 */
 function browse_recipes_view(data) {
     var browseRecipeView = '';

@@ -46,6 +46,9 @@ wp_enqueue_script( 'calendar' );
 wp_register_script( 'recipe_cards', plugin_dir_url( __FILE__ ) . '/js/display/recipe_card.js', array('jquery'));
 wp_enqueue_script( 'recipe_cards' );
 
+wp_register_script( 'drop_function', plugin_dir_url( __FILE__ ) . '/js/ui/drop_function.js', array('jquery'));
+wp_enqueue_script( 'drop_function' );
+
 
 
 // Get information used for authentication

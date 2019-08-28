@@ -3,9 +3,7 @@ jQuery(document).ready( function() {
         Click event for the "New Recipe" button
     */
     jQuery(".addRecipeButton").on("click", function(){
-        console.log(WPsettings.current_ID);
         var newRecipeView = new_recipe_form();
-        //jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
         jQuery('.displayDiv').html(newRecipeView);
     });
 
@@ -53,14 +51,14 @@ jQuery(document).ready( function() {
 
         //select the featured image from the new recipes form
         let imageData = jQuery('#newRecipeImage')[0].files[0];
-        console.log(imageData);
+        //console.log(imageData);
         let fd = new FormData();
         fd.append( 'file', imageData);
         fd.append( 'caption', 'test media GO!' );
         //console.log wont work for FormData()
-        for (var pair of fd.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]);
-        }
+        // for (var pair of fd.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]);
+        // }
         var url = window.location.origin + '/wp-json/wp/v2/recipes';
         jQuery.ajax( {
             url: url,
@@ -73,9 +71,9 @@ jQuery(document).ready( function() {
             newRecipeMediaId = responseData.id;
         }).complete(function (completeData, status){
             fd.append( 'post', newRecipeMediaId);
-            for (var pair of fd.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]);
-            }
+            // for (var pair of fd.entries()) {
+            //     console.log(pair[0]+ ', ' + pair[1]);
+            // }
             var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
             jQuery.ajax({
                 beforeSend: function(xhr) {
@@ -133,9 +131,9 @@ jQuery(document).ready( function() {
         var calendarView = calendar_view();
         jQuery('.displayDiv').html(calendarView);
         jQuery( '.droppable' ).droppable({
-            drop: function( event, ui ) {
-                console.log('droppin!');
-                jQuery( this ).addClass( ".dropped" );
+            // This function defines what happends when a recipe is dropped on the calendar
+            drop: function( event, ui) {
+                drop_function(event, ui);
             }
         });
     });// end calendar click event
@@ -160,12 +158,6 @@ jQuery(document).ready( function() {
             jQuery('#recipeDock').append(recipeCard);
             // uses jquery UI  to make the recipe cards draggable
             jQuery('.draggable').draggable({revert: true, helper: "clone"});
-            // jQuery( '.droppable' ).droppable({
-            //     drop: function( event, ui ) {
-            //         console.log('droppin!');
-            //         jQuery( this ).addClass( ".dropped" );
-            //     }
-            // });
         });
     });// end calendar click event
 

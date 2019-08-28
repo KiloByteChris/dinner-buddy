@@ -30,5 +30,5 @@ p {
 }
 
 .dropped {
-    background-color: red;
+    width: 500px !important;
 }

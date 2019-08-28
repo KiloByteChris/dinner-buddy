@@ -152,6 +152,7 @@ jQuery(document).ready( function() {
             //console.log(data);
             var recipeCard = create_recipe_card(data);
             jQuery('#recipeDock').append(recipeCard);
+            jQuery('.draggable').draggable();
         });
     });// end calendar click event
 
@@ -161,6 +162,5 @@ jQuery(document).ready( function() {
     jQuery("#recipeDock").on("click", ".recipeCardX", function() {
         console.log(this.value);
         jQuery('#card'+this.value).remove();
-
     });// end delete recipe card event
 });// end document.ready

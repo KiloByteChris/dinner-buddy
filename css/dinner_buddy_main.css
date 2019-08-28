@@ -26,4 +26,5 @@ p {
 .recipeCard {
     width: 100px;
     border: 1px solid #000;
+    z-index: 99;
 }

@@ -12,19 +12,19 @@ function calendar_view() {
             //Breakfast
             calendarViewString += '<div class="mealDiv">';
                 calendarViewString += '<p class="mealLabel">Breakfast</p>';
-                calendarViewString += '<div class="servingContainer" id='+daysArray[i]+'Breakfast >';
+                calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Breakfast >';
                 calendarViewString += '</div>'; // end serving
             calendarViewString += '</div>';// end meal
             //Lunch
             calendarViewString += '<div class="mealDiv">';
                 calendarViewString += '<p class="mealLabel">Lunch</p>';
-                calendarViewString += '<div class="servingContainer" id='+daysArray[i]+'Lunch >';
+                calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Lunch >';
                 calendarViewString += '</div>'; // end serving
             calendarViewString += '</div>';// end meal
             //Dinner
             calendarViewString += '<div class="mealDiv">';
                 calendarViewString += '<p class="mealLabel">Dinner</p>';
-                calendarViewString += '<div class="servingContainer" id='+daysArray[i]+'Dinner >';
+                calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Dinner >';
                 calendarViewString += '</div>'; // end serving
             calendarViewString += '</div>';// end meal
         calendarViewString += '</div>';// end day

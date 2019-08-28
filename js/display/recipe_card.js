@@ -10,7 +10,6 @@ function create_recipe_card(data){
         // Button to delete card
         recipeCard += '<button value='+data.id+ ' class="recipeCardX">X</button>';
     recipeCard += '</div>';
-    // jQuery('.draggable').draggable();
     return recipeCard;
 
 }

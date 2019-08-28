@@ -132,6 +132,12 @@ jQuery(document).ready( function() {
         event.preventDefault();
         var calendarView = calendar_view();
         jQuery('.displayDiv').html(calendarView);
+        jQuery( '.droppable' ).droppable({
+            drop: function( event, ui ) {
+                console.log('droppin!');
+                jQuery( this ).addClass( ".dropped" );
+            }
+        });
     });// end calendar click event
 
     /*
@@ -152,7 +158,14 @@ jQuery(document).ready( function() {
             //console.log(data);
             var recipeCard = create_recipe_card(data);
             jQuery('#recipeDock').append(recipeCard);
-            jQuery('.draggable').draggable();
+            // uses jquery UI  to make the recipe cards draggable
+            jQuery('.draggable').draggable({revert: true, helper: "clone"});
+            // jQuery( '.droppable' ).droppable({
+            //     drop: function( event, ui ) {
+            //         console.log('droppin!');
+            //         jQuery( this ).addClass( ".dropped" );
+            //     }
+            // });
         });
     });// end calendar click event
 
@@ -163,4 +176,10 @@ jQuery(document).ready( function() {
         console.log(this.value);
         jQuery('#card'+this.value).remove();
     });// end delete recipe card event
+    // jQuery( '.droppable' ).droppable({
+    //     drop: function() {
+    //         console.log('droppin!');
+    //         jQuery( this ).addClass( ".dropped" );
+    //     }
+    // });
 });// end document.ready

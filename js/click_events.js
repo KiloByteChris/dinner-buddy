@@ -154,4 +154,13 @@ jQuery(document).ready( function() {
             jQuery('#recipeDock').append(recipeCard);
         });
     });// end calendar click event
+
+    /*
+        Click event for the add button. Creates a recipe in the dock
+    */
+    jQuery("#recipeDock").on("click", ".recipeCardX", function() {
+        console.log(this.value);
+        jQuery('#card'+this.value).remove();
+
+    });// end delete recipe card event
 });// end document.ready

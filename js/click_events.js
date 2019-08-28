@@ -132,5 +132,15 @@ jQuery(document).ready( function() {
         event.preventDefault();
         var calendarView = calendar_view();
         jQuery('.displayDiv').html(calendarView);
-    });// end browse recipes click event
+    });// end calendar click event
+
+    /*
+        Click event for the add button. Creates a recipe in the dock
+    */
+    jQuery(".dinnerBuddyMainDiv").on("click", ".selectRecipe", function(){
+        event.preventDefault();
+        console.log(this);
+        //var newCard = create_recipe_card();
+        //jQuery('#recipeDock').append(recipeCard);
+    });// end calendar click event
 });// end document.ready

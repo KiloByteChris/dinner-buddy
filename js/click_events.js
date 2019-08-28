@@ -3,9 +3,8 @@ jQuery(document).ready( function() {
         Click event for the "New Recipe" button
     */
     jQuery(".addRecipeButton").on("click", function(){
-        console.log(WPsettings.current_ID);
         var newRecipeView = new_recipe_form();
-        jQuery('.dinnerBuddyMainDiv').append(newRecipeView);
+        jQuery('.displayDiv').html(newRecipeView);
     });
 
     /*
@@ -52,14 +51,14 @@ jQuery(document).ready( function() {
 
         //select the featured image from the new recipes form
         let imageData = jQuery('#newRecipeImage')[0].files[0];
-        console.log(imageData);
+        //console.log(imageData);
         let fd = new FormData();
         fd.append( 'file', imageData);
         fd.append( 'caption', 'test media GO!' );
         //console.log wont work for FormData()
-        for (var pair of fd.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]);
-        }
+        // for (var pair of fd.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]);
+        // }
         var url = window.location.origin + '/wp-json/wp/v2/recipes';
         jQuery.ajax( {
             url: url,
@@ -72,9 +71,9 @@ jQuery(document).ready( function() {
             newRecipeMediaId = responseData.id;
         }).complete(function (completeData, status){
             fd.append( 'post', newRecipeMediaId);
-            for (var pair of fd.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]);
-            }
+            // for (var pair of fd.entries()) {
+            //     console.log(pair[0]+ ', ' + pair[1]);
+            // }
             var mediaUrl = window.location.origin + '/wp-json/wp/v2/media';
             jQuery.ajax({
                 beforeSend: function(xhr) {
@@ -108,9 +107,9 @@ jQuery(document).ready( function() {
     /*
         Click event for Browse Recipes
     */
-    jQuery(".dinnerBuddyMainDiv").on("click", ".browseRecipeButton", function(){
+    jQuery(".dashboard").on("click", ".browseRecipeButton", function(){
         event.preventDefault();
-        // Get recent recipe data
+        // Get recent recipe data for the 'browse recipes' view
         var browseRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?_embed';
         jQuery.ajax({
             beforeSend: function(xhr) {
@@ -119,7 +118,60 @@ jQuery(document).ready( function() {
             method: 'GET',
             url: browseRecipesUrl
         }).done( function(data){
-            console.log(data);
+            var browseRecipesView = browse_recipes_view(data);
+            jQuery('.displayDiv').html(browseRecipesView);
         });
     });// end browse recipes click event
+
+    /*
+        Click event for the Calendar button
+    */
+    jQuery(".dashboard").on("click", ".calendarButton", function(){
+        event.preventDefault();
+        var calendarView = calendar_view();
+        jQuery('.displayDiv').html(calendarView);
+        jQuery( '.droppable' ).droppable({
+            // This function defines what happends when a recipe is dropped on the calendar
+            drop: function( event, ui) {
+                drop_function(event, ui);
+            }
+        });
+    });// end calendar click event
+
+    /*
+        Click event for the add button. Creates a recipe in the dock
+    */
+    jQuery(".dinnerBuddyMainDiv").on("click", ".selectRecipe", function(){
+        event.preventDefault();
+        // Get the post id from the button
+        var postId = this.id;
+        var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
+        jQuery.ajax({
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+            method: 'GET',
+            url: recipeCardUrl
+        }).done( function(data){
+            //console.log(data);
+            var recipeCard = create_recipe_card(data);
+            jQuery('#recipeDock').append(recipeCard);
+            // uses jquery UI  to make the recipe cards draggable
+            jQuery('.draggable').draggable({revert: true, helper: "clone"});
+        });
+    });// end calendar click event
+
+    /*
+        Click event for the add button. Creates a recipe in the dock
+    */
+    jQuery("#recipeDock").on("click", ".recipeCardX", function() {
+        console.log(this.value);
+        jQuery('#card'+this.value).remove();
+    });// end delete recipe card event
+    // jQuery( '.droppable' ).droppable({
+    //     drop: function() {
+    //         console.log('droppin!');
+    //         jQuery( this ).addClass( ".dropped" );
+    //     }
+    // });
 });// end document.ready

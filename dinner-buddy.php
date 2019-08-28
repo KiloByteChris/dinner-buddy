@@ -17,11 +17,17 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/display.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/register_fields.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/register_post_type.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/dashboard.php';
 
 // Enqueue CSS
 wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/dinner_buddy_main.css');
 
 // Enqueue Scripts
+wp_enqueue_script( 'jquery-ui-core' );
+wp_enqueue_script( 'jquery-ui-widget' );
+wp_enqueue_script( 'jquery-ui-draggable' );
+wp_enqueue_script( 'jquery-ui-droppable' );
+
 wp_register_script( 'dinner_buddy_routing', plugin_dir_url( __FILE__ ) . '/js/routes.js', array('jquery'));
 wp_enqueue_script( 'dinner_buddy_routing' );
 
@@ -30,6 +36,20 @@ wp_enqueue_script( 'dinner_buddy_click_events' );
 
 wp_register_script( 'new_recipe_form', plugin_dir_url( __FILE__ ) . '/js/display/new_recipe_form.js', array('jquery'));
 wp_enqueue_script( 'new_recipe_form' );
+
+wp_register_script( 'browse_recipes', plugin_dir_url( __FILE__ ) . '/js/display/browse_recipes.js', array('jquery'));
+wp_enqueue_script( 'browse_recipes' );
+
+wp_register_script( 'calendar', plugin_dir_url( __FILE__ ) . '/js/display/calendar.js', array('jquery'));
+wp_enqueue_script( 'calendar' );
+
+wp_register_script( 'recipe_cards', plugin_dir_url( __FILE__ ) . '/js/display/recipe_card.js', array('jquery'));
+wp_enqueue_script( 'recipe_cards' );
+
+wp_register_script( 'drop_function', plugin_dir_url( __FILE__ ) . '/js/ui/drop_function.js', array('jquery'));
+wp_enqueue_script( 'drop_function' );
+
+
 
 // Get information used for authentication
 function rest_edit_scripts() {

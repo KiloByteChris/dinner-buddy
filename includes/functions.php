@@ -9,21 +9,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 function dinner_buddy_main(){
 
     $dinnerBuddyContainer = '<div class="dinnerBuddyMainDiv">';
-    $dinnerBuddyContainer .= '<p>Dinner Buddy!</p>';
 
     $userInfo = check_user_login();
     if($userInfo){
         // Show the plugin
-        //wp_logout();
-        $dinnerBuddyContainer .= '<button class="addRecipeButton">Add New</button>';
-        $dinnerBuddyContainer .= '<button class="browseRecipeButton">Browse</button>';
-        $dinnerBuddyContainer .= '<button class="searchRecipeButton">Search</button>';
-        $dinnerBuddyContainer .= '<button class="shoppingListButton">Shopping List</button>';
+        display_dashboard();
     }else{
         // Show login form
         wp_login_form();
         wp_register();
     };
+    $dinnerBuddyContainer .= '<div class="displayDiv">';
+    $dinnerBuddyContainer .= '</div>';
     $dinnerBuddyContainer .= '</div>';
     return $dinnerBuddyContainer;
 }

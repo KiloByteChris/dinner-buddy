@@ -1,3 +1,34 @@
 p {
     color: #aaa;
 }
+
+.browseRecipeImg {
+    width: 150px;
+}
+
+.calendarDiv {
+    /* height: 300px; */
+    background-color: #ddd;
+}
+
+.servingContainer {
+    height: 50px;
+    width: 150px;
+    border: 1px solid #000;
+}
+
+#recipeDock {
+    height: 100px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.recipeCard {
+    width: 100px;
+    border: 1px solid #000;
+    z-index: 99;
+}
+
+.dropped {
+    width: 500px !important;
+}

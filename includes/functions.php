@@ -13,7 +13,7 @@ function dinner_buddy_main(){
     $userInfo = check_user_login();
     if($userInfo){
         // Show the plugin
-        display_dashboard();
+        $dinnerBuddyContainer  .= display_dashboard();
     }else{
         // Show login form
         wp_login_form();

@@ -24,6 +24,7 @@ function display_dashboard(){
     $dashboardString .= '</div>';
     $dashboardString .= '<div id="recipeDock">';
     $dashboardString .= '</div>';
-    echo $dashboardString;
+    // echo $dashboardString;
+    return $dashboardString;
 }
 ?>

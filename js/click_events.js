@@ -128,7 +128,6 @@ jQuery(document).ready( function() {
     */
     jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
         event.preventDefault();
-
         // Get search term from the search text input
         var searchTerm = jQuery('.searchInput').val();
         // Get recent recipe data for the 'search recipes' view
@@ -141,19 +140,27 @@ jQuery(document).ready( function() {
             method: 'GET',
             url: searchRecipesUrl
         }).done( function(data){
+            // Create a main div for displaying the information
+            let searchViewDiv = '<div id="searchViewDiv">';
+            searchViewDiv += '</div>';
+            jQuery('.displayDiv').html(searchViewDiv );
             // Make an api call for each of the array elements
             // Is there a better way?
-            // let searchCard = '<div id='+'recipePreview'+value.id+' class="recipePreview">';
             data.forEach( function(value, index, array) {
                 var searchPostUrl = window.location.origin + '/wp-json/wp/v2/recipes/' + value.id+'?_embed';
                 jQuery.ajax({
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+                    },
                     method: 'GET',
                     url: searchPostUrl,
                 }).done( function(searchResult) {
-                    console.log(searchResult);
+                    //console.log(searchResult);
+                    var searchViewCard = search_recipes_view(searchResult);
+                    jQuery('#searchViewDiv').append(searchViewCard);
                 });
+
             })
-            jQuery('.displayDiv').html();
         });
     });// end search recipes click event
 

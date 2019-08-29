@@ -141,8 +141,19 @@ jQuery(document).ready( function() {
             method: 'GET',
             url: searchRecipesUrl
         }).done( function(data){
-            var searchRecipesView = search_recipes_view(data);
-            jQuery('.displayDiv').html(searchRecipesView);
+            // Make an api call for each of the array elements
+            // Is there a better way?
+            // let searchCard = '<div id='+'recipePreview'+value.id+' class="recipePreview">';
+            data.forEach( function(value, index, array) {
+                var searchPostUrl = window.location.origin + '/wp-json/wp/v2/recipes/' + value.id+'?_embed';
+                jQuery.ajax({
+                    method: 'GET',
+                    url: searchPostUrl,
+                }).done( function(searchResult) {
+                    console.log(searchResult);
+                });
+            })
+            jQuery('.displayDiv').html();
         });
     });// end search recipes click event
 

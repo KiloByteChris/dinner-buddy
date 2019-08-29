@@ -19,5 +19,4 @@ function drop_function(event, ui){
     jQuery('#' + event.target.id).html(mealCard);
     // update recipe card with leftover value
     jQuery('#'+cardId+' > .recipeCardServings').text(leftOver);
-
 }

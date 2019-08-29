@@ -124,6 +124,29 @@ jQuery(document).ready( function() {
     });// end browse recipes click event
 
     /*
+        Click event for Search Recipes
+    */
+    jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
+        event.preventDefault();
+
+        // Get search term from the search text input
+        var searchTerm = jQuery('.searchInput').val();
+        // Get recent recipe data for the 'search recipes' view
+        var searchRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?search=' + searchTerm;
+        console.log(searchRecipesUrl);
+        jQuery.ajax({
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+            method: 'GET',
+            url: searchRecipesUrl
+        }).done( function(data){
+            var searchRecipesView = search_recipes_view(data);
+            jQuery('.displayDiv').html(searchRecipesView);
+        });
+    });// end search recipes click event
+
+    /*
         Click event for the Calendar button
     */
     jQuery(".dashboard").on("click", ".calendarButton", function(){
@@ -167,11 +190,5 @@ jQuery(document).ready( function() {
     jQuery("#recipeDock").on("click", ".recipeCardX", function() {
         console.log(this.value);
         jQuery('#card'+this.value).remove();
-    });// end delete recipe card event
-    // jQuery( '.droppable' ).droppable({
-    //     drop: function() {
-    //         console.log('droppin!');
-    //         jQuery( this ).addClass( ".dropped" );
-    //     }
-    // });
+    });
 });// end document.ready

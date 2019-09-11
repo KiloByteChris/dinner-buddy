@@ -9,13 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 function display_dashboard(){
     $dashboardString = '<div class="dashboard" id="dashboard">';
-        $dashboardString .= '<button class="calendarButton">Calendar</button>';
-        $dashboardString .= '<button class="addRecipeButton">Add New</button>';
-        $dashboardString .= '<button class="browseRecipeButton">Browse</button>';
-        $dashboardString .= '<input type="text" class="searchInput" />';
-        $dashboardString .= '<button class="searchRecipeButton">Search</button>';
-        $dashboardString .= '<button class="shoppingListButton">Shopping List</button>';
-        $dashboardString .= '<label for="weeklyServings" class="weeklyServingsLabel">Group</label>';
+        $dashboardString .= '<button class="dashboardButton calendarButton">Calendar</button>';
+        $dashboardString .= '<button class="dashboardButton addRecipeButton">Add New</button>';
+        $dashboardString .= '<button class="dashboardButton browseRecipeButton">Browse</button>';
+        $dashboardString .= '<button class="dashboardButton searchRecipeButton">Search</button>';
+        $dashboardString .= '<button class="dashboardButton shoppingListButton">Shopping List</button>';
+        // $dashboardString .= '<button class="dashboardButton searchRecipeButton">Search</button>';
+        // $dashboardString .= '<button class="dashboardButton shoppingListButton">Shopping List</button>';
+        $dashboardString .= '<label for="weeklyServings" class="weeklyServingsLabel">Group Size</label>';
         $dashboardString .= '<select class="weeklyServings" name="weeklyServings">';
         for($i=1; $i<13; $i++){
             $dashboardString .= '<option value='.$i.'>'.$i.'</option>';

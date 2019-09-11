@@ -1,7 +1,3 @@
-p {
-    color: #aaa;
-}
-
 .browseRecipeImg {
     width: 150px;
 }
@@ -24,11 +20,32 @@ p {
 }
 
 .recipeCard {
+    display: flex;
     width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #add8e6;
     border: 1px solid #000;
     z-index: 99;
 }
 
-.dropped {
-    width: 500px !important;
+.recipeCard button{
+  width: 10px;
+  height: 10px;
+}
+
+.dinnerBuddyMainDiv {
+  width: 500px;
+  display: grid;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px 100px;
+}
+
+.dashboardButton {
+  font-size: 16px;
+
 }

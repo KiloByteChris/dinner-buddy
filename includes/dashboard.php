@@ -23,8 +23,8 @@ function display_dashboard(){
         }
         $dashboardString .= '</select>';
     $dashboardString .= '</div>';
-    $dashboardString .= '<div id="recipeDock">';
-    $dashboardString .= '</div>';
+    // $dashboardString .= '<div id="recipeDock">';
+    // $dashboardString .= '</div>';
     // echo $dashboardString;
     return $dashboardString;
 }

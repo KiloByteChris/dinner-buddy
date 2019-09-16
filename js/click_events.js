@@ -6,7 +6,6 @@ jQuery(document).ready( function() {
         var newRecipeView = new_recipe_form();
         jQuery('.displayDiv').html(newRecipeView);
     });
-
     /*
         Click event for add ingredients button in the new recipe form
     */
@@ -16,7 +15,6 @@ jQuery(document).ready( function() {
         jQuery('.newIngredientsArea').append(newIngredientInput);
         newIngredientInputNumber++;
     });
-
     /*
         Click event for submitting a new recipe
     */
@@ -48,7 +46,6 @@ jQuery(document).ready( function() {
             instructions: jQuery('#newRecipeInstructions').val(),
             status: 'publish',
         };
-
         //select the featured image from the new recipes form
         let imageData = jQuery('#newRecipeImage')[0].files[0];
         //console.log(imageData);

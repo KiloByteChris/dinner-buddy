@@ -13,14 +13,20 @@ function dinner_buddy_main(){
     $userInfo = check_user_login();
     if($userInfo){
         // Show the plugin
-        $dinnerBuddyContainer  .= display_dashboard();
+        $display = New Display;
+        $dinnerBuddyContainer .= $display->display_MtHeader();
+        $dinnerBuddyContainer .= '<div id="recipeDock">';
+        $dinnerBuddyContainer .= '</div>';
+        $dinnerBuddyContainer .= '<div class="displayDiv">';
+        $dinnerBuddyContainer .= '</div>';
+        $dinnerBuddyContainer .= display_dashboard();
     }else{
         // Show login form
         wp_login_form();
         wp_register();
     };
-    $dinnerBuddyContainer .= '<div class="displayDiv">';
-    $dinnerBuddyContainer .= '</div>';
+    // $dinnerBuddyContainer .= '<div class="displayDiv">';
+    // $dinnerBuddyContainer .= '</div>';
     $dinnerBuddyContainer .= '</div>';
     return $dinnerBuddyContainer;
 }

@@ -15,11 +15,9 @@ function dinner_buddy_main(){
         // Show the plugin
         $display = New Display;
         $dinnerBuddyContainer .= $display->display_MtHeader();
-        $dinnerBuddyContainer .= '<div id="recipeDock">';
-        $dinnerBuddyContainer .= '</div>';
-        $dinnerBuddyContainer .= '<div class="displayDiv">';
-        $dinnerBuddyContainer .= '</div>';
-        $dinnerBuddyContainer .= display_dashboard();
+        $dinnerBuddyContainer .= $display->display_MtRecipeDock();
+        $dinnerBuddyContainer .= $display->display_MtMainContent();
+        $dinnerBuddyContainer .= $display->display_MtDashboard();
     }else{
         // Show login form
         wp_login_form();

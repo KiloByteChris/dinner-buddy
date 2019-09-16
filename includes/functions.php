@@ -8,25 +8,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 //Build a div that displays the plugin
 function dinner_buddy_main(){
 
-    $dinnerBuddyContainer = '<div class="dinnerBuddyMainDiv">';
+    $MtContainer = '<div class="dinnerBuddyMainDiv">';
 
     $userInfo = check_user_login();
     if($userInfo){
         // Show the plugin
         $display = New Display;
-        $dinnerBuddyContainer .= $display->display_MtHeader();
-        $dinnerBuddyContainer .= $display->display_MtRecipeDock();
-        $dinnerBuddyContainer .= $display->display_MtMainContent();
-        $dinnerBuddyContainer .= $display->display_MtDashboard();
+        $MtContainer .= $display->display_MtHeader();
+        $MtContainer .= $display->display_MtRecipeDock();
+        $MtContainer .= $display->display_MtMainContent();
+        $MtContainer .= $display->display_MtDashboard();
     }else{
         // Show login form
         wp_login_form();
         wp_register();
     };
-    // $dinnerBuddyContainer .= '<div class="displayDiv">';
-    // $dinnerBuddyContainer .= '</div>';
-    $dinnerBuddyContainer .= '</div>';
-    return $dinnerBuddyContainer;
+    $MtContainer .= '</div>';
+    return $MtContainer;
 }
 // Register the short code
 add_shortcode( 'DinnerBuddy', 'dinner_buddy_main' );

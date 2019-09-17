@@ -104,7 +104,7 @@ jQuery(document).ready( function() {
     /*
         Click event for Browse Recipes
     */
-    jQuery(".dashboard").on("click", ".browseRecipeButton", function(){
+    jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
         event.preventDefault();
         // Get recent recipe data for the 'browse recipes' view
         var browseRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?_embed';

@@ -55,6 +55,8 @@
     grid-area: content;
     display: grid;
     min-height: calc(100vh - 250px);
+    max-height: calc(100vh - 250px);
+    overflow: scroll;
 }
 /*
   Dashboard
@@ -79,10 +81,19 @@
   CALENDAR
 */
 .calendarDiv {
-  display: grid;
-  height: calc(100vh - 250px);
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  background-color: #ddd;
+    display: grid;
+    grid-template-areas: "sun mon tue wed thu fri sat"
+                        "breakfastLabel"
+                        "sunb monb tueb wedb thub frib satb"
+                        "lunchLabel"
+                        "sunl monl tuel wedl thul fril satl"
+                        "dinnerLabel"
+                        "sund mond tued wedd thud frid satd"
+    ;
+    height: calc(100vh - 250px);
+    height: 100%;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+    background-color: #ddd;
 }
 
 .dayDiv {
@@ -92,6 +103,17 @@
     font-size: 18px;
     grid-row-start 1; grid-row-end 1;
     grid-column-start 1; grid-column-end 7;
+}
+
+#breakfastLabel {
+    grid-area: breakfastLabel;
+}
+
+.Sun {
+    grid-area: sun;
+}
+.Mon {
+    grid-area: mon;
 }
 .breakfastLabelDiv {
     /* width: 100px; */

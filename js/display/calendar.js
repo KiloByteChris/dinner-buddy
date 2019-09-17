@@ -8,12 +8,12 @@ function calendar_view() {
     // Loop through the days array and create calendar days
     for(var i=0 ; i<7 ; i++ ){
         calendarViewString += '<div id='+ daysArray[i] + 'Div '+' class="dayDiv">';
-        calendarViewString += '<h4 class=>'+daysArray[i]+'</h4>'
+        calendarViewString += '<h4 class="'+daysArray[i]+'">'+daysArray[i]+'</h4>'
             //Breakfast
             calendarViewString += '<div class="mealDiv">';
             calendarViewString += '<div class="breakfastLabelDiv">';
             if(i<=0){
-                calendarViewString += '<p class="mealLabel">Breakfast</p>';
+                calendarViewString += '<p id="breakfastLabel" class="mealLabel">Breakfast</p>';
             }
             calendarViewString += '</div>';
                 calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Breakfast >';

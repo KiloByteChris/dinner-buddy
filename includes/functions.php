@@ -15,8 +15,8 @@ function dinner_buddy_main(){
         // Show the plugin
         $display = New Display;
         $MtContainer .= $display->display_MtHeader();
-        $MtContainer .= $display->display_MtRecipeDock();
         $MtContainer .= $display->display_MtMainContent();
+        $MtContainer .= $display->display_MtRecipeDock();
         $MtContainer .= $display->display_MtDashboard();
     }else{
         // Show login form

@@ -1,9 +1,9 @@
 .dinnerBuddyMainDiv {
-  /* display: grid;
-  grid-template-rows: "header"
-                      "dock"
+  display: grid;
+  grid-template-areas: "header"
                       "content"
-                      "dashboard"; */
+                      "dock"
+                      "dashboard";
 }
 
 .browseRecipeImg {
@@ -14,11 +14,10 @@
     Header
 */
 #MtHeader {
-    position: absolute;
-    top: 0px;
-    grid-row-start: 1; grid-row-end: 2;
+    grid-area: header;
     height: 75px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 200;
     width: 100%;
     background-color: #aaa;
 }
@@ -26,8 +25,7 @@
     Dock
 */
 #recipeDock {
-    position: absolute;
-    top: 75px;
+    grid-area: dock;
     height: 100px;
     width: 100%;
     background-color: #eee;
@@ -54,8 +52,7 @@
     Main Display
 */
 .displayDiv {
-    position: absolute;
-    top: 175px;
+    grid-area: content;
     display: grid;
     min-height: calc(100vh - 250px);
 }
@@ -65,10 +62,10 @@
 .dashboard {
     position: absolute;
     bottom: 0;
+    grid-area: dashboard;
     height: 75px;
     width: 100%;
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
     grid-template-columns: 20% 20% 20% 20% 20%;
 }
 

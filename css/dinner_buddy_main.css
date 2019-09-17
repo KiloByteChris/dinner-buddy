@@ -1,16 +1,35 @@
 .dinnerBuddyMainDiv {
-  /* width: 500px; */
-  display: grid;
+  /* display: grid;
+  grid-template-rows: "header"
+                      "dock"
+                      "content"
+                      "dashboard"; */
 }
 
 .browseRecipeImg {
     width: 150px;
 }
 
+/*
+    Header
+*/
+#MtHeader {
+    position: absolute;
+    top: 0px;
+    grid-row-start: 1; grid-row-end: 2;
+    height: 75px;
+    font-size: 18px;
+    width: 100%;
+    background-color: #aaa;
+}
+/*
+    Dock
+*/
 #recipeDock {
+    position: absolute;
+    top: 75px;
     height: 100px;
-    /* width: 100%; */
-    /* width: 350px; */
+    width: 100%;
     background-color: #eee;
 }
 
@@ -31,20 +50,32 @@
   padding: 0;
   margin: 0;
 }
-
 /*
-  DASHBOARD
+    Main Display
+*/
+.displayDiv {
+    position: absolute;
+    top: 175px;
+    display: grid;
+    min-height: calc(100vh - 250px);
+}
+/*
+  Dashboard
 */
 .dashboard {
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
-
+    position: absolute;
+    bottom: 0;
+    height: 75px;
+    width: 100%;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+    grid-template-columns: 20% 20% 20% 20% 20%;
 }
 
 .dashboardButton {
-    font-size: 12px;
+    font-size: 20px;
     width: auto;
+    height: 75px;
 }
 
 /*
@@ -52,6 +83,7 @@
 */
 .calendarDiv {
   display: grid;
+  height: calc(100vh - 250px);
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: #ddd;
 }

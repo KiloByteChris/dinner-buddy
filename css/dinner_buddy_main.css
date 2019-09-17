@@ -52,8 +52,8 @@
     Main Display
 */
 .displayDiv {
-    grid-area: content;
-    display: grid;
+    /* grid-area: content;
+    display: grid; */
     min-height: calc(100vh - 250px);
     max-height: calc(100vh - 250px);
     overflow: scroll;
@@ -82,43 +82,64 @@
 */
 .calendarDiv {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(20px, auto);
     grid-template-areas: "sun mon tue wed thu fri sat"
-                        "breakfastLabel"
+                        "Bl Bl Bl Bl Bl Bl Bl"
                         "sunb monb tueb wedb thub frib satb"
-                        "lunchLabel"
+                        "Ll Ll Ll Ll Ll Ll Ll"
                         "sunl monl tuel wedl thul fril satl"
-                        "dinnerLabel"
-                        "sund mond tued wedd thud frid satd"
-    ;
+                        "Dl Dl Dl Dl Dl Dl Dl"
+                        "sund mond tued wedd thud frid satd";
+
     height: calc(100vh - 250px);
     height: 100%;
-    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
     background-color: #ddd;
 }
 
 .dayDiv {
+    height: inherit;
 }
 
 .dayDiv h4 {
     font-size: 18px;
-    grid-row-start 1; grid-row-end 1;
-    grid-column-start 1; grid-column-end 7;
+    margin: 0px;
 }
 
-#breakfastLabel {
-    grid-area: breakfastLabel;
+.breakfastLabelDiv {
+    grid-area: Bl;
+    height: 25px;
 }
 
-.Sun {
+#SunDiv {
     grid-area: sun;
 }
-.Mon {
+#MonDiv {
     grid-area: mon;
 }
-.breakfastLabelDiv {
-    /* width: 100px; */
-    height: 20px;
+#TueDiv {
+    grid-area: tue;
 }
+#TueDiv {
+    grid-area: tue;
+}
+#WedDiv {
+    grid-area: wed;
+}
+#ThuDiv {
+    grid-area: thu;
+}
+#FriDiv {
+    grid-area: fri;
+}
+#SatDiv {
+    grid-area: sat;
+}
+.mealDiv{
+    border: 1px solid black;
+}
+
+
 .lunchLabelDiv {
     /* width: 100px; */
     height: 20px;

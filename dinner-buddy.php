@@ -27,8 +27,8 @@ wp_enqueue_script( 'jquery-ui-widget' );
 wp_enqueue_script( 'jquery-ui-draggable' );
 wp_enqueue_script( 'jquery-ui-droppable' );
 
-wp_register_script( 'dinner_buddy_routing', plugin_dir_url( __FILE__ ) . '/js/routes.js', array('jquery'));
-wp_enqueue_script( 'dinner_buddy_routing' );
+// wp_register_script( 'dinner_buddy_routing', plugin_dir_url( __FILE__ ) . '/js/routes.js', array('jquery'));
+// wp_enqueue_script( 'dinner_buddy_routing' );
 
 wp_register_script( 'dinner_buddy_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
 wp_enqueue_script( 'dinner_buddy_click_events' );

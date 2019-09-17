@@ -19,22 +19,23 @@
     font-size: 16px;
     font-weight: 200;
     width: 100%;
-    background-color: #aaa;
+    background-color: #add8e6;
 }
 /*
     Dock
 */
 #recipeDock {
     grid-area: dock;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     height: 100px;
     width: 100%;
     background-color: #eee;
 }
 
 .recipeCard {
-    display: flex;
-    width: 100px;
-    height: 40px;
+    /* width: 100px; */
+    height: 100px;
     font-size: 16px;
     font-weight: bold;
     background-color: #add8e6;
@@ -83,7 +84,7 @@
 .calendarDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-auto-rows: minmax(20px, auto);
+    grid-template-rows: 20px auto 100px auto 100px auto 100px;
     grid-template-areas: "sun mon tue wed thu fri sat"
                         "Bl Bl Bl Bl Bl Bl Bl"
                         "sunb monb tueb wedb thub frib satb"
@@ -98,17 +99,27 @@
 }
 
 .dayDiv {
-    height: inherit;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
 }
 
 .dayDiv h4 {
     font-size: 18px;
     margin: 0px;
+    margin-top: -2.5px;
+    padding: 0px;
 }
+
 
 .breakfastLabelDiv {
     grid-area: Bl;
-    height: 25px;
+    display: flex;
+}
+
+.breakfastLabelDiv p{
+    align-self: center;
 }
 
 #SunDiv {
@@ -139,23 +150,30 @@
     border: 1px solid black;
 }
 
-
 .lunchLabelDiv {
-    /* width: 100px; */
-    height: 20px;
+    display: flex;
+    grid-area: Ll;
 }
+
+.lunchLabelDiv p {
+    align-self: center;
+}
+
 .dinnerLabelDiv {
-    /* width: 100px; */
-    height: 20px;
+    display: flex;
+    grid-area: Dl;
 }
+
+.dinnerLabelDiv {
+    align-self: center;
+}
+
 .mealLabel {
-  font-size: 14px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .servingContainer {
-    height: 50px;
-    /* width: 100px; */
     border: 1px solid #000;
 }

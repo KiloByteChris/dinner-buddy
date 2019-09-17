@@ -1,10 +1,16 @@
+.dinnerBuddyMainDiv {
+  /* width: 500px; */
+  display: grid;
+}
+
 .browseRecipeImg {
     width: 150px;
 }
 
 #recipeDock {
     height: 100px;
-    width: 100%;
+    /* width: 100%; */
+    /* width: 350px; */
     background-color: #eee;
 }
 
@@ -22,11 +28,8 @@
 .recipeCard button{
   width: 10px;
   height: 10px;
-}
-
-.dinnerBuddyMainDiv {
-  width: 700px;
-  display: grid;
+  padding: 0;
+  margin: 0;
 }
 
 /*
@@ -34,11 +37,14 @@
 */
 .dashboard {
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px 100px;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+
 }
 
 .dashboardButton {
-  font-size: 16px;
+    font-size: 12px;
+    width: auto;
 }
 
 /*
@@ -47,20 +53,10 @@
 .calendarDiv {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  /* grid-template-areas: "day day day day day day day"
-                       "label"
-                       "meal meal meal meal meal meal meal"
-                       "label"
-                       "meal meal meal meal meal meal meal"
-                       "label"
-                       "meal meal meal meal meal meal meal"; */
-  /* grid-template-columns: 100px 100px 100px 100px 100px 100px 100px; */
   background-color: #ddd;
 }
 
 .dayDiv {
-
-
 }
 
 .dayDiv h4 {
@@ -69,15 +65,15 @@
     grid-column-start 1; grid-column-end 7;
 }
 .breakfastLabelDiv {
-    width: 100px;
+    /* width: 100px; */
     height: 20px;
 }
 .lunchLabelDiv {
-    width: 100px;
+    /* width: 100px; */
     height: 20px;
 }
 .dinnerLabelDiv {
-    width: 100px;
+    /* width: 100px; */
     height: 20px;
 }
 .mealLabel {
@@ -88,6 +84,6 @@
 
 .servingContainer {
     height: 50px;
-    width: 100px;
+    /* width: 100px; */
     border: 1px solid #000;
 }

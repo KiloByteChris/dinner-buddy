@@ -39,19 +39,34 @@ class Display {
     */
     public function display_MtDashboard() {
         $dashboardString = '<div class="dashboard" id="dashboard">';
-            $dashboardString .= '<button class="dashboardButton calendarButton">Calendar</button>';
-            $dashboardString .= '<button class="dashboardButton addRecipeButton">Add New</button>';
-            $dashboardString .= '<button class="dashboardButton browseRecipeButton">Browse</button>';
-            $dashboardString .= '<button class="dashboardButton searchRecipeButton">Search</button>';
-            $dashboardString .= '<button class="dashboardButton shoppingListButton">Shopping List</button>';
+            // Calendar button
+            $dashboardString .= '<button class="dashboardButton calendarButton">';
+            $dashboardString .= '<i class="fa fa-calendar" aria-hidden="true"></i>';
+            $dashboardString .= '</button>';
+            // Search button
+            $dashboardString .= '<button class="dashboardButton searchRecipeButton">';
+            $dashboardString .= '<i class="fas fa-search"></i>';
+            $dashboardString .= '</button>';
+            // New recipe  button
+            $dashboardString .= '<button class="dashboardButton addRecipeButton">';
+            $dashboardString .= '<i class="fas fa-plus"></i>';
+            $dashboardString .= '</button>';
+            // Favorite recipes button
+            $dashboardString .= '<button class="dashboardButton favoriteRecipeButton">';
+            $dashboardString .= '<i class="far fa-star"></i>';
+            $dashboardString .= '</button>';
+            // Shopping list button
+            $dashboardString .= '<button class="dashboardButton shoppingListButton">';
+            $dashboardString .= '<i class="fas fa-tasks"></i>';
+            $dashboardString .= '</button>';
             // $dashboardString .= '<button class="dashboardButton searchRecipeButton">Search</button>';
             // $dashboardString .= '<button class="dashboardButton shoppingListButton">Shopping List</button>';
-            $dashboardString .= '<label for="weeklyServings" class="weeklyServingsLabel">Group Size</label>';
-            $dashboardString .= '<select class="weeklyServings" name="weeklyServings">';
-            for($i=1; $i<13; $i++){
-                $dashboardString .= '<option value='.$i.'>'.$i.'</option>';
-            }
-            $dashboardString .= '</select>';
+            // $dashboardString .= '<label for="weeklyServings" class="weeklyServingsLabel">Group Size</label>';
+            // $dashboardString .= '<select class="weeklyServings" name="weeklyServings">';
+            // for($i=1; $i<13; $i++){
+            //     $dashboardString .= '<option value='.$i.'>'.$i.'</option>';
+            // }
+            // $dashboardString .= '</select>';
         $dashboardString .= '</div>';
         return $dashboardString;
     }

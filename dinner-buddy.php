@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Dinner Buddy
+Plugin Name: MealTime
 Description: This plugin is designed to help create a weekly meal plan.
 Plugin URI:  https://plugin-planet.com/
 Author:      Chris McGuire

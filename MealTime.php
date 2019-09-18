@@ -1,8 +1,7 @@
 <?php
 /*
-Plugin Name: Dinner Buddy
+Plugin Name: MealTime
 Description: This plugin is designed to help create a weekly meal plan.
-Plugin URI:  https://plugin-planet.com/
 Author:      Chris McGuire
 Version:     1.0
 */
@@ -19,7 +18,7 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/register_fields.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/register_post_type.php';
 
 // Enqueue CSS
-wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/dinner_buddy_main.css');
+wp_enqueue_style('dbStyle', plugin_dir_url( __FILE__ ) .'/css/mt_main.css');
 wp_enqueue_style('mtCalendar', plugin_dir_url( __FILE__ ) .'/css/mt_calendar.css');
 
 // Enqueue Scripts
@@ -31,8 +30,8 @@ wp_enqueue_script( 'jquery-ui-droppable' );
 // wp_register_script( 'dinner_buddy_routing', plugin_dir_url( __FILE__ ) . '/js/routes.js', array('jquery'));
 // wp_enqueue_script( 'dinner_buddy_routing' );
 
-wp_register_script( 'dinner_buddy_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
-wp_enqueue_script( 'dinner_buddy_click_events' );
+wp_register_script( 'mt_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
+wp_enqueue_script( 'mt_click_events' );
 
 wp_register_script( 'new_recipe_form', plugin_dir_url( __FILE__ ) . '/js/display/new_recipe_form.js', array('jquery'));
 wp_enqueue_script( 'new_recipe_form' );
@@ -57,7 +56,7 @@ wp_enqueue_script( 'drop_function' );
 // Get information used for authentication
 function rest_edit_scripts() {
     //Make this information available in the click events script
-    wp_localize_script( 'dinner_buddy_click_events', 'WPsettings', array(
+    wp_localize_script( 'mt_click_events', 'WPsettings', array(
 			'root' => esc_url_raw( rest_url() ),
 			'nonce' => wp_create_nonce( 'wp_rest' ),
 			'current_ID' => get_the_ID()

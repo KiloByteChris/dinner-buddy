@@ -10,18 +10,17 @@ jQuery(document).ready( function() {
         Click event for add ingredients button in the new recipe form
     */
     let newIngredientInputNumber = 1;
-    jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngredient", function(){
+    jQuery(".mtMainDiv").on("click", ".addNewIngredient", function(){
         var newIngredientInput = new_recipe_ing(newIngredientInputNumber);
         jQuery('.newIngredientsArea').append(newIngredientInput);
         newIngredientInputNumber++;
     });
     /*
-        Click event for submitting a new recipe
+        Submitting new recipe
     */
-    // variable used to hold post id information
     let newRecipeMediaId = '';
     let newMediaId = '';
-    jQuery(".dinnerBuddyMainDiv").on("click", ".saveRecipeButton", function(){
+    jQuery(".mtMainDiv").on("click", ".saveRecipeButton", function(){
         event.preventDefault()
         //creates an object to hold ingredient data
         let ingredientsObject = {};
@@ -102,7 +101,7 @@ jQuery(document).ready( function() {
     });// end save new recipe click event
 
     /*
-        Click event for Browse Recipes
+        Search Recipes
     */
     jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
         event.preventDefault();
@@ -179,7 +178,7 @@ jQuery(document).ready( function() {
     /*
         Click event for the add button. Creates a recipe in the dock
     */
-    jQuery(".dinnerBuddyMainDiv").on("click", ".selectRecipe", function(){
+    jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
         event.preventDefault();
         // Get the post id from the button
         var postId = this.id;
@@ -191,7 +190,6 @@ jQuery(document).ready( function() {
             method: 'GET',
             url: recipeCardUrl
         }).done( function(data){
-            //console.log(data);
             var recipeCard = create_recipe_card(data);
             jQuery('#recipeDock').append(recipeCard);
             // uses jquery UI  to make the recipe cards draggable
@@ -200,7 +198,7 @@ jQuery(document).ready( function() {
     });// end calendar click event
 
     /*
-        Click event for the add button. Creates a recipe in the dock
+        Delete Recipe Card
     */
     jQuery("#recipeDock").on("click", ".recipeCardX", function() {
         console.log(this.value);

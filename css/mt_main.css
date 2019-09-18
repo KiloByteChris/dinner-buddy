@@ -1,4 +1,4 @@
-.dinnerBuddyMainDiv {
+.mtMainDiv {
   display: grid;
   grid-template-areas: "header"
                       "content"
@@ -19,7 +19,8 @@
     font-size: 16px;
     font-weight: 200;
     width: 100%;
-    background-color: #add8e6;
+    background-color: #cecece;
+    border-bottom: 1px solid #000;
 }
 /*
     Dock

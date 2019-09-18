@@ -4,8 +4,8 @@
 .calendarDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 20px auto 100px auto 100px auto 100px;
-    grid-template-areas: "sun mon tue wed thu fri sat"
+    grid-template-rows: auto 100px auto 100px auto 100px;
+    grid-template-areas:
                         "Bl Bl Bl Bl Bl Bl Bl"
                         "sunb monb tueb wedb thub frib satb"
                         "Ll Ll Ll Ll Ll Ll Ll"
@@ -14,83 +14,160 @@
                         "sund mond tued wedd thud frid satd";
 
     height: calc(100vh - 250px);
+    max-height: calc(100vh - 250px);
     height: 100%;
     background-color: #ddd;
 }
 
-.dayDiv {
-    height: 20px;
-    margin: 0;
-    padding: 0;
+.mealLabel {
+    font-size: 14px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+/*
+    Serving Container
+*/
+.servingContainer {
+    height: 100px;
+    display: grid;
+    grid-template-rows: 15px 64px 19px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "day delete"
+                        "recipe recipe"
+                        "servings adjust";
     border: 1px solid black;
 }
 
-.dayDiv h4 {
-    font-size: 18px;
-    margin: 0px;
-    margin-top: -2.5px;
-    padding: 0px;
+.dayLabel {
+    grid-area: day;
+    font-size: 9px;
+    align-self: center;
+    margin: 0;
+    margin-left: 3px;
+    opacity: .6;
 }
 
+.calendarDelete {
+    display: none;
+    font-size: 9px;
+}
+
+.calendarRecipe {
+    grid-area: recipe;
+    margin: 0;
+    font-size: 12px;
+}
+
+.calendarServing{
+    grid-area: servings;
+    font-size: 14px;
+    margin: 0;
+}
+
+/*
+    breakfast
+*/
 .breakfastLabelDiv {
     grid-area: Bl;
     display: flex;
 }
 
 .breakfastLabelDiv p{
-    align-self: center;
+    align-self: end;
 }
 
-#SunDiv {
-    grid-area: sun;
+
+
+#SunBreakfast {
+    grid-area: sunb;
 }
-#MonDiv {
-    grid-area: mon;
+#MonBreakfast {
+    grid-area: monb;
 }
-#TueDiv {
-    grid-area: tue;
+#TueBreakfast {
+    grid-area: tueb;
 }
-#TueDiv {
-    grid-area: tue;
+#WedBreakfast {
+    grid-area: wedb;
 }
-#WedDiv {
-    grid-area: wed;
+#ThuBreakfast {
+    grid-area: thub;
 }
-#ThuDiv {
-    grid-area: thu;
+#FriBreakfast {
+    grid-area: frib;
 }
-#FriDiv {
-    grid-area: fri;
-}
-#SatDiv {
-    grid-area: sat;
-}
-.mealDiv{
-    border: 1px solid black;
+#SatBreakfast {
+    grid-area: satb;
 }
 
+/*
+    Lunch
+*/
 .lunchLabelDiv {
     display: flex;
     grid-area: Ll;
 }
 
 .lunchLabelDiv p {
-    align-self: center;
+    align-self: end;
 }
 
+#SunLunch {
+    grid-area: sunl;
+}
+#MonLunch {
+    grid-area: monl;
+}
+#TueLunch {
+    grid-area: tuel;
+}
+#WedLunch {
+    grid-area: wedl;
+}
+#ThuLunch {
+    grid-area: thul;
+}
+#FriLunch {
+    grid-area: fril;
+}
+#SatLunch {
+    grid-area: satl;
+}
+
+/*
+    Dinner
+*/
 .dinnerLabelDiv {
     display: flex;
     grid-area: Dl;
-}
-
-.dinnerLabelDiv {
     align-self: center;
 }
 
-.mealLabel {
-    font-size: 14px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+.dinnerLabelDiv p {
+    align-self: end;
+}
+
+#SunDinner {
+    grid-area: sund;
+}
+#MonDinner {
+    grid-area: mond;
+}
+#TueDinner {
+    grid-area: tued;
+}
+#WedDinner {
+    grid-area: wedd;
+}
+#ThuDinner {
+    grid-area: thud;
+}
+#FriDinner {
+    grid-area: frid;
+}
+#SatDinner {
+    grid-area: satd;
 }
 
 .servingContainer {

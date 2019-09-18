@@ -204,4 +204,33 @@ jQuery(document).ready( function() {
         console.log(this.value);
         jQuery('#card'+this.value).remove();
     });
+    /*
+        Recipe Servings Add
+    */
+    jQuery(".mtMainDiv").on("click", ".servingAdd", function(){
+        event.preventDefault();
+        var addId = this.attributes.id.value;
+        // select day from entryId string
+        var dayId = addId.slice(0, 3);
+        // select meal from entryId string
+        var mealId = addId.slice(3,4);
+        switch(mealId) {
+            case 'B':
+                dayId += 'Breakfast';
+                break;
+            case "L":
+                dayId += 'Lunch';
+                break;
+            case 'D':
+                dayId += 'Dinner';
+                break;
+        }
+        // Get current serving value
+        var servingKey = dayId + 'Serving';
+        console.log(servingKey);
+        console.log(sessionStorage);
+        mt_sess_add(servingKey);
+        console.log(sessionStorage);
+
+    });
 });// end document.ready

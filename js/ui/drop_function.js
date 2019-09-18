@@ -20,7 +20,9 @@ function drop_function(event, ui){
     jQuery('#' + event.target.id +' > .calendarServing').text('1');
     // show adjust servings buttons
     jQuery('#' + event.target.id +' > .adjustServing').show();
-
+    // assign values to session storage
+    mt_sess_set(event.target.id, recipeTitle);
+    console.log(sessionStorage);
     //OLD STUFF
     // var leftOver = Number(recipeServings) - Number(groupSize);
     // var mealCard = '<p class="mealCardTitle">'+recipeTitle+'</p>';

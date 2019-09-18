@@ -3,32 +3,38 @@
 */
 function calendar_view() {
     var calendarViewString = '';
-    var daysArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     calendarViewString += '<div id="calendarDiv" class="calendarDiv">';
-    // Loop through the days array and create calendar days
-    for(var i=0 ; i<7 ; i++ ){
-        calendarViewString += '<h4 class=>'+daysArray[i]+'</h4>'
-        calendarViewString += '<div id='+ daysArray[i] + 'Div '+' class="dayDiv">';
-            //Breakfast
-            calendarViewString += '<div class="mealDiv">';
-                calendarViewString += '<p class="mealLabel">Breakfast</p>';
-                calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Breakfast >';
-                calendarViewString += '</div>'; // end serving
-            calendarViewString += '</div>';// end meal
-            //Lunch
-            calendarViewString += '<div class="mealDiv">';
-                calendarViewString += '<p class="mealLabel">Lunch</p>';
-                calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Lunch >';
-                calendarViewString += '</div>'; // end serving
-            calendarViewString += '</div>';// end meal
-            //Dinner
-            calendarViewString += '<div class="mealDiv">';
-                calendarViewString += '<p class="mealLabel">Dinner</p>';
-                calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Dinner >';
-                calendarViewString += '</div>'; // end serving
-            calendarViewString += '</div>';// end meal
-        calendarViewString += '</div>';// end day
-    };
+        // Loop through the days array and create calendar day labels
+        for(var i=0 ; i<7 ; i++ ){
+            calendarViewString += '<div id='+ daysArray[i] + 'Div '+' class="dayDiv">';
+            calendarViewString += '<h4 class="'+daysArray[i]+'">'+daysArray[i]+'</h4>';
+            calendarViewString += '</div>';
+        };
+        //Breakfast
+        calendarViewString += '<div class="breakfastLabelDiv">';
+        calendarViewString += '<p id="breakfastLabel" class="mealLabel">Breakfast</p>';
+        calendarViewString += '</div>';
+        for(var i=0 ; i<7 ; i++ ){
+            calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Breakfast >';
+            calendarViewString += '</div>'; // end serving
+        }
+        // Lunch
+        calendarViewString += '<div class="lunchLabelDiv">';
+        calendarViewString += '<p id="lunchLabel" class="mealLabel">Lunch</p>';
+        calendarViewString += '</div>';
+        for(var i=0 ; i<7 ; i++ ){
+            calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Lunch >';
+            calendarViewString += '</div>'; // end serving
+        }
+        // Dinner
+        calendarViewString += '<div class="dinnerLabelDiv">';
+        calendarViewString += '<p id="dinnerLabel" class="mealLabel">Dinner</p>';
+        calendarViewString += '</div>';
+        for(var i=0 ; i<7 ; i++ ){
+            calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Dinner >';
+            calendarViewString += '</div>'; // end serving
+        }
     calendarViewString += '</div>';
     return calendarViewString;
 }

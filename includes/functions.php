@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 //Build a div that displays the plugin
 function mt_main(){
 
-    $MtContainer = '<div class="MtMainDiv">';
+    $MtContainer = '<div class="mtMainDiv">';
 
     $userInfo = check_user_login();
     if($userInfo){

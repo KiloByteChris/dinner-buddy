@@ -179,7 +179,7 @@ jQuery(document).ready( function() {
     /*
         Click event for the add button. Creates a recipe in the dock
     */
-    jQuery(".MtMainDiv").on("click", ".selectRecipe", function(){
+    jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
         event.preventDefault();
         // Get the post id from the button
         var postId = this.id;

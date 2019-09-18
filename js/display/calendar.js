@@ -7,7 +7,7 @@ function calendar_view() {
     calendarViewString += '<div id="calendarDiv" class="calendarDiv">';
         // Loop through the days array and create calendar day labels
         for(var i=0 ; i<7 ; i++ ){
-            calendarViewString += '<div id='+ daysArray[i] + 'BDiv '+' class="dayDiv">';
+            calendarViewString += '<div id='+ daysArray[i] + 'Div '+' class="dayDiv">';
             calendarViewString += '<h4 class="'+daysArray[i]+'">'+daysArray[i]+'</h4>';
             calendarViewString += '</div>';
         };

@@ -19,6 +19,7 @@ function drop_function(event, ui){
     // show servings
     jQuery('#' + event.target.id +' > .calendarServing').text('1');
     // show adjust servings buttons
+    jQuery('#' + event.target.id +' > .adjustServing').show();
 
     //OLD STUFF
     // var leftOver = Number(recipeServings) - Number(groupSize);

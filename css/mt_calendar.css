@@ -32,7 +32,7 @@
     height: 100px;
     display: grid;
     grid-template-rows: 15px 64px 19px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 33% 33% 33%;
     grid-template-areas: "day day delete"
                         "recipe recipe recipe"
                         "servings servingSub servingAdd";
@@ -59,7 +59,8 @@
 .calendarRecipe {
     grid-area: recipe;
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
+    overflow: hidden;
 }
 
 .calendarServing{
@@ -74,7 +75,7 @@
 .adjustServing {
     display: none;
     margin:0;
-    width: 100%;
+    /* width: 100%; */
     padding: 0;
 }
 

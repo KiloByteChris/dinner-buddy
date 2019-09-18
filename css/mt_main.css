@@ -1,0 +1,179 @@
+.dinnerBuddyMainDiv {
+  display: grid;
+  grid-template-areas: "header"
+                      "content"
+                      "dock"
+                      "dashboard";
+}
+
+.browseRecipeImg {
+    width: 150px;
+}
+
+/*
+    Header
+*/
+#MtHeader {
+    grid-area: header;
+    height: 75px;
+    font-size: 16px;
+    font-weight: 200;
+    width: 100%;
+    background-color: #add8e6;
+}
+/*
+    Dock
+*/
+#recipeDock {
+    grid-area: dock;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 100px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.recipeCard {
+    /* width: 100px; */
+    height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #add8e6;
+    border: 1px solid #000;
+    z-index: 99;
+}
+
+.recipeCard button{
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  margin: 0;
+}
+/*
+    Main Display
+*/
+.displayDiv {
+    /* grid-area: content;
+    display: grid; */
+    min-height: calc(100vh - 250px);
+    max-height: calc(100vh - 250px);
+    overflow: scroll;
+}
+/*
+  Dashboard
+*/
+.dashboard {
+    position: absolute;
+    bottom: 0;
+    grid-area: dashboard;
+    height: 75px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.dashboardButton {
+    font-size: 20px;
+    width: auto;
+    height: 75px;
+}
+
+/*
+  CALENDAR
+*/
+/* .calendarDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20px auto 100px auto 100px auto 100px;
+    grid-template-areas: "sun mon tue wed thu fri sat"
+                        "Bl Bl Bl Bl Bl Bl Bl"
+                        "sunb monb tueb wedb thub frib satb"
+                        "Ll Ll Ll Ll Ll Ll Ll"
+                        "sunl monl tuel wedl thul fril satl"
+                        "Dl Dl Dl Dl Dl Dl Dl"
+                        "sund mond tued wedd thud frid satd";
+
+    height: calc(100vh - 250px);
+    height: 100%;
+    background-color: #ddd;
+}
+
+.dayDiv {
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+}
+
+.dayDiv h4 {
+    font-size: 18px;
+    margin: 0px;
+    margin-top: -2.5px;
+    padding: 0px;
+}
+
+
+.breakfastLabelDiv {
+    grid-area: Bl;
+    display: flex;
+}
+
+.breakfastLabelDiv p{
+    align-self: center;
+}
+
+#SunDiv {
+    grid-area: sun;
+}
+#MonDiv {
+    grid-area: mon;
+}
+#TueDiv {
+    grid-area: tue;
+}
+#TueDiv {
+    grid-area: tue;
+}
+#WedDiv {
+    grid-area: wed;
+}
+#ThuDiv {
+    grid-area: thu;
+}
+#FriDiv {
+    grid-area: fri;
+}
+#SatDiv {
+    grid-area: sat;
+}
+.mealDiv{
+    border: 1px solid black;
+}
+
+.lunchLabelDiv {
+    display: flex;
+    grid-area: Ll;
+}
+
+.lunchLabelDiv p {
+    align-self: center;
+}
+
+.dinnerLabelDiv {
+    display: flex;
+    grid-area: Dl;
+}
+
+.dinnerLabelDiv {
+    align-self: center;
+}
+
+.mealLabel {
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.servingContainer {
+    border: 1px solid #000;
+} */

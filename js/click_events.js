@@ -10,7 +10,7 @@ jQuery(document).ready( function() {
         Click event for add ingredients button in the new recipe form
     */
     let newIngredientInputNumber = 1;
-    jQuery(".dinnerBuddyMainDiv").on("click", ".addNewIngredient", function(){
+    jQuery(".mtMainDiv").on("click", ".addNewIngredient", function(){
         var newIngredientInput = new_recipe_ing(newIngredientInputNumber);
         jQuery('.newIngredientsArea').append(newIngredientInput);
         newIngredientInputNumber++;
@@ -21,7 +21,7 @@ jQuery(document).ready( function() {
     // variable used to hold post id information
     let newRecipeMediaId = '';
     let newMediaId = '';
-    jQuery(".dinnerBuddyMainDiv").on("click", ".saveRecipeButton", function(){
+    jQuery(".mtMainDiv").on("click", ".saveRecipeButton", function(){
         event.preventDefault()
         //creates an object to hold ingredient data
         let ingredientsObject = {};
@@ -179,7 +179,7 @@ jQuery(document).ready( function() {
     /*
         Click event for the add button. Creates a recipe in the dock
     */
-    jQuery(".dinnerBuddyMainDiv").on("click", ".selectRecipe", function(){
+    jQuery(".MtMainDiv").on("click", ".selectRecipe", function(){
         event.preventDefault();
         // Get the post id from the button
         var postId = this.id;

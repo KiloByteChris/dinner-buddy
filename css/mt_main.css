@@ -1,4 +1,4 @@
-.dinnerBuddyMainDiv {
+.MtMainDiv {
   display: grid;
   grid-template-areas: "header"
                       "content"

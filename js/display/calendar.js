@@ -20,8 +20,9 @@ function calendar_view() {
                 //recipe
                 calendarViewString += '<p id="'+daysArray[i]+'BRecipe" class="calendarRecipe"></p>';
                 //serving
-                calendarViewString += '<button id="'+daysArray[i]+'BSub" class="adjustServing servingSub">-</button>';
                 calendarViewString += '<p id="'+daysArray[i]+'BServings" class="calendarServing"></p>';
+                calendarViewString += '<button id="'+daysArray[i]+'BSub" class="adjustServing servingSub">-</button>';
+                // calendarViewString += '<p id="'+daysArray[i]+'BServings" class="calendarServing"></p>';
                 calendarViewString += '<button id="'+daysArray[i]+'BAdd" class="adjustServing servingAdd">+</button>';
             calendarViewString += '</div>';
         }

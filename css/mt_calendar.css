@@ -33,9 +33,9 @@
     display: grid;
     grid-template-rows: 15px 64px 19px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "day . delete"
+    grid-template-areas: "day day delete"
                         "recipe recipe recipe"
-                        "sub servings add";
+                        "servings servingSub servingAdd";
     border: 1px solid black;
 }
 
@@ -67,22 +67,23 @@
     font-size: 14px;
     margin: 0;
     padding: 0;
+    width: 100%;
     align-self: center;
 }
 
 .adjustServing {
     display: none;
     margin:0;
-    /* width: 33%; */
+    width: 100%;
     padding: 0;
 }
 
 .servingSub {
-    grid-area: sub;
+    grid-area: servingSub;
 }
 
 .servingAdd {
-    grid-area: add;
+    grid-area: servingAdd;
 }
 
 /*

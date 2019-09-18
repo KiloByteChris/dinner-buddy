@@ -11,12 +11,21 @@ function drop_function(event, ui){
     var recipeServings = jQuery('#'+cardId+' > .recipeCardServings').text();
     // get the number of people in the group
     var groupSize = jQuery('.weeklyServings').val();
-    // build meal card
-    var leftOver = Number(recipeServings) - Number(groupSize);
-    var mealCard = '<p class="mealCardTitle">'+recipeTitle+'</p>';
-    mealCard += '<p class="mealCardServings">'+groupSize+'</p>';
+    // show recipe title in calendar div
+    var calendarRecipe = jQuery('#' + event.target.id +' > .calendarRecipe');
+    calendarRecipe.text(recipeTitle);
+    // show delete button
+    jQuery('#' + event.target.id +' > .calendarDelete').show();
+    // show servings
+    jQuery('#' + event.target.id +' > .calendarServing').text('1');
+    // show adjust servings buttons
+
+    //OLD STUFF
+    // var leftOver = Number(recipeServings) - Number(groupSize);
+    // var mealCard = '<p class="mealCardTitle">'+recipeTitle+'</p>';
+    // mealCard += '<p class="mealCardServings">'+groupSize+'</p>';
     // Display the meal card
-    jQuery('#' + event.target.id).html(mealCard);
+    //jQuery('#' + event.target.id).html(mealCard);
     // update recipe card with leftover value
-    jQuery('#'+cardId+' > .recipeCardServings').text(leftOver);
+    //jQuery('#'+cardId+' > .recipeCardServings').text(leftOver);
 }

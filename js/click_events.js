@@ -16,9 +16,8 @@ jQuery(document).ready( function() {
         newIngredientInputNumber++;
     });
     /*
-        Click event for submitting a new recipe
+        Submitting new recipe
     */
-    // variable used to hold post id information
     let newRecipeMediaId = '';
     let newMediaId = '';
     jQuery(".mtMainDiv").on("click", ".saveRecipeButton", function(){
@@ -102,7 +101,7 @@ jQuery(document).ready( function() {
     });// end save new recipe click event
 
     /*
-        Click event for Browse Recipes
+        Search Recipes
     */
     jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
         event.preventDefault();
@@ -191,7 +190,6 @@ jQuery(document).ready( function() {
             method: 'GET',
             url: recipeCardUrl
         }).done( function(data){
-            //console.log(data);
             var recipeCard = create_recipe_card(data);
             jQuery('#recipeDock').append(recipeCard);
             // uses jquery UI  to make the recipe cards draggable
@@ -200,7 +198,7 @@ jQuery(document).ready( function() {
     });// end calendar click event
 
     /*
-        Click event for the add button. Creates a recipe in the dock
+        Delete Recipe Card
     */
     jQuery("#recipeDock").on("click", ".recipeCardX", function() {
         console.log(this.value);

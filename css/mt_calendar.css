@@ -14,17 +14,55 @@
                         "sund mond tued wedd thud frid satd";
 
     height: calc(100vh - 250px);
+    max-height: calc(100vh - 250px);
     height: 100%;
     background-color: #ddd;
 }
 
-.mealDiv {
+.mealLabel {
+    font-size: 14px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+/*
+    Serving Container
+*/
+.servingContainer {
+    height: 100px;
+    display: grid;
+    grid-template-rows: 15px 64px 19px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "day delete"
+                        "recipe recipe"
+                        "servings adjust";
     border: 1px solid black;
 }
 
 .dayLabel {
-    font-size: 11px;
-    margin: 3px 0 0 3px;
+    grid-area: day;
+    font-size: 9px;
+    align-self: center;
+    margin: 0;
+    margin-left: 3px;
+    opacity: .6;
+}
+
+.calendarDelete {
+    display: none;
+    font-size: 9px;
+}
+
+.calendarRecipe {
+    grid-area: recipe;
+    margin: 0;
+    font-size: 12px;
+}
+
+.calendarServing{
+    grid-area: servings;
+    font-size: 14px;
+    margin: 0;
 }
 
 /*
@@ -38,6 +76,8 @@
 .breakfastLabelDiv p{
     align-self: end;
 }
+
+
 
 #SunBreakfast {
     grid-area: sunb;
@@ -103,6 +143,7 @@
     grid-area: Dl;
     align-self: center;
 }
+
 .dinnerLabelDiv p {
     align-self: end;
 }
@@ -127,12 +168,6 @@
 }
 #SatDinner {
     grid-area: satd;
-}
-
-.mealLabel {
-    font-size: 14px;
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
 
 .servingContainer {

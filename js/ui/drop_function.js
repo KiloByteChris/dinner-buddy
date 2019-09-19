@@ -8,7 +8,9 @@ function drop_function(event, ui){
     // use the id to select the title of the card
     var recipeTitle = jQuery('#'+cardId+' > .recipeCardTitle').text();
     // use the id to select the current number of servings from the card
-    var recipeServings = jQuery('#'+cardId+' > .recipeCardServings').text();    
+    var recipeServings = jQuery('#'+cardId+' > .recipeCardServings').text();
+    // assign values to session storage
+    mt_sess_set_recipe(event.target.id, recipeTitle);
     // show recipe title in calendar div
     var calendarRecipe = jQuery('#' + event.target.id +' > .calendarRecipe');
     calendarRecipe.text(sessionStorage[event.target.id])
@@ -20,7 +22,7 @@ function drop_function(event, ui){
     // show servings
     jQuery('#' + event.target.id +' > .calendarServing').text('1');
     // show adjust servings buttons
-    jQuery('#' + event.target.id +' > .adjustServing').show();
-    // assign values to session storage
-    mt_sess_set_recipe(event.target.id, recipeTitle);
+    jQuery('#' + event.target.id +' > .adjustServing').removeClass('hide');
+    jQuery('#' + event.target.id +' > .adjustServing').addClass('show');
+
 }

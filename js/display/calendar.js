@@ -28,20 +28,17 @@ function calendar_view() {
                 calendarViewString +='</p>';
                 // Serving
                     if(sessionStorage[daysArray[i] + 'BreakfastServing']) {
-                        console.log('if');
                         calendarViewString += '<p id="'+daysArray[i]+'BServings" class="calendarServing">';
                             calendarViewString += sessionStorage[daysArray[i] + 'BreakfastServing'];
                         calendarViewString += '</p>';
                         calendarViewString += '<button id="'+daysArray[i]+'BSub" class="adjustServing servingSub show">-</button>';
                         calendarViewString += '<button id="'+daysArray[i]+'BAdd" class="adjustServing servingAdd show">+</button>';
                     } else {
-                        console.log('else');
                         calendarViewString += '<p id="'+daysArray[i]+'BServings" class="calendarServing">';
                             calendarViewString += '';
                         calendarViewString += '</p>';
                         calendarViewString += '<button id="'+daysArray[i]+'BSub" class="adjustServing servingSub hide">-</button>';
                         calendarViewString += '<button id="'+daysArray[i]+'BAdd" class="adjustServing servingAdd hide">+</button>';
-                        console.log(daysArray[i]+'BSub');
                     }
             calendarViewString += '</div>';
         }

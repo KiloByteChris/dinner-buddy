@@ -32,10 +32,10 @@
     height: 100px;
     display: grid;
     grid-template-rows: 15px 64px 19px;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "day delete"
-                        "recipe recipe"
-                        "servings adjust";
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: "day day delete"
+                        "recipe recipe recipe"
+                        "servings servingSub servingAdd";
     border: 1px solid black;
 }
 
@@ -50,19 +50,49 @@
 
 .calendarDelete {
     display: none;
+    grid-area: delete;
     font-size: 9px;
+    width: 100%;
+    height: 100%;
 }
 
 .calendarRecipe {
     grid-area: recipe;
     margin: 0;
-    font-size: 12px;
+    font-size: 10px;
+    overflow: hidden;
 }
 
 .calendarServing{
     grid-area: servings;
     font-size: 14px;
     margin: 0;
+    padding: 0;
+    width: 100%;
+    align-self: center;
+}
+
+.adjustServing {
+    /* display: none; */
+    margin:0;
+    /* width: 100%; */
+    padding: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.show{
+    display: initial;
+}
+
+.servingSub {
+    grid-area: servingSub;
+}
+
+.servingAdd {
+    grid-area: servingAdd;
 }
 
 /*
@@ -77,26 +107,30 @@
     align-self: end;
 }
 
-
-
 #SunBreakfast {
     grid-area: sunb;
 }
+
 #MonBreakfast {
     grid-area: monb;
 }
+
 #TueBreakfast {
     grid-area: tueb;
 }
+
 #WedBreakfast {
     grid-area: wedb;
 }
+
 #ThuBreakfast {
     grid-area: thub;
 }
+
 #FriBreakfast {
     grid-area: frib;
 }
+
 #SatBreakfast {
     grid-area: satb;
 }
@@ -116,21 +150,27 @@
 #SunLunch {
     grid-area: sunl;
 }
+
 #MonLunch {
     grid-area: monl;
 }
+
 #TueLunch {
     grid-area: tuel;
 }
+
 #WedLunch {
     grid-area: wedl;
 }
+
 #ThuLunch {
     grid-area: thul;
 }
+
 #FriLunch {
     grid-area: fril;
 }
+
 #SatLunch {
     grid-area: satl;
 }
@@ -151,21 +191,27 @@
 #SunDinner {
     grid-area: sund;
 }
+
 #MonDinner {
     grid-area: mond;
 }
+
 #TueDinner {
     grid-area: tued;
 }
+
 #WedDinner {
     grid-area: wedd;
 }
+
 #ThuDinner {
     grid-area: thud;
 }
+
 #FriDinner {
     grid-area: frid;
 }
+
 #SatDinner {
     grid-area: satd;
 }

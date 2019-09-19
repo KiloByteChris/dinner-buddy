@@ -15,12 +15,23 @@
 */
 #MtHeader {
     grid-area: header;
+    display: grid;
+    grid-template-columns: auto 20px;
+    grid-template-areas: "headerTitle headerOptions"
     height: 75px;
     font-size: 16px;
     font-weight: 200;
     width: 100%;
     background-color: #cecece;
     border-bottom: 1px solid #000;
+}
+
+.headerTitle {
+    grid-area: headerTitle;
+}
+
+.headerOptions {
+    grid-area: headerOptions;
 }
 /*
     Dock

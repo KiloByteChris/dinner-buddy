@@ -99,7 +99,6 @@ jQuery(document).ready( function() {
             });// end featured image ajax request
         });// end ajax.complete for post request
     });// end save new recipe click event
-
     /*
         Search Recipes
     */
@@ -118,7 +117,6 @@ jQuery(document).ready( function() {
             jQuery('.displayDiv').html(browseRecipesView);
         });
     });// end browse recipes click event
-
     /*
         Click event for Search Recipes
     */
@@ -151,15 +149,12 @@ jQuery(document).ready( function() {
                     method: 'GET',
                     url: searchPostUrl,
                 }).done( function(searchResult) {
-                    //console.log(searchResult);
                     var searchViewCard = search_recipes_view(searchResult);
                     jQuery('#searchViewDiv').append(searchViewCard);
                 });
-
             })
         });
     });// end search recipes click event
-
     /*
         Click event for the Calendar button
     */
@@ -174,7 +169,6 @@ jQuery(document).ready( function() {
             }
         });
     });// end calendar click event
-
     /*
         Click event for the add button. Creates a recipe in the dock
     */
@@ -196,7 +190,6 @@ jQuery(document).ready( function() {
             jQuery('.draggable').draggable({revert: true, helper: "clone"});
         });
     });// end calendar click event
-
     /*
         Delete Recipe Card
     */
@@ -212,25 +205,38 @@ jQuery(document).ready( function() {
         var addId = this.attributes.id.value;
         // select day from entryId string
         var dayId = addId.slice(0, 3);
-        // select meal from entryId string
+        // select serving location
+        var servLoc = dayId;
         var mealId = addId.slice(3,4);
         switch(mealId) {
             case 'B':
                 dayId += 'Breakfast';
+                servLoc += 'BServings'
                 break;
             case "L":
                 dayId += 'Lunch';
+                servLoc += 'LServings'
+
                 break;
             case 'D':
                 dayId += 'Dinner';
+                servLoc += 'DServings'
+
                 break;
         }
         // Get current serving value
         var servingKey = dayId + 'Serving';
-        console.log(servingKey);
-        console.log(sessionStorage);
+        // Update sessionStorage
         mt_sess_add(servingKey);
+        // Update display from sessionStorage
+        var serVal = sessionStorage[servingKey];
+        jQuery('#'+servLoc).text(serVal);
         console.log(sessionStorage);
-
+    });
+    /*
+        Clear Session Data. Clears Calendar
+    */
+    jQuery('#headerOptions').on('click', '#headerOptionsButton', function() {
+        sessionStorage.clear();
     });
 });// end document.ready

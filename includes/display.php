@@ -14,7 +14,14 @@ class Display {
     */
     public function display_MtHeader() {
         $MtHeaderString = '<div id="MtHeader">';
-        $MtHeaderString .= '<h2>MealTime!</h2>';
+            // Title
+            $MtHeaderString .= '<div id="headerTitle">';
+                $MtHeaderString .= '<h2>MealTime!</h2>';
+            $MtHeaderString .= '</div>';
+            // Options
+            $MtHeaderString .= '<div id="headerOptions">';
+                $MtHeaderString .= '<button id="headerOptionsButton">|||</button>';
+            $MtHeaderString .= '</div>';
         $MtHeaderString .= '</div>';
         return $MtHeaderString;
     }

@@ -26,26 +26,8 @@ function mt_sess_set_recipe(entryId, entryValue) {
     Add a serving
 */
 function mt_sess_add(servingKey) {
-    // // select day from entryId string
-    // var dayId = entryId.slice(0, 3);
-    // // select meal from entryId string
-    // var mealId = entryId.slice(3,4);
-    // switch(mealId) {
-    //     case 'B':
-    //         dayId += 'Breakfast';
-    //         break;
-    //     case "L":
-    //         dayId += 'Lunch';
-    //         break;
-    //     case 'D':
-    //         dayId += 'Dinner';
-    //         break;
-    // }
-
-
     // // Get current serving value
     var currentServing = sessionStorage[servingKey];
-    console.log(currentServing);
     var currentStringNum = Number(currentServing);
     // Add a serving
     var newServing = currentStringNum + 1;

@@ -73,10 +73,18 @@
 }
 
 .adjustServing {
-    display: none;
+    /* display: none; */
     margin:0;
     /* width: 100%; */
     padding: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.show{
+    display: initial;
 }
 
 .servingSub {

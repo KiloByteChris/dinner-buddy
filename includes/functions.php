@@ -1,4 +1,4 @@
-<?php // Dinner Buddy - Core Function
+<?php // MealTime - Core Function
 
 // exit if file is called directly
 if ( ! defined( 'ABSPATH' ) ) {
@@ -6,26 +6,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 //Build a div that displays the plugin
-function dinner_buddy_main(){
+function mt_main(){
 
-    $dinnerBuddyContainer = '<div class="dinnerBuddyMainDiv">';
+    $MtContainer = '<div class="mtMainDiv">';
 
     $userInfo = check_user_login();
     if($userInfo){
         // Show the plugin
-        $dinnerBuddyContainer  .= display_dashboard();
+        $display = New Display;
+        $MtContainer .= $display->display_MtHeader();
+        $MtContainer .= $display->display_MtMainContent();
+        $MtContainer .= $display->display_MtRecipeDock();
+        $MtContainer .= $display->display_MtDashboard();
     }else{
         // Show login form
         wp_login_form();
         wp_register();
     };
-    $dinnerBuddyContainer .= '<div class="displayDiv">';
-    $dinnerBuddyContainer .= '</div>';
-    $dinnerBuddyContainer .= '</div>';
-    return $dinnerBuddyContainer;
+    $MtContainer .= '</div>';
+    return $MtContainer;
 }
 // Register the short code
-add_shortcode( 'DinnerBuddy', 'dinner_buddy_main' );
+add_shortcode( 'MealTime', 'mt_main' );
 
 // User Login
 function check_user_login(){

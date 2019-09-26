@@ -11,7 +11,7 @@ function new_recipe_form(){
     newRecipeView += '<input type="text" name="newRecipeTitle" id="newRecipeTitleInput">';
     // Textarea for the recipe description
     newRecipeView += '<label for="newRecipeDescription">Description</label>';
-    newRecipeView += '<textarea name="newRecipeDescription" class="newRecipeDescription" id="newRecipeDescription">Mutha... Fucka... </textarea>';
+    newRecipeView += '<textarea name="newRecipeDescription" class="newRecipeDescription" id="newRecipeDescription"></textarea>';
     // Select input for servings
     newRecipeView += '<label for="newRecipeServings">Servings</label>';
     newRecipeView += '<select name="newRecipeServings" id="newRecipeServingsInput">';
@@ -27,7 +27,7 @@ function new_recipe_form(){
     newRecipeView += '</fieldset>';
     // Description
     newRecipeView += '<label for="newRecipeInstructions">Instructions</label>';
-    newRecipeView += '<textarea name="newRecipeInstructions" id="newRecipeInstructions" class="newRecipeInstructions">Mutha... Fucka... 2</textarea>';
+    newRecipeView += '<textarea name="newRecipeInstructions" id="newRecipeInstructions" class="newRecipeInstructions"></textarea>';
     // Image input
     newRecipeView += '<label for="newRecipeImage">Image</label>';
     newRecipeView += '<input type="file" id="newRecipeImage" class="newRecipeImage" name="newRecipeImage" accept="image/*">';

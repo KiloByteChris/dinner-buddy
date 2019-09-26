@@ -1,0 +1,92 @@
+.mtMainDiv {
+  display: grid;
+  grid-template-areas: "header"
+                      "content"
+                      "dock"
+                      "dashboard";
+}
+
+.browseRecipeImg {
+    width: 150px;
+}
+
+/*
+    Header
+*/
+#MtHeader {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: auto 20px;
+    grid-template-areas: "headerTitle headerOptions"
+    height: 75px;
+    font-size: 16px;
+    font-weight: 200;
+    width: 100%;
+    background-color: #cecece;
+    border-bottom: 1px solid #000;
+}
+
+.headerTitle {
+    grid-area: headerTitle;
+}
+
+.headerOptions {
+    grid-area: headerOptions;
+}
+/*
+    Dock
+*/
+#recipeDock {
+    grid-area: dock;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 100px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.recipeCard {
+    /* width: 100px; */
+    display: flex;
+    height: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #add8e6;
+    border: 1px solid #000;
+    z-index: 99999;
+}
+
+.recipeCard button{
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    margin: 0;
+}
+/*
+    Main Display
+*/
+.displayDiv {
+    /* grid-area: content;
+    display: grid; */
+    min-height: calc(100vh - 250px);
+    max-height: calc(100vh - 250px);
+    overflow: scroll;
+}
+/*
+  Dashboard
+*/
+.dashboard {
+    position: absolute;
+    bottom: 0;
+    grid-area: dashboard;
+    height: 75px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.dashboardButton {
+    font-size: 20px;
+    width: auto;
+    height: 75px;
+}

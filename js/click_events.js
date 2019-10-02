@@ -158,17 +158,17 @@ jQuery(document).ready( function() {
     /*
         Click event for the Calendar button
     */
-    jQuery(".dashboard").on("click", ".calendarButton", function(){
-        event.preventDefault();
-        var calendarView = calendar_view();
-        jQuery('.displayDiv').html(calendarView);
-        jQuery( '.droppable' ).droppable({
-            // This function defines what happends when a recipe is dropped on the calendar
-            drop: function( event, ui) {
-                drop_function(event, ui);
-            }
-        });
-    });// end calendar click event
+    //jQuery(".dashboard").on("click", ".calendarButton", function(){
+     //   event.preventDefault();
+     //   var calendarView = calendar_view();
+    //    jQuery('.displayDiv').html(calendarView);
+     //   jQuery( '.droppable' ).droppable({
+    //        // This function defines what happends when a recipe is dropped on the calendar
+    //        drop: function( event, ui) {
+    //            drop_function(event, ui);
+    //        }
+    //    });
+    //});// end calendar click event
     /*
         Click event for the add button. Creates a recipe card in the dock
     */

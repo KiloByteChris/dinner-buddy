@@ -7,7 +7,7 @@ class APICall {
      */
     createRecipeCard(postID) {
         let cardData = {};
-        // Set the ajax method
+        // Set ajax method
         var method = "GET";
         // build a url for getting recipe posts
         var url = window.location.origin + '/wp-json/wp/v2/recipes/' + postID;
@@ -18,17 +18,14 @@ class APICall {
             method: method,
             url: url
         }).done( function(data) {
-            
-            // get the length of the recipeDockData object
-            var length = Object.keys(recipeDockData);
-            var cardCount = length.length;
-            // create a new recipe card object
+            // get length of recipeDockData
+            var cardCount = recipeDockData.length;
+            // add 1
+            cardCount++;
+            // create a new recipe card 
             const newCard = new RecipeCard(data, cardCount);
-            console.log(newCard);
-            //recipeDockData.push(newCard);
-            //console.log(recipeDockData);
-            //console.log(data);
-            //console.log(newCard);
+            // add card to recipe dock data
+            recipeDockData.push(newCard);
         });
     }
 }

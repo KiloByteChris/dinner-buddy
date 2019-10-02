@@ -1,5 +1,5 @@
 /*
-    Build and display the main calendar
+    Calendar Display
 */
 function calendar_view() {
     var calendarViewString = '';

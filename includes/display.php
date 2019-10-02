@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Display {
     /*
-        Display the header
+        Display Header
     */
     public function display_MtHeader() {
         $MtHeaderString = '<div id="MtHeader">';
@@ -34,7 +34,7 @@ class Display {
         return $MtDockString;
     }
     /*
-        Display the main content div
+        Display Main Content
     */
     public function display_MtMainContent() {
         $MtContent = '<div id="displayDiv" class="displayDiv">';
@@ -42,7 +42,7 @@ class Display {
         return $MtContent;
     }
     /*
-        Display the dashboard
+        Display Dashboard
     */
     public function display_MtDashboard() {
         $dashboardString = '<div class="dashboard" id="dashboard">';

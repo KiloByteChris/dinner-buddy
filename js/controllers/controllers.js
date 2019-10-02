@@ -1,28 +1,43 @@
 /*
-    Control the variouse click events
+    Control click events
 */
 jQuery(document).ready( function() {
     /*
-        Click event for the add recipe card button. Creates a recipe card in the dock
+        Add Recipe Card.
     */
     jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
         event.preventDefault();
-        // Get the recipe post id from the button that was clicked
+        // Get recipe ID
         var postID = this.id;
-        // create a new instance of the APICall class
+        // create new APICall 
         const call = new APICall();
-        // API call
-        var data = call.createRecipeCard(postID);
-        // assign data to a new recipe card instance
-        // var newCard = new RecipeCard(data.responseJSON);
+        // Get and save recipe data
+        call.createRecipeCard(postID);
 
-        // create card in sessionStorage
-        //     mt_sess_create_card(data);
-        //     // console.log(data);
-        //     var recipeCard = create_recipe_card(data);
-        //     jQuery('#recipeDock').append(recipeCard);
+       
         //     // uses jquery UI  to make the recipe cards draggable
         //     jQuery('.draggable').draggable({revert: true, helper: "clone"});
         // });
-    });// end calendar click event
+    });
+    /*
+    View Calendar
+    */
+    jQuery(".dashboard").on("click", ".calendarButton", function () {
+        event.preventDefault();
+        // Display Calendar
+        jQuery('.displayDiv').html(calendar_view());
+        // Display Recipe Dock
+        var dockDisplay = dock_view();
+        console.log(dockDisplay);
+        jQuery('#recipeDock').html(dock_view());
+        // jQuery UI Droppable Function
+        jQuery('.droppable').droppable({
+            drop: function (event, ui) {
+                drop_function(event, ui);
+            }
+        });
+        // jQuery UI Draggable
+        //jQuery('.draggable').draggable({revert: true, helper: "clone"});       
+    });
 });
+

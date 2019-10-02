@@ -54,6 +54,9 @@ wp_enqueue_script( 'browse_recipes' );
 wp_register_script( 'calendar', plugin_dir_url( __FILE__ ) . '/js/display/calendar.js', array('jquery'));
 wp_enqueue_script( 'calendar' );
 
+wp_register_script( 'recipe dock', plugin_dir_url( __FILE__ ) . '/js/display/recipe_dock.js', array('jquery'));
+wp_enqueue_script( 'recipe dock' );
+
 wp_register_script( 'recipe_cards', plugin_dir_url( __FILE__ ) . '/js/display/recipe_card.js', array('jquery'));
 wp_enqueue_script( 'recipe_cards' );
 

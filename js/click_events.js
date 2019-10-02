@@ -172,15 +172,15 @@ jQuery(document).ready( function() {
     /*
         Click event for the add button. Creates a recipe card in the dock
     */
-    jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
-        event.preventDefault();
-        // Get the recipe post id from the button
-        var postId = this.id;
-        var method = "GET";
-        var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
-        const call = new APICall(method, recipeCardUrl);
-        var data = call.createRecipeCard();
-        console.log(data);
+    // jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
+    //     event.preventDefault();
+    //     // Get the recipe post id from the button
+    //     var postId = this.id;
+    //     var method = "GET";
+    //     var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
+    //     const call = new APICall(method, recipeCardUrl);
+    //     var data = call.createRecipeCard();
+    //     console.log(data);
         // jQuery.ajax({
         //     beforeSend: function(xhr) {
         //         xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
@@ -196,7 +196,7 @@ jQuery(document).ready( function() {
         //     // uses jquery UI  to make the recipe cards draggable
         //     jQuery('.draggable').draggable({revert: true, helper: "clone"});
         // });
-    });// end calendar click event
+    // });// end calendar click event
     /*
         Delete Recipe Card
     */

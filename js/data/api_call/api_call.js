@@ -15,7 +15,12 @@ class APICall {
             },
             method: this.method,
             url: this.url
-        })
-        return cardData;
+        }).done( function(data) {
+            // create a new recipe card object
+            const newCard = new RecipeCard(data);
+            console.log(data);
+            console.log(newCard);
+        });
+        //return cardData;
     }
 }

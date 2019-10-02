@@ -42,6 +42,9 @@ wp_enqueue_script( 'mt_api_call' );
 wp_register_script( 'mt_recipe_card_data', plugin_dir_url( __FILE__ ) . '/js/data/modals/recipe_card_data.js', array('jquery'));
 wp_enqueue_script( 'mt_recipe_card_data' );
 
+wp_register_script( 'mt_recipe_dock_data', plugin_dir_url( __FILE__ ) . '/js/data/modals/recipe_dock_data.js', array('jquery'));
+wp_enqueue_script( 'mt_recipe_dock_data' );
+
 wp_register_script( 'new_recipe_form', plugin_dir_url( __FILE__ ) . '/js/display/new_recipe_form.js', array('jquery'));
 wp_enqueue_script( 'new_recipe_form' );
 

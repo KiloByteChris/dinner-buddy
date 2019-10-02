@@ -8,15 +8,11 @@ jQuery(document).ready( function() {
     jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
         event.preventDefault();
         // Get the recipe post id from the button that was clicked
-        var postId = this.id;
-        // Set the ajax method
-        var method = "GET";
-        // build a url for getting recipe posts
-        var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
+        var postID = this.id;
         // create a new instance of the APICall class
-        const call = new APICall(method, recipeCardUrl);
+        const call = new APICall();
         // API call
-        var data = call.createRecipeCard();
+        var data = call.createRecipeCard(postID);
         // assign data to a new recipe card instance
         // var newCard = new RecipeCard(data.responseJSON);
 

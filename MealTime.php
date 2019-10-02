@@ -33,6 +33,9 @@ wp_enqueue_script( 'jquery-ui-droppable' );
 wp_register_script( 'mt_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
 wp_enqueue_script( 'mt_click_events' );
 
+wp_register_script( 'mt_api_call', plugin_dir_url( __FILE__ ) . '/js/data/api_call/api_call.js', array('jquery'));
+wp_enqueue_script( 'mt_api_call' );
+
 wp_register_script( 'new_recipe_form', plugin_dir_url( __FILE__ ) . '/js/display/new_recipe_form.js', array('jquery'));
 wp_enqueue_script( 'new_recipe_form' );
 
@@ -60,9 +63,15 @@ wp_enqueue_script( 'drop_function' );
 function rest_edit_scripts() {
     //Make this information available in the click events script
     wp_localize_script( 'mt_click_events', 'WPsettings', array(
-			'root' => esc_url_raw( rest_url() ),
-			'nonce' => wp_create_nonce( 'wp_rest' ),
-			'current_ID' => get_the_ID()
-		));
+		'root' => esc_url_raw( rest_url() ),
+		'nonce' => wp_create_nonce( 'wp_rest' ),
+		'current_ID' => get_the_ID()
+	));
+    //Make this information available in the api calls script
+    wp_localize_script( 'mt_api_call', 'WPsettings', array(
+		'root' => esc_url_raw( rest_url() ),
+		'nonce' => wp_create_nonce( 'wp_rest' ),
+		'current_ID' => get_the_ID()
+	));
 }
 add_action( 'wp_enqueue_scripts', 'rest_edit_scripts' );

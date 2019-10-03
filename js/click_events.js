@@ -126,7 +126,7 @@ jQuery(document).ready( function() {
         var searchTerm = jQuery('.searchInput').val();
         // Get recent recipe data for the 'search recipes' view
         var searchRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?search=' + searchTerm;
-        console.log(searchRecipesUrl);
+        //console.log(searchRecipesUrl);
         jQuery.ajax({
             beforeSend: function(xhr) {
                 xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
@@ -238,7 +238,7 @@ jQuery(document).ready( function() {
         // Update display from sessionStorage
         var serVal = sessionStorage[servingKey];
         jQuery('#'+servLoc).text(serVal);
-        console.log(sessionStorage);
+        //console.log(sessionStorage);
     });
     /*
         Clear Session Data.

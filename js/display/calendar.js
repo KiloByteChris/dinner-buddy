@@ -3,7 +3,7 @@
 */
 function calendar_view() {
     var calendarViewString = '';
-    var daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var daysArray = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
     calendarViewString += '<div id="calendarDiv" class="calendarDiv">';
         //Breakfast
         //meal label
@@ -12,9 +12,9 @@ function calendar_view() {
         calendarViewString += '</div>';
         for(var i=0 ; i<7 ; i++ ){
             // Meal Container
-            calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'Breakfast >';
+            calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'B >';
                 //day label
-                calendarViewString += '<p id="'+daysArray[i]+'B" class="dayLabel">'+daysArray[i]+'</p>'
+                calendarViewString += '<p id="'+daysArray[i]+'Breakfast" class="dayLabel">'+daysArray[i]+'</p>'
                 //delete button
                 calendarViewString += '<button id="'+daysArray[i]+'BDelete" class="calendarDelete"><i class="fa fa-remove"></i></button>'
                 //recipe

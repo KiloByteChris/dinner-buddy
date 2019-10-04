@@ -1,10 +1,7 @@
 /*
  *  Update Calendar View Display
  */
-var daysArray = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-var mealKeys = ['B', 'L', 'D']
-function calendar_update(calendarData, daysArray) {
-    var daysArray = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+function calendar_update(calendarData, daysArray, mealKeys) {
     for (var i = 0; i < daysArray.length; i++) {
         for (var j = 0; j < mealKeys.length; j++) {
             var currentMeal = daysArray[i] + mealKeys[j];

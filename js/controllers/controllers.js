@@ -22,9 +22,9 @@ jQuery(document).ready( function() {
     jQuery(".dashboard").on("click", ".calendarButton", function () {
         event.preventDefault();
         // Display Calendar View
-        jQuery('.displayDiv').html(calendar_view());
+        jQuery('.displayDiv').html(calendar_view(daysArray, mealKeys));
         // Display Calendar Data
-        calendar_update(calendarData);
+        calendar_update(calendarData, daysArray, mealKeys);
         // Display Recipe Dock
         jQuery('#recipeDock').html(dock_view());
         // jQuery UI Draggable
@@ -32,7 +32,7 @@ jQuery(document).ready( function() {
         // jQuery UI Droppable Function
         jQuery('.droppable').droppable({
             drop: function (event, ui) {
-                drop_function(event, ui);
+                drop_function(event, ui, defaultServings);
             }
         });             
     });

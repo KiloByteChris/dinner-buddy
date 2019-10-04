@@ -2,9 +2,7 @@
    Droppable Event Function
    Triggered when a recipe card is dropped on a calendar day
 */
-function drop_function(event, ui) {
-    //
-    var default_servings = 1;
+function drop_function(event, ui, defaultServings) {
     // Get id of dropped card
     var cardId = ui.draggable.context.id;
     // Use id to select card title
@@ -13,8 +11,7 @@ function drop_function(event, ui) {
     var recipeServings = jQuery('#'+cardId+' > .recipeCardServings').text();
     // Save title and servings to calendar data
     calendarData[event.target.id] = recipeTitle;
-    calendarData[event.target.id + 'Serv'] = default_servings;
+    calendarData[event.target.id + 'Serv'] = defaultServings;
     // Update calendar data display
-    calendar_update(calendarData);
-    console.log(calendarData);
+    calendar_update(calendarData, daysArray, mealKeys);
 }

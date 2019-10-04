@@ -20,14 +20,12 @@ class APICall {
         }).done( function(data) {
             // get length of recipeDockData
             var cardCount = recipeDockData.length;
-            console.log(cardCount);
             // add 1
             cardCount++;
             // create a new recipe card 
             const newCard = new RecipeCard(data, cardCount);
             // add card to recipe dock data
             recipeDockData.push(newCard);
-          
         });
     }
 }

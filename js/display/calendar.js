@@ -10,7 +10,7 @@ function calendar_view() {
         calendarViewString += '<div class="breakfastLabelDiv">';
         calendarViewString += '<p id="breakfastLabel" class="mealLabel">Breakfast</p>';
         calendarViewString += '</div>';
-    for (var i = 1; i <= daysArray.length ; i++ ){
+    for (var i = 0; i < daysArray.length ; i++ ){
             // Meal Container
             calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'B >';
                 //day label

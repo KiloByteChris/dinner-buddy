@@ -74,12 +74,14 @@ wp_enqueue_script( 'recipe_cards' );
 wp_register_script( 'search_recipes', plugin_dir_url( __FILE__ ) . '/js/display/search_recipes.js', array('jquery'));
 wp_enqueue_script( 'search_recipes' );
 
-wp_register_script( 'mt_sess_data', plugin_dir_url( __FILE__ ) . '/js/data/session_data.js', array('jquery'));
-wp_enqueue_script( 'mt_sess_data' );
+wp_register_script( 'mt_update_calendar', plugin_dir_url( __FILE__ ) . '/js/display/update/calendar_update.js', array('jquery'));
+wp_enqueue_script( 'mt_update_calendar' );
 
 wp_register_script( 'drop_function', plugin_dir_url( __FILE__ ) . '/js/ui/drop_function.js', array('jquery'));
 wp_enqueue_script( 'drop_function' );
-
+//Session Data
+wp_register_script( 'mt_sess_data', plugin_dir_url( __FILE__ ) . '/js/data/session_data.js', array('jquery'));
+wp_enqueue_script( 'mt_sess_data' );
 
 
 // Get information used for authentication

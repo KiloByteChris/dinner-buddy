@@ -17,12 +17,14 @@ jQuery(document).ready( function() {
         jQuery('#recipeDock').html(dock_view());
     });
     /*
-        View Calendar
+        Display Calendar
     */
     jQuery(".dashboard").on("click", ".calendarButton", function () {
         event.preventDefault();
-        // Display Calendar
+        // Display Calendar View
         jQuery('.displayDiv').html(calendar_view());
+        // Display Calendar Data
+        calendar_update(calendarData);
         // Display Recipe Dock
         jQuery('#recipeDock').html(dock_view());
         // jQuery UI Draggable

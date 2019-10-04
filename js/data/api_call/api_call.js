@@ -26,7 +26,7 @@ class APICall {
             // create a new recipe card 
             const newCard = new RecipeCard(data, cardCount);
             // add card to recipe dock data
-            recipeDockData[cardCount] = newCard;
+            recipeDockData.push(newCard);
           
         });
     }

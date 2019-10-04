@@ -1,5 +1,5 @@
 /*
-    Calendar View
+    Calendar Display
 */
 function calendar_view() {
     var calendarViewString = '';
@@ -10,7 +10,7 @@ function calendar_view() {
         calendarViewString += '<div class="breakfastLabelDiv">';
         calendarViewString += '<p id="breakfastLabel" class="mealLabel">Breakfast</p>';
         calendarViewString += '</div>';
-    for (var i = 1; i <= daysArray.length ; i++ ){
+        for(var i=0 ; i<7 ; i++ ){
             // Meal Container
             calendarViewString += '<div class="servingContainer droppable ui-widget-header" id='+daysArray[i]+'B >';
                 //day label
@@ -19,14 +19,27 @@ function calendar_view() {
                 calendarViewString += '<button id="'+daysArray[i]+'BDelete" class="calendarDelete"><i class="fa fa-remove"></i></button>'
                 //recipe
                 calendarViewString += '<p id="'+daysArray[i]+'BRecipe" class="calendarRecipe">';
+                    // check if recipe is set
+                    if(sessionStorage[daysArray[i] + 'Breakfast']) {
+                        calendarViewString += sessionStorage[daysArray[i] + 'Breakfast'];
+                    } else {
+                        calendarViewString += '';
+                    }
                 calendarViewString +='</p>';
                 // Serving
-                calendarViewString += '<p id="'+daysArray[i]+'BServings" class="calendarServing">';
-                calendarViewString += '';
-                calendarViewString += '</p>';
-                calendarViewString += '<button id="'+daysArray[i]+'BSub" class="adjustServing servingSub hide">-</button>';
-                calendarViewString += '<button id="'+daysArray[i]+'BAdd" class="adjustServing servingAdd hide">+</button>';
-                    
+                    if(sessionStorage[daysArray[i] + 'BreakfastServing']) {
+                        calendarViewString += '<p id="'+daysArray[i]+'BServings" class="calendarServing">';
+                            calendarViewString += sessionStorage[daysArray[i] + 'BreakfastServing'];
+                        calendarViewString += '</p>';
+                        calendarViewString += '<button id="'+daysArray[i]+'BSub" class="adjustServing servingSub show">-</button>';
+                        calendarViewString += '<button id="'+daysArray[i]+'BAdd" class="adjustServing servingAdd show">+</button>';
+                    } else {
+                        calendarViewString += '<p id="'+daysArray[i]+'BServings" class="calendarServing">';
+                            calendarViewString += '';
+                        calendarViewString += '</p>';
+                        calendarViewString += '<button id="'+daysArray[i]+'BSub" class="adjustServing servingSub hide">-</button>';
+                        calendarViewString += '<button id="'+daysArray[i]+'BAdd" class="adjustServing servingAdd hide">+</button>';
+                    }
             calendarViewString += '</div>';
         }
         // Lunch

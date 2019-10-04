@@ -3,8 +3,8 @@
 */
 jQuery(document).ready( function() {
     /*
-        Add Recipe Card.
-    */
+     *   Add Recipe Card.
+     */
     jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
         event.preventDefault();
         // Get recipe ID
@@ -17,8 +17,8 @@ jQuery(document).ready( function() {
         jQuery('#recipeDock').html(dock_view());
     });
     /*
-        Display Calendar
-    */
+     *   Display Calendar
+     */
     jQuery(".dashboard").on("click", ".calendarButton", function () {
         event.preventDefault();
         // Display Calendar View
@@ -36,39 +36,29 @@ jQuery(document).ready( function() {
             }
         });             
     });
-    ///*
-    //    Recipe Servings Add
-    //*/
-    //jQuery(".mtMainDiv").on("click", ".servingAdd", function () {
-    //    event.preventDefault();
-    //    var addId = this.attributes.id.value;
-    //    // select day from entryId string
-    //    var dayId = addId.slice(0, 3);
-    //    // select serving location
-    //    var servLoc = dayId;
-    //    var mealId = addId.slice(3, 4);
-    //    switch (mealId) {
-    //        case 'B':
-    //            dayId += 'Breakfast';
-    //            servLoc += 'BServings'
-    //            break;
-    //        case "L":
-    //            dayId += 'Lunch';
-    //            servLoc += 'LServings'
-    //            break;
-    //        case 'D':
-    //            dayId += 'Dinner';
-    //            servLoc += 'DServings'
-    //            break;
-    //    }
-    //    // Get current serving value
-    //    var servingKey = dayId + 'Serving';
-    //    // Update sessionStorage
-    //    mt_sess_add(servingKey);
-    //    // Update display from sessionStorage
-    //    var serVal = sessionStorage[servingKey];
-    //    jQuery('#' + servLoc).text(serVal);
-    //    console.log(sessionStorage);
-    //});
+    /*
+     *   Recipe Servings Add
+     */
+    jQuery(".mtMainDiv").on("click", ".servingAdd", function () {
+        event.preventDefault();
+        var addId = this.attributes.id.value;
+        console.log(this.attributes.id.value);
+        console.log(recipeDockData);
+        // select day from entryId string
+        var dayId = addId.slice(0, 3);
+        console.log(dayId);
+        //select serving location
+        var servLoc = dayId;
+        // Get Meal Key
+        var mealId = addId.slice(3, 4);
+        // Select serving amount from calendarData
+        var calendarServings = calendarData[dayId + mealId + 'Serv'];
+        // add 1 to serving amount
+        calendarServings++;
+        // Update Calendar Data
+        calendarData[dayId + mealId + 'Serv'] = calendarServings;
+        // Display Data
+        calendar_update(calendarData, daysArray, mealKeys);
+    });
 });
 

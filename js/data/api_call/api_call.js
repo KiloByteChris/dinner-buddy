@@ -6,7 +6,6 @@ class APICall {
      * Create Recipe Card AJAX request 
      */
     createRecipeCard(postID) {
-        let cardData = {};
         // Set ajax method
         var method = "GET";
         // build a url for getting recipe posts

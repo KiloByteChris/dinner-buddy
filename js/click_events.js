@@ -126,7 +126,7 @@ jQuery(document).ready( function() {
         var searchTerm = jQuery('.searchInput').val();
         // Get recent recipe data for the 'search recipes' view
         var searchRecipesUrl = window.location.origin + '/wp-json/wp/v2/recipes?search=' + searchTerm;
-        console.log(searchRecipesUrl);
+        //console.log(searchRecipesUrl);
         jQuery.ajax({
             beforeSend: function(xhr) {
                 xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
@@ -158,41 +158,45 @@ jQuery(document).ready( function() {
     /*
         Click event for the Calendar button
     */
-    jQuery(".dashboard").on("click", ".calendarButton", function(){
-        event.preventDefault();
-        var calendarView = calendar_view();
-        jQuery('.displayDiv').html(calendarView);
-        jQuery( '.droppable' ).droppable({
-            // This function defines what happends when a recipe is dropped on the calendar
-            drop: function( event, ui) {
-                drop_function(event, ui);
-            }
-        });
-    });// end calendar click event
+    //jQuery(".dashboard").on("click", ".calendarButton", function(){
+     //   event.preventDefault();
+     //   var calendarView = calendar_view();
+    //    jQuery('.displayDiv').html(calendarView);
+     //   jQuery( '.droppable' ).droppable({
+    //        // This function defines what happends when a recipe is dropped on the calendar
+    //        drop: function( event, ui) {
+    //            drop_function(event, ui);
+    //        }
+    //    });
+    //});// end calendar click event
     /*
         Click event for the add button. Creates a recipe card in the dock
     */
-    jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
-        event.preventDefault();
-        // Get the post id from the button
-        var postId = this.id;
-        var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
-        jQuery.ajax({
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-            },
-            method: 'GET',
-            url: recipeCardUrl
-        }).done( function(data){
-            // create card in sessionStorage
-            mt_sess_create_card(data);
-            // console.log(data);
-            var recipeCard = create_recipe_card(data);
-            jQuery('#recipeDock').append(recipeCard);
-            // uses jquery UI  to make the recipe cards draggable
-            jQuery('.draggable').draggable({revert: true, helper: "clone"});
-        });
-    });// end calendar click event
+    // jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
+    //     event.preventDefault();
+    //     // Get the recipe post id from the button
+    //     var postId = this.id;
+    //     var method = "GET";
+    //     var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
+    //     const call = new APICall(method, recipeCardUrl);
+    //     var data = call.createRecipeCard();
+    //     console.log(data);
+        // jQuery.ajax({
+        //     beforeSend: function(xhr) {
+        //         xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+        //     },
+        //     method: 'GET',
+        //     url: recipeCardUrl
+        // }).done( function(data){
+        //     // create card in sessionStorage
+        //     mt_sess_create_card(data);
+        //     // console.log(data);
+        //     var recipeCard = create_recipe_card(data);
+        //     jQuery('#recipeDock').append(recipeCard);
+        //     // uses jquery UI  to make the recipe cards draggable
+        //     jQuery('.draggable').draggable({revert: true, helper: "clone"});
+        // });
+    // });// end calendar click event
     /*
         Delete Recipe Card
     */
@@ -234,7 +238,7 @@ jQuery(document).ready( function() {
         // Update display from sessionStorage
         var serVal = sessionStorage[servingKey];
         jQuery('#'+servLoc).text(serVal);
-        console.log(sessionStorage);
+        //console.log(sessionStorage);
     });
     /*
         Clear Session Data.

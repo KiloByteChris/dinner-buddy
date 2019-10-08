@@ -27,12 +27,36 @@ wp_enqueue_script( 'jquery-ui-widget' );
 wp_enqueue_script( 'jquery-ui-draggable' );
 wp_enqueue_script( 'jquery-ui-droppable' );
 
-// wp_register_script( 'dinner_buddy_routing', plugin_dir_url( __FILE__ ) . '/js/routes.js', array('jquery'));
-// wp_enqueue_script( 'dinner_buddy_routing' );
-
+/*
+	Controllers
+*/
 wp_register_script( 'mt_click_events', plugin_dir_url( __FILE__ ) . '/js/click_events.js', array('jquery'));
 wp_enqueue_script( 'mt_click_events' );
 
+wp_register_script( 'mt_controllers', plugin_dir_url( __FILE__ ) . '/js/controllers/controllers.js', array('jquery'));
+wp_enqueue_script( 'mt_controllers' );
+
+/*
+	Data
+*/
+// API Call
+wp_register_script( 'mt_api_call', plugin_dir_url( __FILE__ ) . '/js/data/api_call/api_call.js', array('jquery'));
+wp_enqueue_script( 'mt_api_call' );
+// Recipe Card Data
+wp_register_script( 'mt_recipe_card_data', plugin_dir_url( __FILE__ ) . '/js/data/models/recipe_card_data.js', array('jquery'));
+wp_enqueue_script( 'mt_recipe_card_data' );
+// Recipe Dock Data
+wp_register_script( 'mt_recipe_dock_data', plugin_dir_url( __FILE__ ) . '/js/data/models/recipe_dock_data.js', array('jquery'));
+wp_enqueue_script( 'mt_recipe_dock_data' );
+// Calendar Data
+wp_register_script( 'mt_calendar_data', plugin_dir_url( __FILE__ ) . '/js/data/models/calendar_data.js', array('jquery'));
+wp_enqueue_script( 'mt_calendar_data' );
+// Meal Time Helper Data
+wp_register_script( 'mt_data', plugin_dir_url( __FILE__ ) . '/js/data/mt_data.js', array('jquery'));
+wp_enqueue_script( 'mt_data' );
+/*
+	Display
+*/
 wp_register_script( 'new_recipe_form', plugin_dir_url( __FILE__ ) . '/js/display/new_recipe_form.js', array('jquery'));
 wp_enqueue_script( 'new_recipe_form' );
 
@@ -42,27 +66,38 @@ wp_enqueue_script( 'browse_recipes' );
 wp_register_script( 'calendar', plugin_dir_url( __FILE__ ) . '/js/display/calendar.js', array('jquery'));
 wp_enqueue_script( 'calendar' );
 
+wp_register_script( 'recipe dock', plugin_dir_url( __FILE__ ) . '/js/display/recipe_dock.js', array('jquery'));
+wp_enqueue_script( 'recipe dock' );
+
 wp_register_script( 'recipe_cards', plugin_dir_url( __FILE__ ) . '/js/display/recipe_card.js', array('jquery'));
 wp_enqueue_script( 'recipe_cards' );
 
 wp_register_script( 'search_recipes', plugin_dir_url( __FILE__ ) . '/js/display/search_recipes.js', array('jquery'));
 wp_enqueue_script( 'search_recipes' );
 
-wp_register_script( 'mt_sess_data', plugin_dir_url( __FILE__ ) . '/js/data/session_data.js', array('jquery'));
-wp_enqueue_script( 'mt_sess_data' );
+wp_register_script( 'mt_update_calendar', plugin_dir_url( __FILE__ ) . '/js/display/update/calendar_update.js', array('jquery'));
+wp_enqueue_script( 'mt_update_calendar' );
 
 wp_register_script( 'drop_function', plugin_dir_url( __FILE__ ) . '/js/ui/drop_function.js', array('jquery'));
 wp_enqueue_script( 'drop_function' );
-
+//Session Data
+wp_register_script( 'mt_sess_data', plugin_dir_url( __FILE__ ) . '/js/data/session_data.js', array('jquery'));
+wp_enqueue_script( 'mt_sess_data' );
 
 
 // Get information used for authentication
 function rest_edit_scripts() {
     //Make this information available in the click events script
     wp_localize_script( 'mt_click_events', 'WPsettings', array(
-			'root' => esc_url_raw( rest_url() ),
-			'nonce' => wp_create_nonce( 'wp_rest' ),
-			'current_ID' => get_the_ID()
-		));
+		'root' => esc_url_raw( rest_url() ),
+		'nonce' => wp_create_nonce( 'wp_rest' ),
+		'current_ID' => get_the_ID()
+	));
+    //Make this information available in the api calls script
+    wp_localize_script( 'mt_api_call', 'WPsettings', array(
+		'root' => esc_url_raw( rest_url() ),
+		'nonce' => wp_create_nonce( 'wp_rest' ),
+		'current_ID' => get_the_ID()
+	));
 }
 add_action( 'wp_enqueue_scripts', 'rest_edit_scripts' );

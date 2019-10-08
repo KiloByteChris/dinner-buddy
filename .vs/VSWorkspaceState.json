@@ -4,12 +4,8 @@
     "\\js",
     "\\js\\controllers",
     "\\js\\data",
-    "\\js\\data\\api_call",
-    "\\js\\data\\models",
-    "\\js\\data\\update",
-    "\\js\\display",
-    "\\js\\ui"
+    "\\js\\data\\models"
   ],
-  "SelectedNode": "\\js\\data\\api_call\\api_call.js",
+  "SelectedNode": "\\js\\controllers\\controllers.js",
   "PreviewInSolutionExplorer": false
 }

@@ -19,13 +19,14 @@ class APICall {
             url: url
         }).done( function(data) {
             // get length of recipeDockData
-            var cardCount = recipeDockData.length;
+            var keys = Object.keys(recipeDockData);
+            var keyCount = keys.length;
             // add 1
-            cardCount++;
+            var cardCount = keyCount + 1;
             // create a new recipe card 
             const newCard = new RecipeCard(data, cardCount);
             // add card to recipe dock data
-            recipeDockData.push(newCard);
+            recipeDockData['card' + cardCount] = newCard;
         });
     }
 }

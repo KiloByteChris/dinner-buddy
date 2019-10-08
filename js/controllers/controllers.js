@@ -15,6 +15,7 @@ jQuery(document).ready( function() {
         call.createRecipeCard(postID);
         // Display Recipe Dock
         jQuery('#recipeDock').html(dock_view());
+        console.log(recipeDockData);
     });
     /*
      *   Display Calendar
@@ -42,11 +43,8 @@ jQuery(document).ready( function() {
     jQuery(".mtMainDiv").on("click", ".servingAdd", function () {
         event.preventDefault();
         var addId = this.attributes.id.value;
-        console.log(this.attributes.id.value);
-        console.log(recipeDockData);
         // select day from entryId string
         var dayId = addId.slice(0, 3);
-        console.log(dayId);
         //select serving location
         var servLoc = dayId;
         // Get Meal Key

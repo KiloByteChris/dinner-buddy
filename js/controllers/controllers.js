@@ -61,4 +61,29 @@ jQuery(document).ready( function() {
         // Update Display
         update_dock(recipeDockData);
     });
+    /*
+     *   Recipe Servings Subtract
+     */
+    jQuery(".mtMainDiv").on("click", ".servingSub", function () {
+        event.preventDefault();
+        var addId = this.attributes.id.value;
+        // select day from entryId string
+        var dayId = addId.slice(0, 3);
+        //select serving location
+        var servLoc = dayId;
+        // Get Meal Key
+        var mealId = addId.slice(3, 4);
+        // Select serving amount from calendarData
+        var calendarServings = calendarData[dayId + mealId + 'Serv'];
+        // add 1 to serving amount
+        calendarServings--;
+        // Update Calendar Data
+        calendarData[dayId + mealId + 'Serv'] = calendarServings;
+        // Display Data
+        calendar_update(calendarData, daysArray, mealKeys);
+        // Subtract 1 from recipe card data
+        recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings = recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings + 1;
+        // Update Display
+        update_dock(recipeDockData);
+    });
 });

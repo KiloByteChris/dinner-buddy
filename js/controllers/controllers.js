@@ -14,7 +14,7 @@ jQuery(document).ready( function() {
         // Get and save recipe data
         call.createRecipeCard(postID);
         // Display Recipe Dock
-        jQuery('#recipeDock').html(dock_view());
+        //jQuery('#recipeDock').html(dock_view());
     });
     /*
      *   Display Calendar
@@ -91,7 +91,7 @@ jQuery(document).ready( function() {
     */
     jQuery("#recipeDock").on("click", ".recipeCardX", function() {
         // Delete associated calendar data values
-        for(key in calendarData){
+        for(key in calendarData) {
             // Check all keys for the value of the deleted card
             if(calendarData[key] == 'card'+this.value){
                 // If a match, Get the meal id from the key
@@ -115,4 +115,19 @@ jQuery(document).ready( function() {
         delete recipeDockData['card'+this.value];
         calendar_update(calendarData, daysArray, mealKeys);
     });
+    /*
+     *  Delete Calendar Data  
+     */
+    jQuery('#displayDiv').on('click', '.calendarDelete', function() {
+        console.log(this.id.slice(0,4));
+        var deleteId = this.id.slice(0,4);
+        //jQuery('#' + deleteId + ' > .calendarServing')
+        for(key in calendarData) {
+            console.log(key);
+            if(key == deleteId || key == deleteId + 'CardMatch' || key == deleteId + 'Serv') {
+                calendarData[key] = '';
+            }
+        }
+
+    })
 });

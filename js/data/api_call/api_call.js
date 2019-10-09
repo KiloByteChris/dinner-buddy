@@ -22,6 +22,10 @@ class APICall {
             const newCard = new RecipeCard(data, cardIdCount);
             // add card to recipe dock data
             recipeDockData['card' + cardIdCount] = newCard;
+            jQuery('#recipeDock').html(dock_view());
+
+            update_dock(recipeDockData);
+
         });
     }
 }

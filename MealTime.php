@@ -78,6 +78,9 @@ wp_enqueue_script( 'search_recipes' );
 wp_register_script( 'mt_update_calendar', plugin_dir_url( __FILE__ ) . '/js/display/update/calendar_update.js', array('jquery'));
 wp_enqueue_script( 'mt_update_calendar' );
 
+wp_register_script( 'mt_recipe_dock_update', plugin_dir_url( __FILE__ ) . '/js/display/update/recipe_dock_update.js', array('jquery'));
+wp_enqueue_script( 'mt_recipe_dock_update' );
+
 wp_register_script( 'drop_function', plugin_dir_url( __FILE__ ) . '/js/ui/drop_function.js', array('jquery'));
 wp_enqueue_script( 'drop_function' );
 //Session Data

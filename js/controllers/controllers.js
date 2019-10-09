@@ -15,7 +15,6 @@ jQuery(document).ready( function() {
         call.createRecipeCard(postID);
         // Display Recipe Dock
         jQuery('#recipeDock').html(dock_view());
-        console.log(recipeDockData);
     });
     /*
      *   Display Calendar
@@ -57,6 +56,9 @@ jQuery(document).ready( function() {
         calendarData[dayId + mealId + 'Serv'] = calendarServings;
         // Display Data
         calendar_update(calendarData, daysArray, mealKeys);
+        // Subtract 1 from recipe card data
+        recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings = recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings - 1;
+        // Update Display
+        update_dock(recipeDockData);
     });
 });
-

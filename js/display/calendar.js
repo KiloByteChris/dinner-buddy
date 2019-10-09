@@ -24,7 +24,7 @@ function calendar_view(daysArray, mealKeys) {
             // Meal Container
             calendarViewString += '<div class="servingContainer droppable ui-widget-header" id=' + currentMeal + '>';
             //day label
-            calendarViewString += '<p id="' + daysArray[i] + meal + '" class="dayLabel">' + daysArray[i] + '</p>'
+            calendarViewString += '<p id="' + daysArray[j] + meal + '" class="dayLabel">' + daysArray[j] + '</p>'
             //delete button
             calendarViewString += '<button id="' + currentMeal + 'Delete" class="calendarDelete"><i class="fa fa-remove"></i></button>'
             //recipe

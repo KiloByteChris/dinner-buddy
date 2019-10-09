@@ -155,14 +155,6 @@ jQuery(document).ready( function() {
             })
         });
     });// end search recipes click event
-    
-    /*
-        Delete Recipe Card
-    */
-    //jQuery("#recipeDock").on("click", ".recipeCardX", function() {
-    //    console.log(this.value);
-    //    jQuery('#card'+this.value).remove();
-    //});
         //Clear Session Data.
     jQuery('#headerOptions').on('click', '#headerOptionsButton', function() {
         sessionStorage.clear();

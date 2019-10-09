@@ -16,7 +16,7 @@ function calendar_update(calendarData, daysArray, mealKeys) {
                 // Servings Adjust
                 jQuery('#' + currentMeal + ' > .adjustServing').removeClass('hide');
                 jQuery('#' + currentMeal + ' > .adjustServing').addClass('show');
-            }
+            } 
         }
     }
 }

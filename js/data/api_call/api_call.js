@@ -17,15 +17,11 @@ class APICall {
             method: method,
             url: url
         }).done( function(data) {
-            // get length of recipeDockData
-            var keys = Object.keys(recipeDockData);
-            var keyCount = keys.length;
-            // add 1
-            var cardCount = keyCount + 1;
+            cardIdCount++;
             // create a new recipe card 
-            const newCard = new RecipeCard(data, cardCount);
+            const newCard = new RecipeCard(data, cardIdCount);
             // add card to recipe dock data
-            recipeDockData['card' + cardCount] = newCard;
+            recipeDockData['card' + cardIdCount] = newCard;
         });
     }
 }

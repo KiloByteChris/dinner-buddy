@@ -155,94 +155,15 @@ jQuery(document).ready( function() {
             })
         });
     });// end search recipes click event
-    /*
-        Click event for the Calendar button
-    */
-    //jQuery(".dashboard").on("click", ".calendarButton", function(){
-     //   event.preventDefault();
-     //   var calendarView = calendar_view();
-    //    jQuery('.displayDiv').html(calendarView);
-     //   jQuery( '.droppable' ).droppable({
-    //        // This function defines what happends when a recipe is dropped on the calendar
-    //        drop: function( event, ui) {
-    //            drop_function(event, ui);
-    //        }
-    //    });
-    //});// end calendar click event
-    /*
-        Click event for the add button. Creates a recipe card in the dock
-    */
-    // jQuery(".mtMainDiv").on("click", ".selectRecipe", function(){
-    //     event.preventDefault();
-    //     // Get the recipe post id from the button
-    //     var postId = this.id;
-    //     var method = "GET";
-    //     var recipeCardUrl = window.location.origin + '/wp-json/wp/v2/recipes/'+postId;
-    //     const call = new APICall(method, recipeCardUrl);
-    //     var data = call.createRecipeCard();
-    //     console.log(data);
-        // jQuery.ajax({
-        //     beforeSend: function(xhr) {
-        //         xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-        //     },
-        //     method: 'GET',
-        //     url: recipeCardUrl
-        // }).done( function(data){
-        //     // create card in sessionStorage
-        //     mt_sess_create_card(data);
-        //     // console.log(data);
-        //     var recipeCard = create_recipe_card(data);
-        //     jQuery('#recipeDock').append(recipeCard);
-        //     // uses jquery UI  to make the recipe cards draggable
-        //     jQuery('.draggable').draggable({revert: true, helper: "clone"});
-        // });
-    // });// end calendar click event
+    
     /*
         Delete Recipe Card
     */
-    jQuery("#recipeDock").on("click", ".recipeCardX", function() {
-        console.log(this.value);
-        jQuery('#card'+this.value).remove();
-    });
-    /*
-        Recipe Servings Add
-    */
-    jQuery(".mtMainDiv").on("click", ".servingAdd", function(){
-        event.preventDefault();
-        var addId = this.attributes.id.value;
-        // select day from entryId string
-        var dayId = addId.slice(0, 3);
-        // select serving location
-        var servLoc = dayId;
-        var mealId = addId.slice(3,4);
-        switch(mealId) {
-            case 'B':
-                dayId += 'Breakfast';
-                servLoc += 'BServings'
-                break;
-            case "L":
-                dayId += 'Lunch';
-                servLoc += 'LServings'
-
-                break;
-            case 'D':
-                dayId += 'Dinner';
-                servLoc += 'DServings'
-
-                break;
-        }
-        // Get current serving value
-        var servingKey = dayId + 'Serving';
-        // Update sessionStorage
-        mt_sess_add(servingKey);
-        // Update display from sessionStorage
-        var serVal = sessionStorage[servingKey];
-        jQuery('#'+servLoc).text(serVal);
-        //console.log(sessionStorage);
-    });
-    /*
-        Clear Session Data.
-    */
+    //jQuery("#recipeDock").on("click", ".recipeCardX", function() {
+    //    console.log(this.value);
+    //    jQuery('#card'+this.value).remove();
+    //});
+        //Clear Session Data.
     jQuery('#headerOptions').on('click', '#headerOptionsButton', function() {
         sessionStorage.clear();
     });

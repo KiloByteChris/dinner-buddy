@@ -86,4 +86,12 @@ jQuery(document).ready( function() {
         // Update Display
         update_dock(recipeDockData);
     });
+    /*
+        Delete Recipe Card
+    */
+    jQuery("#recipeDock").on("click", ".recipeCardX", function() {
+    console.log(this);
+    jQuery('#card'+this.value).remove();
+    console.log(recipeDockData);
+});
 });

@@ -10,3 +10,6 @@ var mealKeys = ['B', 'L', 'D']
 
 // Default Serving Amount
 var defaultServings = 1;
+
+// Recipe Card Id Count
+var cardIdCount = 0;

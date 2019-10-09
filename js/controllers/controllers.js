@@ -90,8 +90,9 @@ jQuery(document).ready( function() {
         Delete Recipe Card
     */
     jQuery("#recipeDock").on("click", ".recipeCardX", function() {
-    console.log(this);
-    jQuery('#card'+this.value).remove();
-    console.log(recipeDockData);
-});
+        // Remove recipe card
+        jQuery('#card'+this.value).remove();
+        // Remove recipe card from dock data
+        delete recipeDockData['card'+this.value];
+    });
 });

@@ -157,6 +157,7 @@ jQuery(document).ready( function() {
     });// end search recipes click event
         //Clear Session Data.
     jQuery('#headerOptions').on('click', '#headerOptionsButton', function() {
-        sessionStorage.clear();
+        console.log(recipeDockData);
+        console.log(calendarData);
     });
 });// end document.ready

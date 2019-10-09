@@ -90,22 +90,20 @@ jQuery(document).ready( function() {
         Delete Recipe Card
     */
     jQuery("#recipeDock").on("click", ".recipeCardX", function() {
-        // Remove recipe card
-        // jQuery('#card'+this.value).remove();
         // Delete associated calendar data values
         for(key in calendarData){
             // Check all keys for the value of the deleted card
             if(calendarData[key] == 'card'+this.value){
                 // If a match, Get the meal id from the key
                 var mealId = key.slice(0,4);
-                console.log('#' + mealId + ' > .calendarServing');
-                //jQuery('#' + mealId + ' > .calendarServing').text('qw');
-                var nothin = '';
-                jQuery('#' + mealId + 'Servings').text(nothin);
-                console.log('#' + mealId + 'Servings');
+                // Hide calendar info
+                jQuery('#' + mealId + ' > .calendarDelete').hide();
+                jQuery('#' + mealId + ' > .adjustServing').removeClass('show');
+                jQuery('#' + mealId + ' > .adjustServing').addClass('hide');
+                jQuery('#' + mealId + 'Servings').text('');
                 // Check all properties for mealId. Delete matches
                 for(prop in calendarData){
-                    if(prop == mealId || prop == mealId + 'Id' || prop == mealId == 'Serv'){
+                    if(prop == mealId || prop == mealId + 'CardMatch' || prop == mealId + 'Serv'){
                         calendarData[prop] = '';
                         
                     }
@@ -118,5 +116,6 @@ jQuery(document).ready( function() {
         //calendar_update(calendarData, daysArray, mealKeys);
         // Remove recipe card from dock data
         delete recipeDockData['card'+this.value];
+        calendar_update(calendarData, daysArray, mealKeys);
     });
 });

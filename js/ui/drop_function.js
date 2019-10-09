@@ -13,4 +13,5 @@ function drop_function(event, ui, defaultServings) {
     calendar_update(calendarData, daysArray, mealKeys);
     // Subtract defaultServings from card servings
     recipeDockData[ui.draggable.context.id].recipeServings = recipeDockData[ui.draggable.context.id].recipeServings - defaultServings;
+    update_dock(recipeDockData)
 }

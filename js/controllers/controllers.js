@@ -105,15 +105,12 @@ jQuery(document).ready( function() {
                 for(prop in calendarData){
                     if(prop == mealId || prop == mealId + 'CardMatch' || prop == mealId + 'Serv'){
                         calendarData[prop] = '';
-                        
                     }
                 }
             }
         }
         // Remove recipe card
         jQuery('#card'+this.value).remove();
-        // Display Data
-        //calendar_update(calendarData, daysArray, mealKeys);
         // Remove recipe card from dock data
         delete recipeDockData['card'+this.value];
         calendar_update(calendarData, daysArray, mealKeys);

@@ -50,16 +50,21 @@ jQuery(document).ready( function() {
         var mealId = addId.slice(3, 4);
         // Select serving amount from calendarData
         var calendarServings = calendarData[dayId + mealId + 'Serv'];
-        // add 1 to serving amount
-        calendarServings++;
-        // Update Calendar Data
-        calendarData[dayId + mealId + 'Serv'] = calendarServings;
-        // Display Data
-        calendar_update(calendarData, daysArray, mealKeys);
-        // Subtract 1 from recipe card data
-        recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings = recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings - 1;
-        // Update Display
-        update_dock(recipeDockData);
+        console.log(recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings);
+        if(recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings <= 0) {
+            // Do nothing
+        }else{
+            // add 1 to serving amount
+            calendarServings++;
+            // Update Calendar Data
+            calendarData[dayId + mealId + 'Serv'] = calendarServings;
+            // Display Data
+            calendar_update(calendarData, daysArray, mealKeys);
+            // Subtract 1 from recipe card data
+            recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings = recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings - 1;
+            // Update Display
+            update_dock(recipeDockData);
+        }
     });
     /*
      *   Recipe Servings Subtract
@@ -75,7 +80,7 @@ jQuery(document).ready( function() {
         var mealId = addId.slice(3, 4);
         // Select serving amount from calendarData
         var calendarServings = calendarData[dayId + mealId + 'Serv'];
-        if(calendarServings == 0){
+        if(calendarServings <= 0){
             //do nothing
         }else{
             calendarServings--;

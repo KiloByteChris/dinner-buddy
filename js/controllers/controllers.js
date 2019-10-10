@@ -14,7 +14,7 @@ jQuery(document).ready( function() {
         // Get and save recipe data
         call.createRecipeCard(postID);
         // Display Recipe Dock
-        //jQuery('#recipeDock').html(dock_view());
+        jQuery('#recipeDock').html(dock_view());
     });
     /*
      *   Display Calendar
@@ -75,16 +75,19 @@ jQuery(document).ready( function() {
         var mealId = addId.slice(3, 4);
         // Select serving amount from calendarData
         var calendarServings = calendarData[dayId + mealId + 'Serv'];
-        // add 1 to serving amount
-        calendarServings--;
-        // Update Calendar Data
-        calendarData[dayId + mealId + 'Serv'] = calendarServings;
-        // Display Data
-        calendar_update(calendarData, daysArray, mealKeys);
-        // Subtract 1 from recipe card data
-        recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings = recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings + 1;
-        // Update Display
-        update_dock(recipeDockData);
+        if(calendarServings == 0){
+            //do nothing
+        }else{
+            calendarServings--;
+            // Update Calendar Data
+            calendarData[dayId + mealId + 'Serv'] = calendarServings;
+            // Display Data
+            calendar_update(calendarData, daysArray, mealKeys);
+            // Subtract 1 from recipe card data
+            recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings = recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings + 1;
+            // Update Display
+            update_dock(recipeDockData);
+        }
     });
     /*
         Delete Recipe Card
@@ -103,7 +106,7 @@ jQuery(document).ready( function() {
                 jQuery('#' + mealId + 'Servings').text('');
                 // Check all properties for mealId. Delete matches
                 for(prop in calendarData){
-                    if(prop == mealId || prop == mealId + 'CardMatch' || prop == mealId + 'Serv'){
+                    if(prop == mealId || prop == mealId + 'CardMatch' || prop == mealId + 'Serv' ){
                         calendarData[prop] = '';
                     }
                 }
@@ -119,15 +122,27 @@ jQuery(document).ready( function() {
      *  Delete Calendar Data  
      */
     jQuery('#displayDiv').on('click', '.calendarDelete', function() {
-        console.log(this.id.slice(0,4));
         var deleteId = this.id.slice(0,4);
-        //jQuery('#' + deleteId + ' > .calendarServing')
-        for(key in calendarData) {
-            console.log(key);
-            if(key == deleteId || key == deleteId + 'CardMatch' || key == deleteId + 'Serv') {
-                calendarData[key] = '';
+        for(card in calendarData) {
+            // add the card serving amount to the original card
+            if(card == deleteId + 'CardMatch') {
+                recipeDockData[calendarData[card]].recipeServings += calendarData[deleteId + 'Serv']; 
+                calendarData[deleteId + 'Serv'] = '';
             }
+            if(card == deleteId) {
+                // Hide calendar info
+                jQuery('#' + deleteId + ' > .calendarDelete').hide();
+                jQuery('#' + deleteId + ' > .adjustServing').removeClass('show');
+                jQuery('#' + deleteId + ' > .adjustServing').addClass('hide');
+                //jQuery('#' + deleteId + 'Servings').text('');
+                calendarData[card] = '';
+            }
+            // remove data from calendarData
+            if(card == deleteId + 'Serv') {
+            }    
         }
+        calendar_update(calendarData, daysArray, mealKeys);
+        update_dock(recipeDockData);
 
     })
 });

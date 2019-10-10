@@ -50,7 +50,6 @@ jQuery(document).ready( function() {
         var mealId = addId.slice(3, 4);
         // Select serving amount from calendarData
         var calendarServings = calendarData[dayId + mealId + 'Serv'];
-        console.log(recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings);
         if(recipeDockData[calendarData[dayId + mealId + 'CardMatch']].recipeServings <= 0) {
             // Do nothing
         }else{

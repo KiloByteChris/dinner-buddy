@@ -3,7 +3,11 @@
    Triggered when a recipe card is dropped on a calendar day
 */
 function drop_function(event, ui, defaultServings) {
-    // Use the card ID to select data from recipeDockData
+    if(recipeDockData[ui.draggable.context.id].recipeServings <= 0){
+        console.log('for real');
+    }else{
+        var cardData = recipeDockData[ui.draggable.context.id];
+        // Use the card ID to select data from recipeDockData
     var cardData = recipeDockData[ui.draggable.context.id];
     // Save title, servings, and orignal card to calendar data
     calendarData[event.target.id] = cardData.recipeTitle;
@@ -13,5 +17,6 @@ function drop_function(event, ui, defaultServings) {
     calendar_update(calendarData, daysArray, mealKeys);
     // Subtract defaultServings from card servings
     recipeDockData[ui.draggable.context.id].recipeServings = recipeDockData[ui.draggable.context.id].recipeServings - defaultServings;
-    update_dock(recipeDockData)
+    update_dock(recipeDockData);
+    }
 }

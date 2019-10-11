@@ -149,4 +149,20 @@ jQuery(document).ready( function() {
         update_dock(recipeDockData);
 
     })
+    /*
+     *   New Recipe button
+     */
+    jQuery(".addRecipeButton").on("click", function(){
+        var newRecipeView = new_recipe_form();
+        jQuery('.displayDiv').html(newRecipeView);
+    });
+    /*
+     *  Add Ingredients
+     */
+   let newIngredientInputNumber = 1;
+   jQuery(".mtMainDiv").on("click", ".addNewIngredient", function(){
+       var newIngredientInput = new_recipe_ing(newIngredientInputNumber, measurmentUnits);
+       jQuery('.newIngredientsArea').append(newIngredientInput);
+       newIngredientInputNumber++;
+   });
 });

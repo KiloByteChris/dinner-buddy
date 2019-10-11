@@ -38,15 +38,20 @@ function new_recipe_form(){
     newRecipeView += '</div>';
     return newRecipeView;
 }
-
 /*
     Build text inputs for new ingredients
 */
-function new_recipe_ing(newIngredientInputNumber) {
-    // Build the form input
+function new_recipe_ing(newIngredientInputNumber, measurmentUnits) {
+    // Ingredient Input
     var newIngredientInput = '<label for='+'newIngredientInput'+newIngredientInputNumber+' >'+newIngredientInputNumber+'. Name</label>';
     newIngredientInput += '<input type="text" class="newIngredientInput" name='+'newIngredientInput'+newIngredientInputNumber+' >';
     newIngredientInput += '<label for='+'newIngredientAmount'+newIngredientInputNumber+' >Amount</label>';
     newIngredientInput += '<input type="text" class="newIngredientAmount" name='+'newIngredientAmount'+newIngredientInputNumber+' >';
+    // Select Measurement Unit
+    newIngredientInput += '<select class="newIngredientUnit">';
+        for(unit in measurmentUnits){
+            newIngredientInput += '<option value="'+measurmentUnits[unit]+'">'+measurmentUnits[unit]+'</option>';
+        }   
+    newIngredientInput += '</select>';
     return newIngredientInput;
 }

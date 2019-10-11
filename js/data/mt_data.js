@@ -13,3 +13,17 @@ var defaultServings = 1;
 
 // Recipe Card Id Count
 var cardIdCount = 0;
+
+// Measurement Units
+var measurmentUnits = [
+    'cups', 
+    'tsp', 
+    'tbl', 
+    'oz', 
+    'qt', 
+    'ea', 
+    'bunch', 
+    'pinch', 
+    'can', 
+    '#10 can'
+];

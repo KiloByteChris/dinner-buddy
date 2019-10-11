@@ -1,22 +1,6 @@
 jQuery(document).ready( function() {
     /*
-        Click event for the "New Recipe" button
-    */
-    jQuery(".addRecipeButton").on("click", function(){
-        var newRecipeView = new_recipe_form();
-        jQuery('.displayDiv').html(newRecipeView);
-    });
-    /*
-        Click event for add ingredients button in the new recipe form
-    */
-    let newIngredientInputNumber = 1;
-    jQuery(".mtMainDiv").on("click", ".addNewIngredient", function(){
-        var newIngredientInput = new_recipe_ing(newIngredientInputNumber);
-        jQuery('.newIngredientsArea').append(newIngredientInput);
-        newIngredientInputNumber++;
-    });
-    /*
-        Submitting new recipe
+        Submitting New Recipe
     */
     let newRecipeMediaId = '';
     let newMediaId = '';
@@ -27,13 +11,19 @@ jQuery(document).ready( function() {
         //create an array from the ingredients list
         var ingredientsData = jQuery('.newIngredientInput');
         var ingredientsAmountData = jQuery('.newIngredientAmount');
+        var ingredientsUnitData = jQuery('.newIngredientUnit');
         var count = ingredientsData.length;
         for( var i = 0; i < count; i++){
             var ingredientName = ingredientsData[i].value;
             var amount = ingredientsAmountData[i].value;
+            var unit = ingredientsUnitData[i].value;
             var currentIngredient = 'ing' + i;
-            var singleIngredientObject = {};
-            singleIngredientObject[ingredientName] = amount
+            var singleIngredientObject = {
+                'title' : ingredientName,
+                'amount': amount,
+                'unit'  : unit
+            };
+            //singleIngredientObject[ingredientName] = amount;
             ingredientsObject[currentIngredient] = singleIngredientObject;
         }
         // Create an object from the new recipe form data
@@ -118,8 +108,8 @@ jQuery(document).ready( function() {
         });
     });// end browse recipes click event
     /*
-        Click event for Search Recipes
-    */
+     * Search Recipes
+     */
     jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
         event.preventDefault();
         // Get search term from the search text input

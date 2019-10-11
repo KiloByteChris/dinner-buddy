@@ -23,7 +23,6 @@ jQuery(document).ready( function() {
                 'amount': amount,
                 'unit'  : unit
             };
-            //singleIngredientObject[ingredientName] = amount;
             ingredientsObject[currentIngredient] = singleIngredientObject;
         }
         // Create an object from the new recipe form data
@@ -149,5 +148,7 @@ jQuery(document).ready( function() {
     jQuery('#headerOptions').on('click', '#headerOptionsButton', function() {
         console.log(recipeDockData);
         console.log(calendarData);
+        console.log(shoppingListData);
+        console.log(sortedShoppingList);
     });
 });// end document.ready

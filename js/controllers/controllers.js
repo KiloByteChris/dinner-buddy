@@ -177,9 +177,9 @@ jQuery(document).ready( function() {
                 //console.log(shoppingListData[key][ing]);
                 // check if ingredient has been sorted
                 if(sortedShoppingList.hasOwnProperty(shoppingListData[key][ing].title)) {
-                    console.log('has it!!');
-                    console.log(sortedShoppingList[shoppingListData[key][ing].title]);
-                    console.log(shoppingListData[key][ing].title);
+                    //console.log('has it!!');
+                    //console.log(sortedShoppingList[shoppingListData[key][ing].title]);
+                    //console.log(shoppingListData[key][ing].title);
 
 
                     // check for unit matches
@@ -196,7 +196,7 @@ jQuery(document).ready( function() {
 
 
                 }if(!sortedShoppingList.hasOwnProperty(shoppingListData[key][ing].title)){
-                    console.log('doesnt');
+                    //console.log('doesnt');
                     sortedShoppingList[shoppingListData[key][ing].title] = {
                         'amount' : shoppingListData[key][ing].amount,
                         'unit'   : shoppingListData[key][ing].unit,
@@ -204,5 +204,6 @@ jQuery(document).ready( function() {
                 }
             }
         }
+        jQuery('.displayDiv').html(display_list(sortedShoppingList));
    });
 });

@@ -5,7 +5,6 @@
  function display_list(sortedShoppingList) {
     console.log(sortedShoppingList);
     var listView = '<div id="listView" class="listView">';
-    listView += '<p>Shopping List</p>';
     listView += '<table>';
     // Table Header
     listView += '<tr>';

@@ -122,6 +122,13 @@ jQuery(document).ready( function() {
         // Remove recipe card from dock data
         delete recipeDockData['card'+this.value];
         calendar_update(calendarData, daysArray, mealKeys);
+        // Remove card from shopping list data
+        delete shoppingListData['card'+this.value];
+        // Update shopping list
+        sort_list(shoppingListData);
+        if(currentView == 'shoppingList'){
+           jQuery('.displayDiv').html(display_list(sortedShoppingList)); 
+        }
     });
     /*
      *  Delete Calendar Data  
@@ -171,8 +178,8 @@ jQuery(document).ready( function() {
     *   Shopping List
     */
    // Set current view
-   currentView = 'shoppinglist';
    jQuery('.dashboard').on('click', '.shoppingListButton', function(){
+    currentView = 'shoppingList';
     sort_list(shoppingListData);
     jQuery('.displayDiv').html(display_list(sortedShoppingList));
    });

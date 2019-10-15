@@ -9,14 +9,8 @@ function sort_list(shoppingListData){
     for(key in shoppingListData) {
         // Iterate through ingredients in each card
         for(ing in shoppingListData[key]) {
-            //console.log(shoppingListData[key][ing]);
             // check if ingredient has been sorted
             if(sortedShoppingList.hasOwnProperty(shoppingListData[key][ing].title)) {
-                //console.log('has it!!');
-                //console.log(sortedShoppingList[shoppingListData[key][ing].title]);
-                //console.log(shoppingListData[key][ing].title);
-
-
                 // check for unit matches
                 if(sortedShoppingList[shoppingListData[key][ing].title].unit != shoppingListData[key][ing].unit){
                     // if not a match, create new entry
@@ -28,8 +22,6 @@ function sort_list(shoppingListData){
                     // if measurement units match, combine
                     sortedShoppingList[shoppingListData[key][ing].title].amount = parseInt(sortedShoppingList[shoppingListData[key][ing].title].amount) + parseInt(shoppingListData[key][ing].amount);
                 }
-
-
             }if(!sortedShoppingList.hasOwnProperty(shoppingListData[key][ing].title)){
                 //console.log('doesnt');
                 sortedShoppingList[shoppingListData[key][ing].title] = {

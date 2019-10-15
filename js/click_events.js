@@ -111,6 +111,7 @@ jQuery(document).ready( function() {
      */
     jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
         event.preventDefault();
+        currentView = 'search';
         // Get search term from the search text input
         var searchTerm = jQuery('.searchInput').val();
         // Get recent recipe data for the 'search recipes' view

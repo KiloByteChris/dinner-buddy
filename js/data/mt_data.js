@@ -27,3 +27,7 @@ var measurmentUnits = [
     'can', 
     '#10 can'
 ];
+
+// Current View
+
+var currentView = 'default';

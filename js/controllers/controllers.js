@@ -21,6 +21,7 @@ jQuery(document).ready( function() {
      */
     jQuery(".dashboard").on("click", ".calendarButton", function () {
         event.preventDefault();
+        currentView = 'calendar';
         // Display Calendar View
         jQuery('.displayDiv').html(calendar_view(daysArray, mealKeys));
         // Display Calendar Data
@@ -153,6 +154,7 @@ jQuery(document).ready( function() {
      *   New Recipe button
      */
     jQuery(".addRecipeButton").on("click", function(){
+        currentView = 'newRecipe';
         var newRecipeView = new_recipe_form();
         jQuery('.displayDiv').html(newRecipeView);
     });
@@ -168,8 +170,9 @@ jQuery(document).ready( function() {
    /*
     *   Shopping List
     */
+   // Set current view
+   currentView = 'shoppinglist';
    jQuery('.dashboard').on('click', '.shoppingListButton', function(){
-        
     sort_list(shoppingListData);
     jQuery('.displayDiv').html(display_list(sortedShoppingList));
    });

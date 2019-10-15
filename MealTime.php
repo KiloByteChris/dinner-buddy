@@ -36,6 +36,9 @@ wp_enqueue_script( 'mt_click_events' );
 wp_register_script( 'mt_controllers', plugin_dir_url( __FILE__ ) . '/js/controllers/controllers.js', array('jquery'));
 wp_enqueue_script( 'mt_controllers' );
 
+wp_register_script( 'mt_sort_utility', plugin_dir_url( __FILE__ ) . '/js/controllers/utilities/sort_shopping_list.js', array('jquery'));
+wp_enqueue_script( 'mt_sort_utility' );
+
 /*
 	Data
 */

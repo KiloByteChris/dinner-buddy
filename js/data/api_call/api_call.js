@@ -30,11 +30,11 @@ class APICall {
         });
     }
 
-    add_favorite(userId, recipeId) {
-        console.log(recipeId);
+    add_favorite(userId, newFavData) {
+        //console.log(recipeId);
         var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
             var favoriteData = {
-                favorites: recipeId
+                favorites: newFavData,
             };
             jQuery.ajax( {
                 url: url,

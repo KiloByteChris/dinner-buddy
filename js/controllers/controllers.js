@@ -187,19 +187,31 @@ jQuery(document).ready( function() {
     *   Favorite Star - Search View
     */
    jQuery('#displayDiv').on('click', '.favoriteStar', function() {
-       recipeId = this.id.slice(4);
+       var recipeId = this.id.slice(4);
+       var favoritesData = {'favorite' : recipeId};
        let Call = new APICall();
        // Toggle star
        if(jQuery('#'+this.id).hasClass('set')){
             jQuery('#'+this.id).removeClass('fas fa-star set');
             jQuery('#'+this.id).addClass('far fa-star unset');
+            favoritesData.method = 'delete';
+            Call.add_favorite(WPsettings.user_ID, favoritesData);
 
         }else if(jQuery('#'+this.id).hasClass('unSet')){
             jQuery('#'+this.id).removeClass('far fa-star unset');
             jQuery('#'+this.id).addClass('fas fa-star set');
             // API call saves recipe id in user meta data
-            console.log(WPsettings);
-            Call.add_favorite(WPsettings.user_ID, recipeId);
+            var method = 'add';
+            // Call.add_favorite(WPsettings.user_ID, recipeId, method);
+            favoritesData.method = 'add';
+            Call.add_favorite(WPsettings.user_ID, favoritesData);
+
         }
+   });
+   /**
+    *   Delete User Favorites
+    */
+   jQuery('MtHeader').on('click', '#clearFavorites', function() {
+
    });
 });

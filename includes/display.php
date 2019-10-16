@@ -20,7 +20,8 @@ class Display {
             $MtHeaderString .= '</div>';
             // Options
             $MtHeaderString .= '<div id="headerOptions">';
-                $MtHeaderString .= '<button id="headerOptionsButton">|||</button>';
+                $MtHeaderString .= '<button id="clearFavorites">Clear Favorites</button>';
+                $MtHeaderString .= '<button id="headerOptionsButton">Log Data</button>';
             $MtHeaderString .= '</div>';
         $MtHeaderString .= '</div>';
         return $MtHeaderString;

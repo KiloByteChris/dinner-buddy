@@ -70,18 +70,16 @@ register_rest_field(
             return get_user_meta($callbackData['id'], 'favorites', false);
             },
         'update_callback' => function($callbackData, $postData) {
-            //$values = json_encode($callbackData);
-            update_user_meta($postData->ID, 'favorites', $callbackData);
-            return get_user_meta($postData->ID, 'favorites');
+            // print_r($callbackData);
+            if($callbackData['method'] == 'add'){
+                add_user_meta($postData->ID, 'favorites', $callbackData['favorite'], $callbackData['favorite']);
+            }else if($callbackData['method'] == 'delete') {
+                // print_r('delete');
+                delete_user_meta($postData->ID, 'favorites', $callbackData['favorites'], $callbackData['favorites']);
+            }
+            
             },
         'schema' => null,
     )
 );
-// register_meta('user', 'favorites', [
-//     'type' => 'string',
-//     'single' => true,
-//     'show_in_rest' => true,
-// ]);
-
-
 ?>

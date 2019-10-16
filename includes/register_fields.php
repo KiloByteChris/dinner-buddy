@@ -62,11 +62,26 @@ add_action( 'rest_api_init', 'get_recipe_data');
 /**
  * User Favorites Meta
  */
-register_meta('user', 'favorites', [
-    'type' => 'string',
-    'single' => true,
-    'show_in_rest' => true,
-]);
+register_rest_field(
+    'user' ,
+    'favorites',
+    array(
+        'get_callback'    => function($callbackData, $postData) {
+            return get_user_meta($callbackData['id'], 'favorites', false);
+            },
+        'update_callback' => function($callbackData, $postData) {
+            //$values = json_encode($callbackData);
+            update_user_meta($postData->ID, 'favorites', $callbackData);
+            return get_user_meta($postData->ID, 'favorites');
+            },
+        'schema' => null,
+    )
+);
+// register_meta('user', 'favorites', [
+//     'type' => 'string',
+//     'single' => true,
+//     'show_in_rest' => true,
+// ]);
 
 
 ?>

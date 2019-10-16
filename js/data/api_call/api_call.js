@@ -31,14 +31,16 @@ class APICall {
     }
 
     add_favorite(userId, recipeId) {
-        console.log('!!!');
-        var url = window.location.origin + '/wp-json/wp/v2/users/' ;
+        //console.log(userId);
+        var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
             var favoriteData = {
-                meta : ['favorite']
+                favorites: recipeId
             };
             jQuery.ajax( {
                 url: url,
                 method: 'POST',
+                //method: 'GET',
+
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
                 },

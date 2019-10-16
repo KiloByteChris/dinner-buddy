@@ -57,7 +57,16 @@ function get_recipe_data() {
         )
     );
 }
-add_action( 'rest_api_init', 'get_recipe_data' );
+add_action( 'rest_api_init', 'get_recipe_data');
+
+/**
+ * User Favorites Meta
+ */
+register_meta('user', 'favorites', [
+    'type' => 'string',
+    'single' => true,
+    'show_in_rest' => true,
+]);
 
 
 ?>

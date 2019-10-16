@@ -187,8 +187,6 @@ jQuery(document).ready( function() {
     *   Favorite Star - Search View
     */
    jQuery('#displayDiv').on('click', '.favoriteStar', function() {
-       console.log(this.id.slice(4));
-       //console.log()
        recipeId = this.id.slice(4);
        let Call = new APICall();
        // Toggle star
@@ -200,7 +198,8 @@ jQuery(document).ready( function() {
             jQuery('#'+this.id).removeClass('far fa-star unset');
             jQuery('#'+this.id).addClass('fas fa-star set');
             // API call saves recipe id in user meta data
-            Call.add_favorite(WPsettings.current_ID, recipeId);
+            console.log(WPsettings);
+            Call.add_favorite(WPsettings.user_ID, recipeId);
         }
    });
 });

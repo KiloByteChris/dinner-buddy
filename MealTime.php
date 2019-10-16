@@ -103,17 +103,20 @@ function rest_edit_scripts() {
     wp_localize_script( 'mt_click_events', 'WPsettings', array(
 		'root' => esc_url_raw( rest_url() ),
 		'nonce' => wp_create_nonce( 'wp_rest' ),
-		'current_ID' => get_the_ID()
+		'current_ID' => get_the_ID(),
+		'user_ID' => get_current_user_id()
 	));
 	wp_localize_script( 'mt_controllers', 'WPsettings', array(
 		'root' => esc_url_raw( rest_url() ),
 		'nonce' => wp_create_nonce( 'wp_rest' ),
-		'current_ID' => get_the_ID()
+		'current_ID' => get_the_ID(),
+		'user_ID' => get_current_user_id()
 	));
     wp_localize_script( 'mt_api_call', 'WPsettings', array(
 		'root' => esc_url_raw( rest_url() ),
 		'nonce' => wp_create_nonce( 'wp_rest' ),
-		'current_ID' => get_the_ID()
+		'current_ID' => get_the_ID(),
+		'user_ID' => get_current_user_id()
 	));
 }
 add_action( 'wp_enqueue_scripts', 'rest_edit_scripts' );

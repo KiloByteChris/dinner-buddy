@@ -160,7 +160,7 @@ jQuery(document).ready( function() {
     /*
      *   New Recipe button
      */
-    jQuery(".addRecipeButton").on("click", function(){
+    jQuery(".addRecipeButton").on("click", function() {
         currentView = 'newRecipe';
         var newRecipeView = new_recipe_form();
         jQuery('.displayDiv').html(newRecipeView);
@@ -169,7 +169,7 @@ jQuery(document).ready( function() {
      *  Add Ingredients
      */
    let newIngredientInputNumber = 1;
-   jQuery(".mtMainDiv").on("click", ".addNewIngredient", function(){
+   jQuery(".mtMainDiv").on("click", ".addNewIngredient", function() {
        var newIngredientInput = new_recipe_ing(newIngredientInputNumber, measurmentUnits);
        jQuery('.newIngredientsArea').append(newIngredientInput);
        newIngredientInputNumber++;
@@ -178,9 +178,29 @@ jQuery(document).ready( function() {
     *   Shopping List
     */
    // Set current view
-   jQuery('.dashboard').on('click', '.shoppingListButton', function(){
+   jQuery('.dashboard').on('click', '.shoppingListButton', function() {
     currentView = 'shoppingList';
     sort_list(shoppingListData);
     jQuery('.displayDiv').html(display_list(sortedShoppingList));
+   });
+   /*
+    *   Favorite Star - Search View
+    */
+   jQuery('#displayDiv').on('click', '.favoriteStar', function() {
+       console.log(this.id.slice(4));
+       //console.log()
+       recipeId = this.id.slice(4);
+       let Call = new APICall();
+       // Toggle star
+       if(jQuery('#'+this.id).hasClass('set')){
+            jQuery('#'+this.id).removeClass('fas fa-star set');
+            jQuery('#'+this.id).addClass('far fa-star unset');
+
+        }else if(jQuery('#'+this.id).hasClass('unSet')){
+            jQuery('#'+this.id).removeClass('far fa-star unset');
+            jQuery('#'+this.id).addClass('fas fa-star set');
+            // API call saves recipe id in user meta data
+            Call.add_favorite(WPsettings.current_ID, recipeId);
+        }
    });
 });

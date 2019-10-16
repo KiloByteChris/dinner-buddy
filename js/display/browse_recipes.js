@@ -15,6 +15,8 @@ function browse_recipes_view(data) {
         // excerpt
         // browseRecipeView += '<p id='+'browseRecipeDescription'+data[key].id+' class="browseRecipeDescription">' + data[key].excerpt.rendered + '</p>';
         browseRecipeView += data[key].excerpt.rendered;
+        // favorite button
+        browseRecipeView += '<i id='+'star'+data[key].id+ ' class="far fa-star favoriteStar unSet"></i>';
         // add button
         browseRecipeView += '<button id='+data[key].id+ ' name="add" class="selectRecipe" value="add">Add</button>';
         browseRecipeView += '</div>';

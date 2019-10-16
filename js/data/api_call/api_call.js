@@ -29,4 +29,20 @@ class APICall {
             update_dock(recipeDockData);
         });
     }
+
+    add_favorite(userId, recipeId) {
+        console.log('!!!');
+        var url = window.location.origin + '/wp-json/wp/v2/users/' ;
+            var favoriteData = {
+                meta : ['favorite']
+            };
+            jQuery.ajax( {
+                url: url,
+                method: 'POST',
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+                },
+                data : favoriteData
+            });
+    }
 }

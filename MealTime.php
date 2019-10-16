@@ -105,7 +105,11 @@ function rest_edit_scripts() {
 		'nonce' => wp_create_nonce( 'wp_rest' ),
 		'current_ID' => get_the_ID()
 	));
-    //Make this information available in the api calls script
+	wp_localize_script( 'mt_controllers', 'WPsettings', array(
+		'root' => esc_url_raw( rest_url() ),
+		'nonce' => wp_create_nonce( 'wp_rest' ),
+		'current_ID' => get_the_ID()
+	));
     wp_localize_script( 'mt_api_call', 'WPsettings', array(
 		'root' => esc_url_raw( rest_url() ),
 		'nonce' => wp_create_nonce( 'wp_rest' ),

@@ -45,6 +45,9 @@ wp_enqueue_script( 'mt_sort_utility' );
 // API Call
 wp_register_script( 'mt_api_call', plugin_dir_url( __FILE__ ) . '/js/data/api_call/api_call.js', array('jquery'));
 wp_enqueue_script( 'mt_api_call' );
+// User Data
+wp_register_script( 'mt_user_data', plugin_dir_url( __FILE__ ) . '/js/data/models/user_data.js', array('jquery'));
+wp_enqueue_script( 'mt_user_data' );
 // Recipe Card Data
 wp_register_script( 'mt_recipe_card_data', plugin_dir_url( __FILE__ ) . '/js/data/models/recipe_card_data.js', array('jquery'));
 wp_enqueue_script( 'mt_recipe_card_data' );

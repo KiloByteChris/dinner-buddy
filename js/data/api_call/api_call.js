@@ -46,14 +46,31 @@ class APICall {
                 },
                 data : favoriteData
             }).done( function(data){
-                console.log(data);
+                //console.log(data);
                 }
             );
     }
     /**
      *  Get Favorite Recipe Data
      */
-    get_favorites(userId){
+    get_favorites(userId) {
+        var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
+        jQuery.ajax( {
+            url: url,
+            method: 'GET',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+        }).done( function(data){
+            //console.log(data);
+            }
+        );
+
+    }
+    /**
+     *  Get User Data
+     */
+    get_user(userId) {
         var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
         jQuery.ajax( {
             url: url,
@@ -63,8 +80,16 @@ class APICall {
             },
         }).done( function(data){
             console.log(data);
+            userData = {
+                name : data.name,
+                id   : data.id,
+                description : data.description,
+                favorites : data.favorites,
+                avatars : data.avatar_urls
+
+            }
+            console.log(userData);
             }
         );
-
     }
 }

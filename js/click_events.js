@@ -147,7 +147,7 @@ jQuery(document).ready( function() {
         // Fill in favorite info
         var getFavCall = new APICall;
         var favMetaData = getFavCall.get_favorites(WPsettings.user_ID);
-        
+        console.log(favMetaData);
     });// end search recipes click event
 
 

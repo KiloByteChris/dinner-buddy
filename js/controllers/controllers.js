@@ -2,6 +2,34 @@
     Control click events
 */
 jQuery(document).ready( function() {
+    /**
+     *  Default Display
+     */
+    function mt_default_display(){
+        // Get user info
+        const call = new APICall();
+        call.get_user(WPsettings.user_ID);
+        // Display Calendar
+        event.preventDefault();
+        currentView = 'calendar';
+        // Display Calendar View
+        jQuery('.displayDiv').html(calendar_view(daysArray, mealKeys));
+        // Display Calendar Data
+        calendar_update(calendarData, daysArray, mealKeys);
+        // Display Recipe Dock
+        jQuery('#recipeDock').html(dock_view());
+        // jQuery UI Draggable
+        jQuery('.draggable').draggable({revert: true, helper: "clone"});
+        // jQuery UI Droppable Function
+        jQuery('.droppable').droppable({
+            drop: function (event, ui) {
+                drop_function(event, ui, defaultServings);
+            }
+        });
+        
+    }
+    // Fire default display
+    mt_default_display();
     /*
      *   Add Recipe Card.
      */

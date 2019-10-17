@@ -183,7 +183,6 @@ jQuery(document).ready( function() {
         }
         calendar_update(calendarData, daysArray, mealKeys);
         update_dock(recipeDockData);
-
     })
     /*
      *   New Recipe button
@@ -239,11 +238,12 @@ jQuery(document).ready( function() {
     /*
      * Search Recipes
      */
-    jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
+    jQuery(".dashboard").on("click", "#cookBookButton", function(){
         event.preventDefault();
         currentView = 'search';
         const call = new APICall;
         call.browse_recipes();
+        jQuery('#displayDiv').html(cook_book_view());
         
     });
    /**

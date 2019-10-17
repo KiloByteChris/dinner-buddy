@@ -91,7 +91,6 @@ class APICall {
     }
     /**
      * Get 10 Latest Recipes
-     * ! uses get_feat_img() !
      */
     browse_recipes() {
         var url = window.location.origin + '/wp-json/wp/v2/recipes';
@@ -119,10 +118,10 @@ class APICall {
                         }).done( function(embedData){
                             // Assign values to 'browseRecipeData object
                             browseRecipeData[embedData.id] = embedData;
+                            
                     });
                 }
             }
-            console.log(browseRecipeData);
         });
     }
 }

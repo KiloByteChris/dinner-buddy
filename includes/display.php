@@ -52,7 +52,7 @@ class Display {
             $dashboardString .= '<i class="fa fa-calendar" aria-hidden="true"></i>';
             $dashboardString .= '</button>';
             // Search button
-            $dashboardString .= '<button class="dashboardButton searchRecipeButton">';
+            $dashboardString .= '<button id="cookBookButton" class="dashboardButton cookBookButton">';
             $dashboardString .= '<i class="fas fa-search"></i>';
             $dashboardString .= '</button>';
             // New recipe  button

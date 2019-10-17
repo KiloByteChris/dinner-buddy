@@ -1,7 +1,8 @@
 /*
     This function displays the results of a recipe search
+    !!! NOT CURRENTLY IN USER !!!
 */
-function search_recipes_view(data){
+function search_recipes_view(data, userData){
     var searchCard = '<div id=searchCard'+data.id+' class="searchCard">';
         // title
         searchCard += '<h3 id=searchCardTitle'+data.id+'>'+data.title.rendered+'</h3>';

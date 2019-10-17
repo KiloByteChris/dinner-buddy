@@ -1,9 +1,9 @@
 /*
     Build a view that displays the 10 most recent recipes added to the database
+    !!! THIS IS BEING USED AS THE SEARCH VIEW !!!
 */
 function browse_recipes_view(data) {
-    var browseRecipeView = '';
-    browseRecipeView += '<div class="browseRecipeView" id="browseRecipeView">';
+    var browseRecipeView = '<div class="browseRecipeView" id="browseRecipeView">';
     for(var key in data) {
         browseRecipeView += '<div id='+'recipePreview'+data[key].id+' class="recipePreview">';
         // title
@@ -16,6 +16,15 @@ function browse_recipes_view(data) {
         // browseRecipeView += '<p id='+'browseRecipeDescription'+data[key].id+' class="browseRecipeDescription">' + data[key].excerpt.rendered + '</p>';
         browseRecipeView += data[key].excerpt.rendered;
         // favorite button
+        console.log(userData);
+        for(fav in userData.favorites){
+            console.log(userData.favorites[fav] );
+            if(userData.favorites[fav]== data[key].id) {
+                console.log('match');
+                browseRecipeView += '<i id='+'star'+data[key].id+ ' class="far fa-star favoriteStar set"></i>';
+
+            }
+        }
         browseRecipeView += '<i id='+'star'+data[key].id+ ' class="far fa-star favoriteStar unSet"></i>';
         // add button
         browseRecipeView += '<button id='+data[key].id+ ' name="add" class="selectRecipe" value="add">Add</button>';

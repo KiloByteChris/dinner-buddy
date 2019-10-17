@@ -236,6 +236,16 @@ jQuery(document).ready( function() {
 
         }
    });
+    /*
+     * Search Recipes
+     */
+    jQuery(".dashboard").on("click", ".searchRecipeButton", function(){
+        event.preventDefault();
+        currentView = 'search';
+        const call = new APICall;
+        call.browse_recipes();
+        
+    });
    /**
     *   Delete User Favorites
     */

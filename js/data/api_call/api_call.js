@@ -79,17 +79,50 @@ class APICall {
                 xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
             },
         }).done( function(data){
-            console.log(data);
+            // Assign data to user data object
             userData = {
                 name : data.name,
                 id   : data.id,
                 description : data.description,
                 favorites : data.favorites,
                 avatars : data.avatar_urls
-
             }
-            console.log(userData);
+        });
+    }
+    /**
+     * Get 10 Latest Recipes
+     * ! uses get_feat_img() !
+     */
+    browse_recipes() {
+        var url = window.location.origin + '/wp-json/wp/v2/recipes';
+        jQuery.ajax({
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+            method: 'GET',
+            url: url
+        }).done( function(data){
+            // Iterate through recipe data
+            for(var i = 0; i < data.length; i++){
+                // Check for duplicates
+                if(browseRecipeData.hasOwnProperty(data[i].id)){
+                    // Do nothing
+                }else if(!browseRecipeData.hasOwnProperty(data[i].id)){
+                    // Get Featured Image
+                    var url = window.location.origin + '/wp-json/wp/v2/recipes/' + data[i].id + '?_embed';
+                    jQuery.ajax({
+                        beforeSend: function(xhr) {
+                        xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+                        },
+                        method: 'GET',
+                        url: url
+                        }).done( function(embedData){
+                            // Assign values to 'browseRecipeData object
+                            browseRecipeData[embedData.id] = embedData;
+                    });
+                }
             }
-        );
+            console.log(browseRecipeData);
+        });
     }
 }

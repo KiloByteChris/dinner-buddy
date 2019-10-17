@@ -60,6 +60,9 @@ wp_enqueue_script( 'mt_calendar_data' );
 // Shopping List Data
 wp_register_script( 'mt_shopping_list_data', plugin_dir_url( __FILE__ ) . '/js/data/models/shopping_list_data.js', array('jquery'));
 wp_enqueue_script( 'mt_shopping_list_data' );
+// Browse Recipe Data
+wp_register_script( 'mt_browse_recipe_data', plugin_dir_url( __FILE__ ) . '/js/data/models/browse_recipe_data.js', array('jquery'));
+wp_enqueue_script( 'mt_browse_recipe_data' );
 // Meal Time Helper Data
 wp_register_script( 'mt_data', plugin_dir_url( __FILE__ ) . '/js/data/mt_data.js', array('jquery'));
 wp_enqueue_script( 'mt_data' );

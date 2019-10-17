@@ -70,15 +70,15 @@ register_rest_field(
             return get_user_meta($callbackData['id'], 'favorites', false);
             },
         'update_callback' => function($callbackData, $postData) {
-            // print_r($callbackData);
+            //print_r($callbackData);
             if($callbackData['method'] == 'add'){
-                add_user_meta($postData->ID, 'favorites', $callbackData['favorite'], $callbackData['favorite']);
+                add_user_meta($postData->ID, 'favorites', $callbackData['favorite'], false);
             }else if($callbackData['method'] == 'delete') {
                 // print_r('delete');
-                delete_user_meta($postData->ID, 'favorites', $callbackData['favorites'], $callbackData['favorites']);
+                delete_user_meta($postData->ID, 'favorites', $callbackData['favorite']);
             }
             
-            },
+        },
         'schema' => null,
     )
 );

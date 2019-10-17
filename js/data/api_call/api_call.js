@@ -29,7 +29,9 @@ class APICall {
             update_dock(recipeDockData);
         });
     }
-
+    /**
+     *  Add Favorite Recipe
+     */
     add_favorite(userId, newFavData) {
         //console.log(recipeId);
         var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
@@ -47,5 +49,22 @@ class APICall {
                 console.log(data);
                 }
             );
+    }
+    /**
+     *  Get Favorite Recipe Data
+     */
+    get_favorites(userId){
+        var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
+        jQuery.ajax( {
+            url: url,
+            method: 'GET',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+        }).done( function(data){
+            console.log(data);
+            }
+        );
+
     }
 }

@@ -144,8 +144,19 @@ jQuery(document).ready( function() {
                 });
             })
         });
+        // Fill in favorite info
+        var getFavCall = new APICall;
+        var favMetaData = getFavCall.get_favorites(WPsettings.user_ID);
+        
     });// end search recipes click event
-        //Clear Session Data.
+
+
+
+
+
+
+
+
     jQuery('#headerOptions').on('click', '#headerOptionsButton', function() {
         console.log(recipeDockData);
         console.log(calendarData);

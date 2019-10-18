@@ -110,19 +110,22 @@ function rest_edit_scripts() {
 		'root' => esc_url_raw( rest_url() ),
 		'nonce' => wp_create_nonce( 'wp_rest' ),
 		'current_ID' => get_the_ID(),
-		'user_ID' => get_current_user_id()
+		'user_ID' => get_current_user_id(),
+		'pluginsUrl' => plugins_url(),
 	));
 	wp_localize_script( 'mt_controllers', 'WPsettings', array(
 		'root' => esc_url_raw( rest_url() ),
 		'nonce' => wp_create_nonce( 'wp_rest' ),
 		'current_ID' => get_the_ID(),
-		'user_ID' => get_current_user_id()
+		'user_ID' => get_current_user_id(),
+		'pluginsUrl' => plugins_url(),
 	));
     wp_localize_script( 'mt_api_call', 'WPsettings', array(
 		'root' => esc_url_raw( rest_url() ),
 		'nonce' => wp_create_nonce( 'wp_rest' ),
 		'current_ID' => get_the_ID(),
-		'user_ID' => get_current_user_id()
+		'user_ID' => get_current_user_id(),
+		'pluginsUrl' => plugins_url(),
 	));
 }
 add_action( 'wp_enqueue_scripts', 'rest_edit_scripts' );

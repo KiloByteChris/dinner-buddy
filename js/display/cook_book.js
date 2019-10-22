@@ -1,7 +1,7 @@
 /** 
  *  Cook Book View
  */
-function cook_book_view(data) {
+function cook_book_view() {
     var cookBookView = '<div class="cookBookView" id="cookBookView">';
         // Add stuff to enhance search like tags and catagories
         cookBookView += '<div id="searchTags">';

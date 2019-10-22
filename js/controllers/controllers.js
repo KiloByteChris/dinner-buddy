@@ -232,7 +232,6 @@ jQuery(document).ready( function() {
             // Call.add_favorite(WPsettings.user_ID, recipeId, method);
             favoritesData.method = 'add';
             Call.add_favorite(WPsettings.user_ID, favoritesData);
-
         }
    });
     /*
@@ -241,12 +240,11 @@ jQuery(document).ready( function() {
     jQuery(".dashboard").on("click", "#cookBookButton", function(){
         event.preventDefault();
         currentView = 'search';
-        const call = new APICall;
-        call.browse_recipes();
         jQuery('#displayDiv').html(cook_book_view());
-        //console.log(WPsettings.pluginsUrl+'/dinner-buddy/js/display/cook_book_view.html');
-        //jQuery('#displayDiv').load(WPsettings.pluginsUrl+'/dinner-buddy/js/display/cook_book_view.html');
-        
+
+        var call = new APICall;
+        call.browse_recipes();
+        //jQuery('#displayDiv').html(cook_book_view());
     });
    /**
     *   Delete User Favorites

@@ -164,5 +164,6 @@ jQuery(document).ready( function() {
         console.log(calendarData);
         console.log(shoppingListData);
         console.log(sortedShoppingList);
+        console.log(userData);
     });
 });// end document.ready

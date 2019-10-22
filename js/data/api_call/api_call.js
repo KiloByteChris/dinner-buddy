@@ -105,7 +105,7 @@ class APICall {
             for(var i = 0; i < data.length; i++){
                 // Check for duplicates
                 if(browseRecipeData.hasOwnProperty(data[i].id)){
-                    // Do nothing
+                    jQuery('#searchResults').html(cook_book_card(browseRecipeData));
                 }else if(!browseRecipeData.hasOwnProperty(data[i].id)){
                     // Get Featured Image
                     var url = window.location.origin + '/wp-json/wp/v2/recipes/' + data[i].id + '?_embed';
@@ -119,9 +119,7 @@ class APICall {
                             // Assign values to 'browseRecipeData object
                             browseRecipeData[embedData.id] = embedData;
                             console.log(browseRecipeData);
-                            //cook_book_card(browseRecipeData);
-                            jQuery('#cookBookView').html(cook_book_card(browseRecipeData));
-                            
+                            jQuery('#searchResults').html(cook_book_card(browseRecipeData));
                     });
                 }
             }

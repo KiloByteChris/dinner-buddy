@@ -98,6 +98,9 @@ wp_enqueue_script( 'mt_recipe_dock_update' );
 
 wp_register_script( 'mt_shopping_list', plugin_dir_url( __FILE__ ) . '/js/display/shopping_list.js', array('jquery'));
 wp_enqueue_script( 'mt_shopping_list' );
+// Favorite Setter
+wp_register_script( 'mt_favorite_setter', plugin_dir_url( __FILE__ ) . '/js/display/update/favorite_setter.js', array('jquery'));
+wp_enqueue_script( 'mt_favorite_setter' );
 
 wp_register_script( 'drop_function', plugin_dir_url( __FILE__ ) . '/js/ui/drop_function.js', array('jquery'));
 wp_enqueue_script( 'drop_function' );

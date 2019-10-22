@@ -101,27 +101,23 @@ class APICall {
             method: 'GET',
             url: url
         }).done( function(data){
-            // Iterate through recipe data
+            browseRecipeData = {};
             for(var i = 0; i < data.length; i++){
-                // Check for duplicates
-                if(browseRecipeData.hasOwnProperty(data[i].id)){
-                    jQuery('#searchResults').html(cook_book_card(browseRecipeData));
-                }else if(!browseRecipeData.hasOwnProperty(data[i].id)){
-                    // Get Featured Image
-                    var url = window.location.origin + '/wp-json/wp/v2/recipes/' + data[i].id + '?_embed';
-                    jQuery.ajax({
-                        beforeSend: function(xhr) {
-                        xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-                        },
-                        method: 'GET',
-                        url: url
-                        }).done( function(embedData){
-                            // Assign values to 'browseRecipeData object
-                            browseRecipeData[embedData.id] = embedData;
-                            console.log(browseRecipeData);
-                            jQuery('#searchResults').html(cook_book_card(browseRecipeData));
-                    });
-                }
+                // Get Featured Image via Embed
+                var url = window.location.origin + '/wp-json/wp/v2/recipes/' + data[i].id + '?_embed';
+                jQuery.ajax({
+                    beforeSend: function(xhr) {
+                    xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+                    },
+                    method: 'GET',
+                    url: url
+                    }).done( function(embedData){
+                        // Assign values to 'browseRecipeData object
+                        browseRecipeData[embedData.id] = embedData;
+                        // Display Results
+                        jQuery('#searchResults').html(cook_book_card(browseRecipeData));
+                        fav_setter(userData);
+                });
             }
         });
     }

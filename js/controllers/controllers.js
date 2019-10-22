@@ -240,11 +240,11 @@ jQuery(document).ready( function() {
     jQuery(".dashboard").on("click", "#cookBookButton", function(){
         event.preventDefault();
         currentView = 'search';
+        // Display Main View
         jQuery('#displayDiv').html(cook_book_view());
-
+        // API call hydrates the main view
         var call = new APICall;
         call.browse_recipes();
-        //jQuery('#displayDiv').html(cook_book_view());
     });
    /**
     *   Delete User Favorites

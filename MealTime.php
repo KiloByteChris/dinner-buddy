@@ -75,6 +75,9 @@ wp_enqueue_script( 'new_recipe_form' );
 wp_register_script( 'mt_cook_book_view', plugin_dir_url( __FILE__ ) . '/js/display/cook_book.js', array('jquery'));
 wp_enqueue_script( 'mt_cook_book_view' );
 
+wp_register_script( 'mt_cook_book_card', plugin_dir_url( __FILE__ ) . '/js/display/cook_book_card.js', array('jquery'));
+wp_enqueue_script( 'mt_cook_book_card' );
+
 wp_register_script( 'calendar', plugin_dir_url( __FILE__ ) . '/js/display/calendar.js', array('jquery'));
 wp_enqueue_script( 'calendar' );
 

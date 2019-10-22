@@ -118,6 +118,9 @@ class APICall {
                         }).done( function(embedData){
                             // Assign values to 'browseRecipeData object
                             browseRecipeData[embedData.id] = embedData;
+                            console.log(browseRecipeData);
+                            //cook_book_card(browseRecipeData);
+                            jQuery('#cookBookView').html(cook_book_card(browseRecipeData));
                             
                     });
                 }

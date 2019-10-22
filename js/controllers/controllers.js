@@ -243,9 +243,9 @@ jQuery(document).ready( function() {
         currentView = 'search';
         const call = new APICall;
         call.browse_recipes();
-        // jQuery('#displayDiv').html(cook_book_view());
+        jQuery('#displayDiv').html(cook_book_view());
         //console.log(WPsettings.pluginsUrl+'/dinner-buddy/js/display/cook_book_view.html');
-        jQuery('#displayDiv').load(WPsettings.pluginsUrl+'/dinner-buddy/js/display/cook_book_view.html');
+        //jQuery('#displayDiv').load(WPsettings.pluginsUrl+'/dinner-buddy/js/display/cook_book_view.html');
         
     });
    /**

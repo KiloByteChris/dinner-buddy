@@ -63,6 +63,9 @@ wp_enqueue_script( 'mt_shopping_list_data' );
 // Browse Recipe Data
 wp_register_script( 'mt_browse_recipe_data', plugin_dir_url( __FILE__ ) . '/js/data/models/browse_recipe_data.js', array('jquery'));
 wp_enqueue_script( 'mt_browse_recipe_data' );
+// Favorite Recipe Data
+wp_register_script( 'mt_user_favorites_data', plugin_dir_url( __FILE__ ) . '/js/data/models/user_favorites_data.js', array('jquery'));
+wp_enqueue_script( 'mt_user_favorites_data' );
 // Meal Time Helper Data
 wp_register_script( 'mt_data', plugin_dir_url( __FILE__ ) . '/js/data/mt_data.js', array('jquery'));
 wp_enqueue_script( 'mt_data' );
@@ -101,6 +104,9 @@ wp_enqueue_script( 'mt_shopping_list' );
 // Favorite Setter
 wp_register_script( 'mt_favorite_setter', plugin_dir_url( __FILE__ ) . '/js/display/update/favorite_setter.js', array('jquery'));
 wp_enqueue_script( 'mt_favorite_setter' );
+// Favorite Setter
+wp_register_script( 'mt_favorites', plugin_dir_url( __FILE__ ) . '/js/display/user_favorites.js', array('jquery'));
+wp_enqueue_script( 'mt_favorites' );
 
 wp_register_script( 'drop_function', plugin_dir_url( __FILE__ ) . '/js/ui/drop_function.js', array('jquery'));
 wp_enqueue_script( 'drop_function' );

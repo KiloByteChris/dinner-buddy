@@ -1,0 +1,5 @@
+/**
+ *  User Favorites Object
+ */
+
+ userFavorites = {};

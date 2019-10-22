@@ -247,9 +247,15 @@ jQuery(document).ready( function() {
         call.browse_recipes();
     });
    /**
-    *   Delete User Favorites
+    *   User Favorites View
     */
-   jQuery('MtHeader').on('click', '#clearFavorites', function() {
+    jQuery('.dashboard').on('click', '.favoriteRecipeButton', function(){
+        event.preventDefault();
+        currentView = 'favorites';
+        // Display Favorites View
+        jQuery('#displayDiv').html(user_favorites_view());
+        var call = new APICall;
+        call.get_user_favs(userData);
+    })
 
-   });
 });

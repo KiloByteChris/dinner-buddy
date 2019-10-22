@@ -121,4 +121,27 @@ class APICall {
             }
         });
     }
+    /**
+     * Get 10 User Favorites
+     */
+    get_user_favs(userData) {
+        console.log(userData['favorites']);
+        for(var fav in userData['favorites']) {
+            var url = window.location.origin + '/wp-json/wp/v2/recipes' + userData['favorites'][fav];
+            console.log(url);
+            jQuery.ajax({
+                beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+                },
+                method: 'GET',
+                url: url
+                }).done( function(embedData){
+                    // Assign values to 'browseRecipeData object
+                    userFavorites[embedData.id] = embedData;
+                    // Display Results
+                    jQuery('#userFavoritesView').html(fav_updater(userFavorites));
+                    
+            });
+        }
+    }
 }

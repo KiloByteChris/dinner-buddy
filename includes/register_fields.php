@@ -62,24 +62,27 @@ add_action( 'rest_api_init', 'get_recipe_data');
 /**
  * User Favorites Meta
  */
-register_rest_field(
+function favorite_recipe_register() {
+    register_rest_field(
     'user' ,
     'favorites',
     array(
         'get_callback'    => function($callbackData, $postData) {
-            return get_user_meta($callbackData['id'], 'favorites', false);
+                return get_user_meta($callbackData['id'], 'favorites', false);
             },
         'update_callback' => function($callbackData, $postData) {
-            //print_r($callbackData);
+            print_r($callbackData);
+            
             if($callbackData['method'] == 'add'){
                 add_user_meta($postData->ID, 'favorites', $callbackData['favorite'], false);
             }else if($callbackData['method'] == 'delete') {
-                // print_r('delete');
                 delete_user_meta($postData->ID, 'favorites', $callbackData['favorite']);
-            }
-            
-        },
-        'schema' => null,
-    )
-);
+            }  
+            },
+            'schema' => null,
+        )
+    );
+}
+add_action( 'rest_api_init', 'favorite_recipe_register');
+
 ?>

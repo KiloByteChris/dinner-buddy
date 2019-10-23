@@ -216,7 +216,7 @@ jQuery(document).ready( function() {
    jQuery('#displayDiv').on('click', '.favoriteStar', function() {
        var recipeId = this.id.slice(4);
        var favoritesData = {'favorite' : recipeId};
-       let Call = new APICall();
+       var Call = new APICall();
        // Toggle star
        if(jQuery('#'+this.id).hasClass('set')){
             jQuery('#'+this.id).removeClass('fas fa-star set');

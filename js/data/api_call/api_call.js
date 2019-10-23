@@ -33,22 +33,24 @@ class APICall {
      *  Add Favorite Recipe
      */
     add_favorite(userId, newFavData) {
-        //console.log(recipeId);
+        // set URL
+        console.log(newFavData);
         var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
-            var favoriteData = {
-                favorites: newFavData,
-            };
-            jQuery.ajax( {
-                url: url,
-                method: 'POST',
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-                },
-                data : favoriteData
-            }).done( function(data){
-                //console.log(data);
-                }
-            );
+        // Create Post Data
+        var favPostData = {
+            postData: newFavData,
+        };
+        jQuery.ajax( {
+            url: url,
+            method: 'POST',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+            },
+            data : favPostData
+        }).done( function(data){
+            //console.log(data);
+            }
+        );
     }
     /**
      *  Get Favorite Recipe Data
@@ -127,7 +129,7 @@ class APICall {
     get_user_favs(userData) {
         console.log(userData['favorites']);
         for(var fav in userData['favorites']) {
-            var url = window.location.origin + '/wp-json/wp/v2/recipes' + userData['favorites'][fav];
+            //var url = window.location.origin + '/wp-json/wp/v2/recipes/' + userData['favorites'][fav];
             console.log(url);
             jQuery.ajax({
                 beforeSend: function(xhr) {
@@ -136,10 +138,11 @@ class APICall {
                 method: 'GET',
                 url: url
                 }).done( function(embedData){
+                    console.log(embedData);
                     // Assign values to 'browseRecipeData object
                     userFavorites[embedData.id] = embedData;
                     // Display Results
-                    jQuery('#userFavoritesView').html(fav_updater(userFavorites));
+                    //jQuery('#userFavoritesView').html(fav_updater(userFavorites));
                     
             });
         }

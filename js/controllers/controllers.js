@@ -7,7 +7,7 @@ jQuery(document).ready( function() {
      */
     function mt_default_display(){
         // Get user info
-        const call = new APICall();
+        var call = new APICall();
         call.get_user(WPsettings.user_ID);
         // Display Calendar
         event.preventDefault();
@@ -254,8 +254,8 @@ jQuery(document).ready( function() {
         currentView = 'favorites';
         // Display Favorites View
         jQuery('#displayDiv').html(user_favorites_view());
-        var call = new APICall;
-        call.get_user_favs(userData);
+        // var call = new APICall;
+        // call.get_user_favs(userData);
     })
 
 });

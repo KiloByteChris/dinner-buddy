@@ -34,9 +34,9 @@ class APICall {
      */
     add_favorite(userId, newFavData) {
         // set URL
-        console.log(newFavData);
+        //console.log(newFavData);
         var url = window.location.origin + '/wp-json/wp/v2/users/' + userId;
-        // Create Post Data
+        //Create Post Data
         var favPostData = {
             postData: newFavData,
         };
@@ -47,8 +47,10 @@ class APICall {
                 xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
             },
             data : favPostData
+            //data : newFavData
         }).done( function(data){
-            //console.log(data);
+            console.log("outhere1");
+            console.log(data);
             }
         );
     }
@@ -109,7 +111,7 @@ class APICall {
                 var url = window.location.origin + '/wp-json/wp/v2/recipes/' + data[i].id + '?_embed';
                 jQuery.ajax({
                     beforeSend: function(xhr) {
-                    xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+                        xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
                     },
                     method: 'GET',
                     url: url
@@ -126,25 +128,25 @@ class APICall {
     /**
      * Get 10 User Favorites
      */
-    get_user_favs(userData) {
-        console.log(userData['favorites']);
-        for(var fav in userData['favorites']) {
-            //var url = window.location.origin + '/wp-json/wp/v2/recipes/' + userData['favorites'][fav];
-            console.log(url);
-            jQuery.ajax({
-                beforeSend: function(xhr) {
-                xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
-                },
-                method: 'GET',
-                url: url
-                }).done( function(embedData){
-                    console.log(embedData);
-                    // Assign values to 'browseRecipeData object
-                    userFavorites[embedData.id] = embedData;
-                    // Display Results
-                    //jQuery('#userFavoritesView').html(fav_updater(userFavorites));
+    // get_user_favs(userData) {
+    //     console.log(userData['favorites']);
+    //     for(var fav in userData['favorites']) {
+    //         //var url = window.location.origin + '/wp-json/wp/v2/recipes/' + userData['favorites'][fav];
+    //         console.log(url);
+    //         jQuery.ajax({
+    //             beforeSend: function(xhr) {
+    //             xhr.setRequestHeader( 'X-WP-Nonce' , WPsettings.nonce);
+    //             },
+    //             method: 'GET',
+    //             url: url
+    //             }).done( function(embedData){
+    //                 console.log(embedData);
+    //                 // Assign values to 'browseRecipeData object
+    //                 userFavorites[embedData.id] = embedData;
+    //                 // Display Results
+    //                 //jQuery('#userFavoritesView').html(fav_updater(userFavorites));
                     
-            });
-        }
-    }
+    //         });
+    //     }
+    // }
 }

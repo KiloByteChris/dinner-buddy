@@ -1,6 +1,6 @@
 /**
  *  Display User Favorites
  */
-function fav_updater(userData) {
+// function fav_updater(userData) {
 
-}
+// }
